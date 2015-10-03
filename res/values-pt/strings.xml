@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MyChime</string>
+    <string name="speakCpt">Falar hora</string>
+    <string name="chimeCpt">Bipe</string>
+    <string name="enabledCpt">Ativado</string>
+    <string name="clockformathcpt">Tipo de relógio</string>
+    <string name="setCpt">Salvar configuração</string>
+    <string name="ok">OK</string>
+    <string name="startCpt">Início</string>
+    <string name="endCpt">Fim</string>
+    <string name="cancel">Cancelar</string>
+    <string name="serviceStarted">Serviço iniciado</string>
+    <string name="serviceStoped">Serviço finalizado</string>
+    <string name="titleMsg">Arquivos de TTS não encontrados</string>
+    <string name="installMsg">Arquivos de línguas para TTS são necessários para função de falar a hora. Clique OK para fazer download</string>
+    <string name="silentCpt">Apenas durante intervalo?</string>
+    <string name="speakSumm">Requer arquivos de TTS</string>
+    <string name="chimeSilentSumm">Bipe apenas no intervalo definido</string>
+    <string name="speakSilentSumm">Falar hora apenas no intervalo definido</string>
+
+    <string-array name="clock_type">
+        <item>12-horas</item>
+        <item>24-horas</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string-array name="clock_type_val">
+        <item>12-hours</item>
+        <item>24-hours</item>
+    </string-array>
+
+</resources>

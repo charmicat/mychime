@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MyChime</string>
+    <string name="speakCpt">Speak time</string>
+    <string name="chimeCpt">Beep</string>
+    <string name="enabledCpt">Enabled</string>
+    <string name="clockformathcpt">Clock type</string>
+    <string name="setCpt">Save configuration</string>
+    <string name="ok">OK</string>
+    <string name="startCpt">Start</string>
+    <string name="endCpt">End</string>
+    <string name="cancel">Cancel</string>
+    <string name="serviceStarted">Chime service started</string>
+    <string name="serviceStoped">Chime service stoped</string>
+    <string name="titleMsg">Missing TTS data</string>
+    <string name="installMsg">TTS language resource files are needed for speaking time. Click OK to download.</string>
+    <string name="silentCpt">Only between hours?</string>
+    <string name="speakSumm">Requires TTS language resource files</string>
+    <string name="chimeSilentSumm">Beep only at set time range</string>
+    <string name="speakSilentSumm">Speak time only at set time range</string>
+    <string name="unsavedSettingsMsg">Save changes?</string>
+    <string name="unsavedSettingsTitle">Unsaved settings</string>
+
+    <string-array name="clock_type">
+        <item>12-hours</item>
+        <item>24-hours</item>
+    </string-array>
+    <string-array name="clock_type_val">
+        <item>12-hours</item>
+        <item>24-hours</item>
+    </string-array>
+
+</resources>

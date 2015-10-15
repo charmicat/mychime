@@ -4,7 +4,9 @@
     <string name="app_name">MyChime</string>
     <string name="speakCpt">Speak time</string>
     <string name="chimeCpt">Beep</string>
-    <string name="enabledCpt">Enabled</string>
+    <string name="enableCpt">Enable</string>
+    <string name="enabledCpt">Always Enabled</string>
+    <string name="enabledHeadsetCpt">Enabled on Headset</string>
     <string name="clockformathcpt">Clock type</string>
     <string name="setCpt">Save configuration</string>
     <string name="ok">OK</string>
@@ -19,6 +21,7 @@
     <string name="speakSumm">Requires TTS language resource files</string>
     <string name="chimeSilentSumm">Beep only at set time range</string>
     <string name="speakSilentSumm">Speak time only at set time range</string>
+    <string name="enabledHeadsetSumm">Enable when headset is connected</string>
     <string name="unsavedSettingsMsg">Save changes?</string>
     <string name="unsavedSettingsTitle">Unsaved settings</string>
 
@@ -29,6 +32,28 @@
     <string-array name="clock_type_val">
         <item>12-hours</item>
         <item>24-hours</item>
+    </string-array>
+    <string-array name="speakOnOpt">
+        <item>Always Enabled</item>
+        <item>Enabled on Headset</item>
+        <item>Enabled on Time Range</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string-array name="speakOnOpt_val">
+        <item>speakOn</item>
+        <item>speakHeadsetOn</item>
+        <item>speakTimeRange</item>
+    </string-array>
+    <string-array name="chimeOnOpt">
+        <item>Always Enabled</item>
+        <item>Enabled on Headset</item>
+        <item>Enabled on Time Range</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string-array name="chimeOnOpt_val">
+        <item>chimeOn</item>
+        <item>chimeHeadsetOn</item>
+        <item>chimeTimeRange</item>
     </string-array>
 
 </resources>

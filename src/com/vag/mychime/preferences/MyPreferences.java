@@ -47,14 +47,14 @@ public class MyPreferences extends PreferenceFragment implements
 
 		saveCfg.setEnabled(false);
 
-		ListPreference listPreference = (ListPreference) findPreference("clockType");
-		if (listPreference.getValue() == null) {
+		ListPreference clockTypeList = (ListPreference) findPreference("clockType");
+		if (clockTypeList.getValue() == null) {
 			// to ensure we don't get a null value
 			// set first value by default
-			listPreference.setValueIndex(0);
+			clockTypeList.setValueIndex(0);
 		}
-		listPreference.setSummary(listPreference.getValue().toString());
-		listPreference
+		clockTypeList.setSummary(clockTypeList.getValue().toString());
+		clockTypeList
 				.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 					@Override
 					public boolean onPreferenceChange(Preference preference,

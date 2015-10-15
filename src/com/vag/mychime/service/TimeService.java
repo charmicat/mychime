@@ -3,12 +3,16 @@ package com.vag.mychime.service;
 import java.util.Calendar;
 import java.util.Locale;
 
+import com.vag.mychime.activity.MainActivity;
 import com.vag.mychime.activity.R;
 import com.vag.mychime.preferences.TimePickerPreference;
 
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.Build;
@@ -16,6 +20,7 @@ import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 public class TimeService extends Service {
@@ -31,14 +36,18 @@ public class TimeService extends Service {
 		SPEAK, BEEP
 	};
 
+	enum ActivationType {
+		OFF, ALWAYS, HEADSET, TIMERANGE
+	};
+
 	SharedPreferences settings;
 	CountDownTimer minutesTimer;
 	TextToSpeech tts;
-	boolean chime, speakTime, hasSpoken, scheduledSpeak, scheduledChime;
+	boolean chime, speak, hasSpoken, scheduledSpeak, scheduledChime;
+	boolean headsetPlugged;
 	String clockType;
 	String iniTimeSpeak, endTimeSpeak, iniTimeChime, endTimeChime;
-	Calendar scheduleIniSpeak, scheduleEndSpeak, scheduleIniChime,
-			scheduleEndChime;
+	Calendar scheduleIni, scheduleEnd;
 	Calendar now;
 	String text, am_pm;
 
@@ -60,6 +69,8 @@ public class TimeService extends Service {
 		Log.i(TAG, "Service started. Received start id " + startId + ": "
 				+ intent);
 
+		startNotification();
+
 		hasSpoken = false;
 
 		checkTime(); // primeira checagem, proxima daqui 30 segundos
@@ -79,7 +90,25 @@ public class TimeService extends Service {
 
 		minutesTimer.start();
 
-		return Service.START_STICKY;
+		return Service.START_NOT_STICKY;
+	}
+
+	public void startNotification() {
+		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+				this).setSmallIcon(R.drawable.ic_launcher)
+				.setContentTitle("MyChime").setContentText("Service started");
+
+		Intent i = new Intent(this, MainActivity.class);
+
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+				| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+		PendingIntent pi = PendingIntent.getActivity(this, 0, i,
+				PendingIntent.FLAG_UPDATE_CURRENT);
+
+		mBuilder.setContentIntent(pi);
+
+		startForeground(42066, mBuilder.build());
 	}
 
 	public void checkTime() {
@@ -98,13 +127,14 @@ public class TimeService extends Service {
 			if (!hasSpoken) { // time to chime
 				MediaPlayer mediaPlayer = null;
 				hasSpoken = true; // meant to avoid doublespeaking
-				text = "The time is ";
+				text = "The time is "; // TODO: use localization
 
 				Log.d(TAG, "Time to chime!");
 
+				// TODO: detect changes instead of reading every time
 				getSettings();
 
-				if (chime && checkSchedule(ChimeType.BEEP)) {
+				if (chime) {
 					mediaPlayer = MediaPlayer.create(getBaseContext(),
 							R.raw.casiochime);
 					mediaPlayer.start();
@@ -116,7 +146,7 @@ public class TimeService extends Service {
 					}
 				}
 
-				if (speakTime && checkSchedule(ChimeType.SPEAK)) {
+				if (speak) {
 					if (clockType.equals("24-hours"))
 						currentHour = now.get(Calendar.HOUR_OF_DAY);
 
@@ -140,78 +170,82 @@ public class TimeService extends Service {
 		settings = PreferenceManager
 				.getDefaultSharedPreferences(getApplication());
 
-		// TODO: needs to make sure there's something set
-		speakTime = settings.getBoolean("speakOn", false);
-		if (speakTime) {
+		String speakOnValue = settings.getString("speakOn", "unset");
+
+		Log.i(TAG, "speak=" + speakOnValue);
+
+		if (!speakOnValue.equals("unset")) {
 			clockType = settings.getString("clockType", "12-hours");
+			speak = true;
+
+			if (speakOnValue.equals("speakHeadsetOn") && !checkHeadsetPlugged()) {
+				speak = false;
+			} else if (speakOnValue.equals("speakTimeRange")) {
+				iniTimeSpeak = settings.getString("speakStartTime", "00:00");
+				endTimeSpeak = settings.getString("speakEndTime", "00:00");
+				Log.i(TAG, iniTimeSpeak + "  " + endTimeSpeak);
+				scheduleIni = Calendar.getInstance();
+				scheduleIni.set(Calendar.HOUR,
+						TimePickerPreference.getHour(iniTimeSpeak));
+				scheduleIni.set(Calendar.MINUTE,
+						TimePickerPreference.getMinute(iniTimeSpeak));
+
+				scheduleEnd = Calendar.getInstance();
+				scheduleEnd.set(Calendar.HOUR,
+						TimePickerPreference.getHour(endTimeSpeak));
+				scheduleEnd.set(Calendar.MINUTE,
+						TimePickerPreference.getMinute(endTimeSpeak));
+
+				speak = isScheduledTime(scheduleIni, scheduleEnd);
+			}
 		}
-		chime = settings.getBoolean("chimeOn", false);
 
-		Log.i(TAG, "Settings: " + speakTime + " " + chime);
+		String chimeOnValue = settings.getString("chimeOn", "unset");
 
-		scheduledSpeak = settings.getBoolean("speakMuteOn", false);
-		if (scheduledSpeak) {
-			iniTimeSpeak = settings.getString("speakStartTime", "00:00");
-			endTimeSpeak = settings.getString("speakEndTime", "00:00");
-			Log.i(TAG, iniTimeSpeak + "  " + endTimeSpeak);
-			scheduleIniSpeak = Calendar.getInstance();
-			scheduleIniSpeak.set(Calendar.HOUR,
-					TimePickerPreference.getHour(iniTimeSpeak));
-			scheduleIniSpeak.set(Calendar.MINUTE,
-					TimePickerPreference.getMinute(iniTimeSpeak));
+		Log.i(TAG, "chime=" + chimeOnValue);
 
-			scheduleEndSpeak = Calendar.getInstance();
-			scheduleEndSpeak.set(Calendar.HOUR,
-					TimePickerPreference.getHour(endTimeSpeak));
-			scheduleEndSpeak.set(Calendar.MINUTE,
-					TimePickerPreference.getMinute(endTimeSpeak));
-		}
+		if (!chimeOnValue.equals("unset")) {
 
-		scheduledChime = settings.getBoolean("chimeMuteOn", false);
-		if (scheduledChime) {
-			iniTimeChime = settings.getString("chimeStartTime", "00:00");
-			endTimeChime = settings.getString("chimeEndTime", "00:00");
-			Log.i(TAG, iniTimeChime + "  " + endTimeChime);
+			chime = true;
 
-			scheduleIniChime = Calendar.getInstance();
-			scheduleIniChime.set(Calendar.HOUR,
-					TimePickerPreference.getHour(iniTimeChime));
-			scheduleIniChime.set(Calendar.MINUTE,
-					TimePickerPreference.getMinute(iniTimeChime));
+			if (chimeOnValue.equals("chimeHeadsetOn") && !checkHeadsetPlugged()) {
+				chime = false;
+			} else if (chimeOnValue.equals("chimeTimeRange")) {
 
-			scheduleEndChime = Calendar.getInstance();
-			scheduleEndChime.set(Calendar.HOUR,
-					TimePickerPreference.getHour(endTimeChime));
-			scheduleEndChime.set(Calendar.MINUTE,
-					TimePickerPreference.getMinute(endTimeChime));
+				iniTimeChime = settings.getString("chimeStartTime", "00:00");
+				endTimeChime = settings.getString("chimeEndTime", "00:00");
+				Log.i(TAG, iniTimeChime + "  " + endTimeChime);
+
+				scheduleIni = Calendar.getInstance();
+				scheduleIni.set(Calendar.HOUR,
+						TimePickerPreference.getHour(iniTimeChime));
+				scheduleIni.set(Calendar.MINUTE,
+						TimePickerPreference.getMinute(iniTimeChime));
+
+				scheduleEnd = Calendar.getInstance();
+				scheduleEnd.set(Calendar.HOUR,
+						TimePickerPreference.getHour(endTimeChime));
+				scheduleEnd.set(Calendar.MINUTE,
+						TimePickerPreference.getMinute(endTimeChime));
+
+				chime = isScheduledTime(scheduleIni, scheduleEnd);
+			}
 		}
 	}
 
 	/**
 	 * Checks if specified ChimeType is scheduled and if it's on schedule
 	 */
-	public boolean checkSchedule(ChimeType type) {
-		boolean isTime = false;
 
-		switch (type) {
-		case SPEAK:
-			if (!scheduledSpeak
-					|| ((scheduleIniSpeak.getTime()).compareTo(now.getTime()) <= 0 && (scheduleEndSpeak
-							.getTime()).compareTo(now.getTime()) >= 0)) {
-				isTime = true;
-			}
-			break;
-		case BEEP:
-			if (!scheduledChime
-					|| ((scheduleIniChime.getTime()).compareTo(now.getTime()) <= 0 && (scheduleEndChime
-							.getTime()).compareTo(now.getTime()) >= 0)) {
-				isTime = true;
-			}
+	public boolean isScheduledTime(Calendar ini, Calendar end) {
 
-			break;
+		if (((ini.getTime()).compareTo(now.getTime()) <= 0 && (end.getTime())
+				.compareTo(now.getTime()) >= 0)) {
+			return true;
 		}
 
-		return isTime;
+		return false;
+
 	}
 
 	@SuppressWarnings("deprecation")
@@ -236,8 +270,13 @@ public class TimeService extends Service {
 
 		settings = PreferenceManager
 				.getDefaultSharedPreferences(getApplication());
-		boolean shouldRestart = (settings.getBoolean("speakOn", false) || settings
-				.getBoolean("chimeOn", false));
+		String speakOnValue = settings.getString("speakOn", "unset");
+		String chimeOnvalue = settings.getString("chimeOn", "unset");
+		boolean isSpeakTimeOn = !speakOnValue.equals("unset");
+
+		boolean isChimeOn = !chimeOnvalue.equals("unset");
+
+		boolean shouldRestart = isSpeakTimeOn || isChimeOn;
 
 		if (shouldRestart) // service wasnt stopped by the app, restart
 			startService(new Intent(this, TimeService.class));
@@ -246,6 +285,7 @@ public class TimeService extends Service {
 			minutesTimer.cancel();
 
 			stopTTS();
+			stopForeground(true);
 		}
 	}
 
@@ -270,8 +310,6 @@ public class TimeService extends Service {
 				tts.speak(am_pm, TextToSpeech.QUEUE_ADD, null);
 				tts.speak("M", TextToSpeech.QUEUE_ADD, null);
 			}
-
-			// stopTTS();
 		}
 	};
 
@@ -279,5 +317,16 @@ public class TimeService extends Service {
 		public TimeService getService() {
 			return TimeService.this;
 		}
+	}
+
+	@SuppressWarnings("deprecation")
+	public boolean checkHeadsetPlugged() {
+		AudioManager audio = (AudioManager) this
+				.getSystemService(Context.AUDIO_SERVICE);
+		if (audio.isWiredHeadsetOn()) {
+			return true;
+		}
+
+		return false;
 	}
 }

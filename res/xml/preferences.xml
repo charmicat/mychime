@@ -3,12 +3,12 @@
     <PreferenceCategory
         android:key="speakTime"
         android:title="@string/speakCpt" >
-        <CheckBoxPreference
-            android:defaultValue="false"
+        <ListPreference
+            android:dialogTitle="@string/enableCpt"
+            android:entries="@array/speakOnOpt"
+            android:entryValues="@array/speakOnOpt_val"
             android:key="speakOn"
-            android:summary="@string/speakSumm"
-            android:title="@string/enabledCpt" />
-
+            android:title="@string/enableCpt" />
         <ListPreference
             android:dependency="speakOn"
             android:dialogTitle="@string/clockformathcpt"
@@ -36,10 +36,13 @@
     <PreferenceCategory
         android:key="chime"
         android:title="@string/chimeCpt" >
-        <CheckBoxPreference
-            android:defaultValue="false"
+        <ListPreference
+            android:dialogTitle="@string/enableCpt"
+            android:entries="@array/chimeOnOpt"
+            android:entryValues="@array/chimeOnOpt_val"
             android:key="chimeOn"
-            android:title="@string/enabledCpt" />
+            android:title="@string/enableCpt" />
+
         <CheckBoxPreference
             android:defaultValue="false"
             android:dependency="chimeOn"

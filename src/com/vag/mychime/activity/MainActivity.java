@@ -86,8 +86,8 @@ public class MainActivity extends Activity implements
 			try {
 				unbindService(mConnection);
 			} catch (IllegalArgumentException e) {
-
 			}
+
 			stopService(serviceIntent);
 			Toast toast = Toast.makeText(this,
 					getResources().getString(R.string.serviceStoped),
@@ -99,8 +99,11 @@ public class MainActivity extends Activity implements
 	}
 
 	public boolean getState() {
-		isSpeakTimeOn = settings.getBoolean("speakOn", false);
-		isChimeOn = settings.getBoolean("chimeOn", false);
+		String speakOnValue = settings.getString("speakOn", "unset");
+		String chimeOnvalue = settings.getString("chimeOn", "unset");
+		isSpeakTimeOn = !speakOnValue.equals("unset");
+
+		isChimeOn = !chimeOnvalue.equals("unset");
 
 		return (isSpeakTimeOn || isChimeOn);
 	}

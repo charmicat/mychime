@@ -47,6 +47,40 @@ public class MyPreferences extends PreferenceFragment implements
 
 		saveCfg.setEnabled(false);
 
+		ListPreference speakEnableList = (ListPreference) findPreference("speakOn");
+		if (speakEnableList.getValue() == null) {
+			// to ensure we don't get a null value
+			// set first value by default
+			speakEnableList.setValueIndex(0);
+		}
+		speakEnableList.setSummary(speakEnableList.getValue().toString());
+		speakEnableList
+				.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+					@Override
+					public boolean onPreferenceChange(Preference preference,
+							Object newValue) {
+						preference.setSummary(newValue.toString());
+						return true;
+					}
+				});
+
+		ListPreference chimeEnableList = (ListPreference) findPreference("chimeOn");
+		if (chimeEnableList.getValue() == null) {
+			// to ensure we don't get a null value
+			// set first value by default
+			chimeEnableList.setValueIndex(0);
+		}
+		chimeEnableList.setSummary(chimeEnableList.getValue().toString());
+		chimeEnableList
+				.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+					@Override
+					public boolean onPreferenceChange(Preference preference,
+							Object newValue) {
+						preference.setSummary(newValue.toString());
+						return true;
+					}
+				});
+
 		ListPreference clockTypeList = (ListPreference) findPreference("clockType");
 		if (clockTypeList.getValue() == null) {
 			// to ensure we don't get a null value
@@ -82,9 +116,6 @@ public class MyPreferences extends PreferenceFragment implements
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences pref, String key) {
 		Log.d(TAG, "onSharedPreferenceChanged");
-
-		// chimeEndTime chimeStartTime chimeMuteOn chimeOn
-		// speakEndTime speakStartTime speakMuteOn clockType speakOn
 
 		saveCfg.setEnabled(true);
 	}

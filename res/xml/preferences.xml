@@ -17,19 +17,12 @@
             android:key="clockType"
             android:title="@string/clockformathcpt" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:dependency="speakOn"
-            android:key="speakMuteOn"
-            android:summary="@string/speakSilentSumm"
-            android:title="@string/silentCpt" />
-
         <com.vag.mychime.preferences.TimePickerPreference
-            android:dependency="speakMuteOn"
+            android:dependency="speakOn"
             android:key="speakStartTime"
             android:title="@string/startCpt" />
         <com.vag.mychime.preferences.TimePickerPreference
-            android:dependency="speakMuteOn"
+            android:dependency="speakOn"
             android:key="speakEndTime"
             android:title="@string/endCpt" />
     </PreferenceCategory>
@@ -43,19 +36,12 @@
             android:key="chimeOn"
             android:title="@string/enableCpt" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:dependency="chimeOn"
-            android:key="chimeMuteOn"
-            android:summary="@string/chimeSilentSumm"
-            android:title="@string/silentCpt" />
-
         <com.vag.mychime.preferences.TimePickerPreference
-            android:dependency="chimeMuteOn"
+            android:dependency="chimeOn"
             android:key="chimeStartTime"
             android:title="@string/startCpt" />
         <com.vag.mychime.preferences.TimePickerPreference
-            android:dependency="chimeMuteOn"
+            android:dependency="chimeOn"
             android:key="chimeEndTime"
             android:title="@string/endCpt" />
     </PreferenceCategory>

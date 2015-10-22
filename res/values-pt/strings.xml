@@ -5,8 +5,7 @@
     <string name="speakCpt">Falar hora</string>
     <string name="chimeCpt">Bipe</string>
     <string name="enableCpt">Ativar</string>
-    <string name="enabledCpt">Sempre Ativado</string>
-    <string name="enabledHeadsetCpt">Ativado Com Headset</string>
+    <string name="modeCpt">Modo de Operação</string>
     <string name="clockformathcpt">Tipo de relógio</string>
     <string name="setCpt">Salvar configuração</string>
     <string name="ok">OK</string>
@@ -17,13 +16,10 @@
     <string name="serviceStoped">Serviço finalizado</string>
     <string name="titleMsg">Arquivos de TTS não encontrados</string>
     <string name="installMsg">Arquivos de línguas para TTS são necessários para função de falar a hora. Clique OK para fazer download</string>
-    <string name="silentCpt">Apenas durante intervalo?</string>
     <string name="speakSumm">Requer arquivos de TTS</string>
-    <string name="chimeSilentSumm">Bipe apenas no intervalo definido</string>
-    <string name="speakSilentSumm">Falar hora apenas no intervalo definido</string>
-    <string name="enabledHeadsetSumm">Ativado quando headset é conectado</string>
     <string name="unsavedSettingsMsg">Salvar mudanças?</string>
     <string name="unsavedSettingsTitle">Mudanças não salvas</string>
+    <string name="speakTimeText_ini">Hora atual</string>
 
     <string-array name="clock_type">
         <item>12-horas</item>
@@ -37,20 +33,24 @@
     <string-array name="speakOnOpt">
         <item>Sempe ativado</item>
         <item>Ativado se headset conectado</item>
+        <item>Ativado em Intervalo de Tempo</item>
     </string-array>
     <!-- needs to be in english -->
     <string-array name="speakOnOpt_val">
         <item>speakOn</item>
         <item>speakHeadsetOn</item>
+        <item>speakTimeRange</item>
     </string-array>
     <string-array name="chimeOnOpt">
         <item>Sempe ativado</item>
         <item>Ativado se headset conectado</item>
+        <item>Ativado em Intervalo de Tempo</item>
     </string-array>
     <!-- needs to be in english -->
     <string-array name="chimeOnOpt_val">
         <item>chimeOn</item>
         <item>chimeHeadsetOn</item>
+        <item>chimeTimeRange</item>
     </string-array>
 
 </resources>

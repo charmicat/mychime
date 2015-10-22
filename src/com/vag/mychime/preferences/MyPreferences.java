@@ -8,6 +8,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.util.Log;
 
@@ -47,19 +48,40 @@ public class MyPreferences extends PreferenceFragment implements
 
 		saveCfg.setEnabled(false);
 
+		final TimePickerPreference tp_start_speak = (TimePickerPreference) findPreference("speakStartTime");
+		final TimePickerPreference tp_end_speak = (TimePickerPreference) findPreference("speakEndTime");
+		final TimePickerPreference tp_start_chime = (TimePickerPreference) findPreference("chimeStartTime");
+		final TimePickerPreference tp_end_chime = (TimePickerPreference) findPreference("chimeEndTime");
+
+		final PreferenceCategory pc_speak = (PreferenceCategory) findPreference("speak");
+		final PreferenceCategory pc_chime = (PreferenceCategory) findPreference("chime");
+
 		ListPreference speakEnableList = (ListPreference) findPreference("speakOn");
 		if (speakEnableList.getValue() == null) {
 			// to ensure we don't get a null value
 			// set first value by default
 			speakEnableList.setValueIndex(0);
 		}
-		speakEnableList.setSummary(speakEnableList.getValue().toString());
+		speakEnableList.setSummary(speakEnableList.getEntry().toString());
+		if (!speakEnableList.getValue().equals("speakTimeRange")) {
+			pc_speak.removePreference(tp_end_speak);
+			pc_speak.removePreference(tp_start_speak);
+		}
 		speakEnableList
 				.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 					@Override
 					public boolean onPreferenceChange(Preference preference,
 							Object newValue) {
-						preference.setSummary(newValue.toString());
+						ListPreference lp = (ListPreference) preference;
+						preference.setSummary(lp.getEntry());
+
+						if (!newValue.equals("speakTimeRange")) {
+							pc_speak.removePreference(tp_end_speak);
+							pc_speak.removePreference(tp_start_speak);
+						} else {
+							pc_speak.addPreference(tp_end_speak);
+							pc_speak.addPreference(tp_start_speak);
+						}
 						return true;
 					}
 				});
@@ -70,13 +92,26 @@ public class MyPreferences extends PreferenceFragment implements
 			// set first value by default
 			chimeEnableList.setValueIndex(0);
 		}
-		chimeEnableList.setSummary(chimeEnableList.getValue().toString());
+		chimeEnableList.setSummary(chimeEnableList.getEntry().toString());
+		if (!chimeEnableList.getValue().equals("chimeTimeRange")) {
+			pc_chime.removePreference(tp_end_chime);
+			pc_chime.removePreference(tp_start_chime);
+		}
 		chimeEnableList
 				.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 					@Override
 					public boolean onPreferenceChange(Preference preference,
 							Object newValue) {
-						preference.setSummary(newValue.toString());
+						ListPreference lp = (ListPreference) preference;
+						preference.setSummary(lp.getEntry());
+
+						if (!newValue.equals("chimeTimeRange")) {
+							pc_chime.removePreference(tp_end_chime);
+							pc_chime.removePreference(tp_start_chime);
+						} else {
+							pc_chime.addPreference(tp_end_chime);
+							pc_chime.addPreference(tp_start_chime);
+						}
 						return true;
 					}
 				});

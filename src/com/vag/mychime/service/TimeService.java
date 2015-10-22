@@ -127,7 +127,7 @@ public class TimeService extends Service {
 			if (!hasSpoken) { // time to chime
 				MediaPlayer mediaPlayer = null;
 				hasSpoken = true; // meant to avoid doublespeaking
-				text = "The time is "; // TODO: use localization
+				text = getResources().getString(R.string.speakTimeText_ini);
 
 				Log.d(TAG, "Time to chime!");
 
@@ -234,9 +234,8 @@ public class TimeService extends Service {
 	}
 
 	/**
-	 * Checks if specified ChimeType is scheduled and if it's on schedule
+	 * Checks if it's on scheduled time
 	 */
-
 	public boolean isScheduledTime(Calendar ini, Calendar end) {
 
 		if (((ini.getTime()).compareTo(now.getTime()) <= 0 && (end.getTime())
@@ -278,7 +277,7 @@ public class TimeService extends Service {
 
 		boolean shouldRestart = isSpeakTimeOn || isChimeOn;
 
-		if (shouldRestart) // service wasnt stopped by the app, restart
+		if (shouldRestart) // service wasn't stopped by the app, restart
 			startService(new Intent(this, TimeService.class));
 		else {
 			Log.d(TAG, "Service destroyed");

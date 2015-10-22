@@ -1,16 +1,22 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <PreferenceCategory
-        android:key="speakTime"
+        android:key="speak"
         android:title="@string/speakCpt" >
+        <CheckBoxPreference
+            android:key="enableSpeak"
+            android:summary="@string/speakSumm"
+            android:title="@string/enableCpt" />
+
         <ListPreference
+            android:dependency="enableSpeak"
             android:dialogTitle="@string/enableCpt"
             android:entries="@array/speakOnOpt"
             android:entryValues="@array/speakOnOpt_val"
             android:key="speakOn"
-            android:title="@string/enableCpt" />
+            android:title="@string/modeCpt" />
         <ListPreference
-            android:dependency="speakOn"
+            android:dependency="enableSpeak"
             android:dialogTitle="@string/clockformathcpt"
             android:entries="@array/clock_type"
             android:entryValues="@array/clock_type_val"
@@ -18,30 +24,35 @@
             android:title="@string/clockformathcpt" />
 
         <com.vag.mychime.preferences.TimePickerPreference
-            android:dependency="speakOn"
+            android:dependency="enableSpeak"
             android:key="speakStartTime"
             android:title="@string/startCpt" />
         <com.vag.mychime.preferences.TimePickerPreference
-            android:dependency="speakOn"
+            android:dependency="enableSpeak"
             android:key="speakEndTime"
             android:title="@string/endCpt" />
     </PreferenceCategory>
     <PreferenceCategory
         android:key="chime"
         android:title="@string/chimeCpt" >
+        <CheckBoxPreference
+            android:key="enableChime"
+            android:title="@string/enableCpt" />
+
         <ListPreference
+            android:dependency="enableChime"
             android:dialogTitle="@string/enableCpt"
             android:entries="@array/chimeOnOpt"
             android:entryValues="@array/chimeOnOpt_val"
             android:key="chimeOn"
-            android:title="@string/enableCpt" />
+            android:title="@string/modeCpt" />
 
         <com.vag.mychime.preferences.TimePickerPreference
-            android:dependency="chimeOn"
+            android:dependency="enableChime"
             android:key="chimeStartTime"
             android:title="@string/startCpt" />
         <com.vag.mychime.preferences.TimePickerPreference
-            android:dependency="chimeOn"
+            android:dependency="enableChime"
             android:key="chimeEndTime"
             android:title="@string/endCpt" />
     </PreferenceCategory>

@@ -95,7 +95,7 @@ public class TimeService extends Service {
 
 	public void startNotification() {
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-				this).setSmallIcon(R.drawable.ic_launcher)
+				this).setSmallIcon(R.drawable.ic_launcher_notif)
 				.setContentTitle("MyChime").setContentText("Service started");
 
 		Intent i = new Intent(this, MainActivity.class);
@@ -122,12 +122,11 @@ public class TimeService extends Service {
 		Log.i(TAG, currentHour + ":" + currentMinute + " " + am_pm
 				+ ": Checking time");
 
-		if (currentMinute == 0) {
-			// if (currentMinute % 2 == 0) { // debugging
+		// if (currentMinute == 0) {
+		if (currentMinute % 2 == 0) { // debugging
 			if (!hasSpoken) { // time to chime
 				MediaPlayer mediaPlayer = null;
 				hasSpoken = true; // meant to avoid doublespeaking
-				text = getResources().getString(R.string.speakTimeText_ini);
 
 				Log.d(TAG, "Time to chime!");
 
@@ -147,6 +146,8 @@ public class TimeService extends Service {
 				}
 
 				if (speak) {
+					text = getResources().getString(R.string.speakTimeText_ini);
+
 					if (clockType.equals("24-hours"))
 						currentHour = now.get(Calendar.HOUR_OF_DAY);
 
@@ -155,7 +156,7 @@ public class TimeService extends Service {
 					startTTS();
 				}
 
-				if (chime && mediaPlayer != null) {
+				if (mediaPlayer != null) { // cleanup
 					mediaPlayer.reset();
 					mediaPlayer.release();
 					mediaPlayer = null;
@@ -170,11 +171,12 @@ public class TimeService extends Service {
 		settings = PreferenceManager
 				.getDefaultSharedPreferences(getApplication());
 
+		boolean enabledSpeak = settings.getBoolean("enableSpeak", false);
 		String speakOnValue = settings.getString("speakOn", "unset");
 
-		Log.i(TAG, "speak=" + speakOnValue);
+		Log.i(TAG, "speak=" + enabledSpeak + " mode=" + speakOnValue);
 
-		if (!speakOnValue.equals("unset")) {
+		if (enabledSpeak && !speakOnValue.equals("unset")) {
 			clockType = settings.getString("clockType", "12-hours");
 			speak = true;
 
@@ -198,13 +200,16 @@ public class TimeService extends Service {
 
 				speak = isScheduledTime(scheduleIni, scheduleEnd);
 			}
+		} else {
+			speak = false;
 		}
 
+		boolean enabledChime = settings.getBoolean("enableChime", false);
 		String chimeOnValue = settings.getString("chimeOn", "unset");
 
-		Log.i(TAG, "chime=" + chimeOnValue);
+		Log.i(TAG, "chime=" + enabledChime + " mode=" + chimeOnValue);
 
-		if (!chimeOnValue.equals("unset")) {
+		if (enabledChime && !chimeOnValue.equals("unset")) {
 
 			chime = true;
 
@@ -230,6 +235,8 @@ public class TimeService extends Service {
 
 				chime = isScheduledTime(scheduleIni, scheduleEnd);
 			}
+		} else {
+			chime = false;
 		}
 	}
 

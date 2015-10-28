@@ -71,7 +71,7 @@ public class MainActivity extends Activity implements
 
 	public void setup() {
 		settings = PreferenceManager.getDefaultSharedPreferences(this);
-		SharedPreferences.Editor editor = settings.edit();
+		// SharedPreferences.Editor editor = settings.edit();
 		boolean isEnabled = getState();
 		Log.d(TAG, "isEnabled " + isEnabled);
 
@@ -95,17 +95,22 @@ public class MainActivity extends Activity implements
 			toast.show();
 		}
 
-		editor.commit();
+		// editor.commit();
 	}
 
 	public boolean getState() {
-		String speakOnValue = settings.getString("speakOn", "unset");
-		String chimeOnvalue = settings.getString("chimeOn", "unset");
-		isSpeakTimeOn = !speakOnValue.equals("unset");
 
-		isChimeOn = !chimeOnvalue.equals("unset");
+		if (!foundOldInstall()) {
+			String speakOnValue = settings.getString("speakOn", "unset");
+			String chimeOnvalue = settings.getString("chimeOn", "unset");
+			isSpeakTimeOn = !speakOnValue.equals("unset");
 
-		return (isSpeakTimeOn || isChimeOn);
+			isChimeOn = !chimeOnvalue.equals("unset");
+
+			return (isSpeakTimeOn || isChimeOn);
+		} else {
+			return false;
+		}
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -215,4 +220,17 @@ public class MainActivity extends Activity implements
 
 	}
 
+	public boolean foundOldInstall() {
+		if (settings.contains("speakMuteOn")
+				|| settings.contains("chimeMuteOn")) { // old install, reset
+			Log.d(TAG, "Found old install, clearing");
+			SharedPreferences.Editor editor = settings.edit();
+			editor.clear();
+			editor.commit();
+
+			return true;
+		}
+
+		return false;
+	}
 }

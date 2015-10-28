@@ -73,7 +73,9 @@ public class MyPreferences extends PreferenceFragment implements
 					public boolean onPreferenceChange(Preference preference,
 							Object newValue) {
 						ListPreference lp = (ListPreference) preference;
-						preference.setSummary(lp.getEntry());
+						CharSequence[] entries = lp.getEntries();
+						preference.setSummary(entries[lp
+								.findIndexOfValue((String) newValue)]);
 
 						if (!newValue.equals("speakTimeRange")) {
 							pc_speak.removePreference(tp_end_speak);
@@ -103,7 +105,9 @@ public class MyPreferences extends PreferenceFragment implements
 					public boolean onPreferenceChange(Preference preference,
 							Object newValue) {
 						ListPreference lp = (ListPreference) preference;
-						preference.setSummary(lp.getEntry());
+						CharSequence[] entries = lp.getEntries();
+						preference.setSummary(entries[lp
+								.findIndexOfValue((String) newValue)]);
 
 						if (!newValue.equals("chimeTimeRange")) {
 							pc_chime.removePreference(tp_end_chime);

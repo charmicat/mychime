@@ -122,8 +122,8 @@ public class TimeService extends Service {
 		Log.i(TAG, currentHour + ":" + currentMinute + " " + am_pm
 				+ ": Checking time");
 
-		// if (currentMinute == 0) {
-		if (currentMinute % 2 == 0) { // debugging
+		if (currentMinute == 0) {
+			// if (currentMinute % 2 == 0) { // debugging
 			if (!hasSpoken) { // time to chime
 				MediaPlayer mediaPlayer = null;
 				hasSpoken = true; // meant to avoid doublespeaking

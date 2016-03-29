@@ -1,20 +1,17 @@
 package com.vag.mychime.activity;
 
-import java.util.List;
-
 import com.vag.mychime.preferences.MyPreferences;
 import com.vag.mychime.service.TimeService;
+
+import com.vag.vaghelper.HelperFunctions;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -27,8 +24,8 @@ import android.widget.ToggleButton;
 public class MainActivity extends Activity implements
 		MyPreferences.OnConfigurationSavedListener {
 
-	String TAG = "MainActivity";
-	int isTTSAvailableIntentCode = 666;
+	private final String TAG = "MainActivity";
+	private final int isTTSAvailableIntentCode = 666;
 
 	Intent serviceIntent;
 	SharedPreferences settings;
@@ -38,6 +35,7 @@ public class MainActivity extends Activity implements
 	ToggleButton speakTime, chime;
 	MyPreferences pref;
 
+	@SuppressWarnings("unused")
 	private ServiceConnection mConnection = new ServiceConnection() {
 		public void onServiceConnected(ComponentName className, IBinder binder) {
 			Log.d(TAG, "onServiceConnected");
@@ -53,8 +51,10 @@ public class MainActivity extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d(TAG, "onCreate");
 
-		if (isIntentAvailable(this, TextToSpeech.Engine.ACTION_CHECK_TTS_DATA)) {
+		if (HelperFunctions.isIntentAvailable(this,
+				TextToSpeech.Engine.ACTION_CHECK_TTS_DATA)) {
 			Intent checkIntent = new Intent();
 			checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
 			startActivityForResult(checkIntent, isTTSAvailableIntentCode);
@@ -62,37 +62,38 @@ public class MainActivity extends Activity implements
 
 		serviceIntent = new Intent(this, TimeService.class);
 
-		setup();
+		controlService();
 		pref = new MyPreferences();
 		// Display the fragment as the main content
 		getFragmentManager().beginTransaction().addToBackStack(null)
 				.replace(android.R.id.content, pref).commit();
 	}
 
-	public void setup() {
-		settings = PreferenceManager.getDefaultSharedPreferences(this);
+	public void controlService() {
+		settings = PreferenceManager
+				.getDefaultSharedPreferences(getApplication());
 		// SharedPreferences.Editor editor = settings.edit();
 		boolean isEnabled = getState();
+		boolean isServiceRunning = HelperFunctions.isServiceRunning(
+				getApplication(), "com.vag.mychime.service.TimeService");
 		Log.d(TAG, "isEnabled " + isEnabled);
 
-		if (isEnabled) { // service should be running, but maybe was killed
-			startService(serviceIntent);
-			bindService(serviceIntent, mConnection, 0);
-			Toast toast = Toast.makeText(this,
-					getResources().getString(R.string.serviceStarted),
-					Toast.LENGTH_LONG);
-			toast.show();
-		} else { // service should be stopped
-			try {
-				unbindService(mConnection);
-			} catch (IllegalArgumentException e) {
+		if (!isServiceRunning) {
+			Log.d(TAG, "Service is not running");
+			if (isEnabled) { // service should be running
+				startService(serviceIntent);
+				Toast toast = Toast.makeText(getApplication(), getResources()
+						.getString(R.string.serviceStarted), Toast.LENGTH_LONG);
+				toast.show();
 			}
-
-			stopService(serviceIntent);
-			Toast toast = Toast.makeText(this,
-					getResources().getString(R.string.serviceStoped),
-					Toast.LENGTH_LONG);
-			toast.show();
+		} else {
+			if (!isEnabled) { // service not should be running
+				stopService(serviceIntent);
+				Toast toast = Toast.makeText(this,
+						getResources().getString(R.string.serviceStoped),
+						Toast.LENGTH_LONG);
+				toast.show();
+			}
 		}
 
 		// editor.commit();
@@ -101,11 +102,8 @@ public class MainActivity extends Activity implements
 	public boolean getState() {
 
 		if (!foundOldInstall()) {
-			String speakOnValue = settings.getString("speakOn", "unset");
-			String chimeOnvalue = settings.getString("chimeOn", "unset");
-			isSpeakTimeOn = !speakOnValue.equals("unset");
-
-			isChimeOn = !chimeOnvalue.equals("unset");
+			isSpeakTimeOn = settings.getBoolean("enableSpeak", false);
+			isChimeOn = settings.getBoolean("enableChime", false);
 
 			return (isSpeakTimeOn || isChimeOn);
 		} else {
@@ -153,38 +151,16 @@ public class MainActivity extends Activity implements
 		Log.d(TAG, "onStop " + isSpeakTimeOn + " " + isChimeOn);
 
 		try {
-			unbindService(mConnection);
+			// unbindService(mConnection);
 		} catch (IllegalArgumentException e) {
-
+			Log.w(TAG, "Error unbinding from service or activity wasn't bound");
 		}
-	}
-
-	/**
-	 * Indicates whether the specified action can be used as an intent. This
-	 * method queries the package manager for installed packages that can
-	 * respond to an intent with the specified action. If no suitable package is
-	 * found, this method returns false.
-	 * 
-	 * @param context
-	 *            The application's environment.
-	 * @param action
-	 *            The Intent action to check for availability.
-	 * 
-	 * @return True if an Intent with the specified action can be sent and
-	 *         responded to, false otherwise.
-	 */
-	public static boolean isIntentAvailable(Context context, String action) {
-		final PackageManager packageManager = context.getPackageManager();
-		final Intent intent = new Intent(action);
-		List<ResolveInfo> list = packageManager.queryIntentActivities(intent,
-				PackageManager.MATCH_DEFAULT_ONLY);
-		return list.size() > 0;
 	}
 
 	@Override
 	public void onConfigurationSaved() {
 		Log.d(TAG, "onConfigurationSaved");
-		setup();
+		controlService();
 
 	}
 
@@ -200,7 +176,7 @@ public class MainActivity extends Activity implements
 			builder.setPositiveButton(R.string.ok,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
-							setup();
+							controlService();
 							finish();
 						}
 					});
@@ -233,4 +209,5 @@ public class MainActivity extends Activity implements
 
 		return false;
 	}
+
 }

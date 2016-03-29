@@ -28,7 +28,8 @@ public class TimeService extends Service {
 	private final IBinder mBinder = (IBinder) new MyBinder();
 
 	private final int sdkVersion = Build.VERSION.SDK_INT;
-	String TAG = "TimeService";
+	private final String TAG = "TimeService";
+	
 	boolean isOn = false;
 	int bindCount = 0;
 
@@ -61,13 +62,13 @@ public class TimeService extends Service {
 
 	public void onCreate() {
 		Log.d(TAG, "onCreate");
-		startService(new Intent(this, TimeService.class));
+		// startService(new Intent(this, TimeService.class));
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Log.i(TAG, "Service started. Received start id " + startId + ": "
-				+ intent);
+				+ intent + " flags: " + flags);
 
 		startNotification();
 
@@ -90,10 +91,11 @@ public class TimeService extends Service {
 
 		minutesTimer.start();
 
-		return Service.START_NOT_STICKY;
+		return Service.START_STICKY;
 	}
 
 	public void startNotification() {
+		Log.d(TAG, "Starting notification");
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
 				this).setSmallIcon(R.drawable.ic_launcher_notif)
 				.setContentTitle("MyChime").setContentText("Service started");
@@ -119,8 +121,8 @@ public class TimeService extends Service {
 		int currentHour = now.get(Calendar.HOUR);
 		am_pm = now.get(Calendar.AM_PM) == 0 ? "A " : "P ";
 
-		Log.i(TAG, currentHour + ":" + currentMinute + " " + am_pm
-				+ ": Checking time");
+		// Log.i(TAG, currentHour + ":" + currentMinute + " " + am_pm
+		// + ": Checking time");
 
 		if (currentMinute == 0) {
 			// if (currentMinute % 2 == 0) { // debugging
@@ -168,6 +170,7 @@ public class TimeService extends Service {
 	}
 
 	public void getSettings() {
+		Log.d(TAG, "getSettings");
 		settings = PreferenceManager
 				.getDefaultSharedPreferences(getApplication());
 
@@ -276,11 +279,8 @@ public class TimeService extends Service {
 
 		settings = PreferenceManager
 				.getDefaultSharedPreferences(getApplication());
-		String speakOnValue = settings.getString("speakOn", "unset");
-		String chimeOnvalue = settings.getString("chimeOn", "unset");
-		boolean isSpeakTimeOn = !speakOnValue.equals("unset");
-
-		boolean isChimeOn = !chimeOnvalue.equals("unset");
+		boolean isSpeakTimeOn = settings.getBoolean("enableSpeak", false);
+		boolean isChimeOn = settings.getBoolean("enableChime", false);
 
 		boolean shouldRestart = isSpeakTimeOn || isChimeOn;
 
@@ -296,25 +296,40 @@ public class TimeService extends Service {
 	}
 
 	private TextToSpeech.OnInitListener ttsListener = new TextToSpeech.OnInitListener() {
+		@SuppressWarnings("deprecation")
 		@Override
 		public void onInit(int status) {
 			Log.d(TAG, "TTS engine started");
-			// tts.speak("", TextToSpeech.QUEUE_FLUSH, null);
+
 			isOn = (status == TextToSpeech.SUCCESS);
 			Locale current = getResources().getConfiguration().locale;
 			Log.i(TAG, "Current locale " + current.getDisplayName());
 
 			tts.setLanguage(current);
 
-			if (tts.speak(text, TextToSpeech.QUEUE_ADD, null) != TextToSpeech.SUCCESS) {
-				Log.e(TAG, "TTS queueing failed. Trying again");
-				// startTTS();
-				tts.speak(text, TextToSpeech.QUEUE_ADD, null);
-			}
+			if (sdkVersion < Build.VERSION_CODES.LOLLIPOP) {
+				if (tts.speak(text, TextToSpeech.QUEUE_ADD, null) != TextToSpeech.SUCCESS) {
+					Log.e(TAG, "TTS queueing failed. Trying again");
+					// startTTS();
+					tts.speak(text, TextToSpeech.QUEUE_ADD, null);
+				}
 
-			if (clockType.equals("12-hours")) {
-				tts.speak(am_pm, TextToSpeech.QUEUE_ADD, null);
-				tts.speak("M", TextToSpeech.QUEUE_ADD, null);
+				if (clockType.equals("12-hours")) {
+					tts.speak(am_pm, TextToSpeech.QUEUE_ADD, null);
+					tts.speak("M", TextToSpeech.QUEUE_ADD, null);
+				}
+			} else {
+				// I rather repeat code than use giant one-liners
+				if (tts.speak(text, TextToSpeech.QUEUE_ADD, null, "mychime") != TextToSpeech.SUCCESS) {
+					Log.e(TAG, "TTS queueing failed. Trying again");
+					// startTTS();
+					tts.speak(text, TextToSpeech.QUEUE_ADD, null, "mychime");
+				}
+
+				if (clockType.equals("12-hours")) {
+					tts.speak(am_pm, TextToSpeech.QUEUE_ADD, null, "mychime");
+					tts.speak("M", TextToSpeech.QUEUE_ADD, null, "mychime");
+				}
 			}
 		}
 	};

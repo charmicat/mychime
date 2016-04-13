@@ -1,5 +1,6 @@
 package com.vag.mychime.service;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -29,7 +30,7 @@ public class TimeService extends Service {
 
 	private final int sdkVersion = Build.VERSION.SDK_INT;
 	private final String TAG = "TimeService";
-	
+
 	boolean isOn = false;
 	int bindCount = 0;
 
@@ -285,7 +286,8 @@ public class TimeService extends Service {
 		boolean shouldRestart = isSpeakTimeOn || isChimeOn;
 
 		if (shouldRestart) // service wasn't stopped by the app, restart
-			startService(new Intent(this, TimeService.class));
+			sendBroadcast(new Intent("RestartTimeService"));
+		// startService(new Intent(this, TimeService.class));
 		else {
 			Log.d(TAG, "Service destroyed");
 			minutesTimer.cancel();

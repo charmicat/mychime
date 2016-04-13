@@ -72,15 +72,16 @@ public class MainActivity extends Activity implements
 	public void controlService() {
 		settings = PreferenceManager
 				.getDefaultSharedPreferences(getApplication());
-		// SharedPreferences.Editor editor = settings.edit();
 		boolean isEnabled = getState();
 		boolean isServiceRunning = HelperFunctions.isServiceRunning(
-				getApplication(), "com.vag.mychime.service.TimeService");
+				getApplication(), "com.vag.mychime.service.TimeService", false);
 		Log.d(TAG, "isEnabled " + isEnabled);
 
 		if (!isServiceRunning) {
 			Log.d(TAG, "Service is not running");
 			if (isEnabled) { // service should be running
+				Log.d(TAG, "Starting service");
+
 				startService(serviceIntent);
 				Toast toast = Toast.makeText(getApplication(), getResources()
 						.getString(R.string.serviceStarted), Toast.LENGTH_LONG);
@@ -95,8 +96,6 @@ public class MainActivity extends Activity implements
 				toast.show();
 			}
 		}
-
-		// editor.commit();
 	}
 
 	public boolean getState() {
@@ -148,13 +147,8 @@ public class MainActivity extends Activity implements
 
 	public void onStop() {
 		super.onStop();
-		Log.d(TAG, "onStop " + isSpeakTimeOn + " " + isChimeOn);
-
-		try {
-			// unbindService(mConnection);
-		} catch (IllegalArgumentException e) {
-			Log.w(TAG, "Error unbinding from service or activity wasn't bound");
-		}
+		Log.d(TAG, "onStop isSpeakTimeOn=" + isSpeakTimeOn + " isChimeOn="
+				+ isChimeOn);
 	}
 
 	@Override

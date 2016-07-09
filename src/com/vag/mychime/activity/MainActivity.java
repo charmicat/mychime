@@ -21,8 +21,7 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class MainActivity extends Activity implements
-		MyPreferences.OnConfigurationSavedListener {
+public class MainActivity extends Activity implements MyPreferences.OnConfigurationSavedListener {
 
 	private final String TAG = "MainActivity";
 	private final int isTTSAvailableIntentCode = 666;
@@ -53,8 +52,7 @@ public class MainActivity extends Activity implements
 		super.onCreate(savedInstanceState);
 		Log.d(TAG, "onCreate");
 
-		if (HelperFunctions.isIntentAvailable(this,
-				TextToSpeech.Engine.ACTION_CHECK_TTS_DATA)) {
+		if (HelperFunctions.isIntentAvailable(this, TextToSpeech.Engine.ACTION_CHECK_TTS_DATA)) {
 			Intent checkIntent = new Intent();
 			checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
 			startActivityForResult(checkIntent, isTTSAvailableIntentCode);
@@ -65,16 +63,14 @@ public class MainActivity extends Activity implements
 		controlService();
 		pref = new MyPreferences();
 		// Display the fragment as the main content
-		getFragmentManager().beginTransaction().addToBackStack(null)
-				.replace(android.R.id.content, pref).commit();
+		getFragmentManager().beginTransaction().replace(android.R.id.content, pref).commit();
 	}
 
 	public void controlService() {
-		settings = PreferenceManager
-				.getDefaultSharedPreferences(getApplication());
+		settings = PreferenceManager.getDefaultSharedPreferences(getApplication());
 		boolean isEnabled = getState();
-		boolean isServiceRunning = HelperFunctions.isServiceRunning(
-				getApplication(), "com.vag.mychime.service.TimeService", false);
+		boolean isServiceRunning = HelperFunctions.isServiceRunning(getApplication(),
+				"com.vag.mychime.service.TimeService", false);
 		Log.d(TAG, "isEnabled " + isEnabled);
 
 		if (!isServiceRunning) {
@@ -83,16 +79,14 @@ public class MainActivity extends Activity implements
 				Log.d(TAG, "Starting service");
 
 				startService(serviceIntent);
-				Toast toast = Toast.makeText(getApplication(), getResources()
-						.getString(R.string.serviceStarted), Toast.LENGTH_LONG);
+				Toast toast = Toast.makeText(getApplication(), getResources().getString(R.string.serviceStarted),
+						Toast.LENGTH_LONG);
 				toast.show();
 			}
 		} else {
 			if (!isEnabled) { // service not should be running
 				stopService(serviceIntent);
-				Toast toast = Toast.makeText(this,
-						getResources().getString(R.string.serviceStoped),
-						Toast.LENGTH_LONG);
+				Toast toast = Toast.makeText(this, getResources().getString(R.string.serviceStoped), Toast.LENGTH_LONG);
 				toast.show();
 			}
 		}
@@ -122,21 +116,18 @@ public class MainActivity extends Activity implements
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setTitle(R.string.titleMsg);
 				builder.setMessage(R.string.installMsg);
-				builder.setPositiveButton(R.string.ok,
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
-								Intent installIntent = new Intent();
-								installIntent
-										.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
-								startActivity(installIntent);
-							}
-						});
+				builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						Intent installIntent = new Intent();
+						installIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+						startActivity(installIntent);
+					}
+				});
 
-				builder.setNegativeButton(R.string.cancel,
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
-							}
-						});
+				builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+					}
+				});
 
 				builder.create();
 				builder.show();
@@ -147,8 +138,7 @@ public class MainActivity extends Activity implements
 
 	public void onStop() {
 		super.onStop();
-		Log.d(TAG, "onStop isSpeakTimeOn=" + isSpeakTimeOn + " isChimeOn="
-				+ isChimeOn);
+		Log.d(TAG, "onStop isSpeakTimeOn=" + isSpeakTimeOn + " isChimeOn=" + isChimeOn);
 	}
 
 	@Override
@@ -164,22 +154,19 @@ public class MainActivity extends Activity implements
 		if (saveChanges) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-			builder.setMessage(R.string.unsavedSettingsMsg).setTitle(
-					R.string.unsavedSettingsTitle);
+			builder.setMessage(R.string.unsavedSettingsMsg).setTitle(R.string.unsavedSettingsTitle);
 
-			builder.setPositiveButton(R.string.ok,
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							controlService();
-							finish();
-						}
-					});
-			builder.setNegativeButton(R.string.cancel,
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							finish();
-						}
-					});
+			builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					controlService();
+					finish();
+				}
+			});
+			builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					finish();
+				}
+			});
 
 			AlertDialog dialog = builder.create();
 
@@ -191,8 +178,9 @@ public class MainActivity extends Activity implements
 	}
 
 	public boolean foundOldInstall() {
-		if (settings.contains("speakMuteOn")
-				|| settings.contains("chimeMuteOn")) { // old install, reset
+		if (settings.contains("speakMuteOn") || settings.contains("chimeMuteOn")) { // old
+																					// install,
+																					// reset
 			Log.d(TAG, "Found old install, clearing");
 			SharedPreferences.Editor editor = settings.edit();
 			editor.clear();

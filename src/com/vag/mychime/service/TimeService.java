@@ -1,6 +1,5 @@
 package com.vag.mychime.service;
 
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -19,6 +18,7 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.IBinder;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.NotificationCompat;
@@ -45,7 +45,7 @@ public class TimeService extends Service {
 	SharedPreferences settings;
 	CountDownTimer minutesTimer;
 	TextToSpeech tts;
-	boolean chime, speak, hasSpoken, scheduledSpeak, scheduledChime;
+	boolean chime, speak, vibration, hasSpoken, scheduledSpeak, scheduledChime, scheduledVibration;
 	boolean headsetPlugged;
 	String clockType;
 	String iniTimeSpeak, endTimeSpeak, iniTimeChime, endTimeChime;
@@ -68,8 +68,7 @@ public class TimeService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		Log.i(TAG, "Service started. Received start id " + startId + ": "
-				+ intent + " flags: " + flags);
+		Log.i(TAG, "Service started. Received start id " + startId + ": " + intent + " flags: " + flags);
 
 		startNotification();
 
@@ -97,17 +96,15 @@ public class TimeService extends Service {
 
 	public void startNotification() {
 		Log.d(TAG, "Starting notification");
-		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
-				this).setSmallIcon(R.drawable.ic_launcher_notif)
-				.setContentTitle("MyChime").setContentText("Service started");
+		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+				.setSmallIcon(R.drawable.ic_launcher_notif).setContentTitle("MyChime")
+				.setContentText("Service started");
 
 		Intent i = new Intent(this, MainActivity.class);
 
-		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-				| Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
-		PendingIntent pi = PendingIntent.getActivity(this, 0, i,
-				PendingIntent.FLAG_UPDATE_CURRENT);
+		PendingIntent pi = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
 
 		mBuilder.setContentIntent(pi);
 
@@ -125,8 +122,8 @@ public class TimeService extends Service {
 		// Log.i(TAG, currentHour + ":" + currentMinute + " " + am_pm
 		// + ": Checking time");
 
-		if (currentMinute == 0) {
-			// if (currentMinute % 2 == 0) { // debugging
+		// if (currentMinute == 0) {
+		if (currentMinute % 2 == 0) { // debugging
 			if (!hasSpoken) { // time to chime
 				MediaPlayer mediaPlayer = null;
 				hasSpoken = true; // meant to avoid doublespeaking
@@ -137,8 +134,7 @@ public class TimeService extends Service {
 				getSettings();
 
 				if (chime) {
-					mediaPlayer = MediaPlayer.create(getBaseContext(),
-							R.raw.casiochime);
+					mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.casiochime);
 					mediaPlayer.start();
 
 					try {
@@ -159,6 +155,10 @@ public class TimeService extends Service {
 					startTTS();
 				}
 
+				if (vibration) {
+					vibration();
+				}
+
 				if (mediaPlayer != null) { // cleanup
 					mediaPlayer.reset();
 					mediaPlayer.release();
@@ -172,8 +172,7 @@ public class TimeService extends Service {
 
 	public void getSettings() {
 		Log.d(TAG, "getSettings");
-		settings = PreferenceManager
-				.getDefaultSharedPreferences(getApplication());
+		settings = PreferenceManager.getDefaultSharedPreferences(getApplication());
 
 		boolean enabledSpeak = settings.getBoolean("enableSpeak", false);
 		String speakOnValue = settings.getString("speakOn", "unset");
@@ -191,16 +190,12 @@ public class TimeService extends Service {
 				endTimeSpeak = settings.getString("speakEndTime", "00:00");
 				Log.i(TAG, iniTimeSpeak + "  " + endTimeSpeak);
 				scheduleIni = Calendar.getInstance();
-				scheduleIni.set(Calendar.HOUR,
-						TimePickerPreference.getHour(iniTimeSpeak));
-				scheduleIni.set(Calendar.MINUTE,
-						TimePickerPreference.getMinute(iniTimeSpeak));
+				scheduleIni.set(Calendar.HOUR, TimePickerPreference.getHour(iniTimeSpeak));
+				scheduleIni.set(Calendar.MINUTE, TimePickerPreference.getMinute(iniTimeSpeak));
 
 				scheduleEnd = Calendar.getInstance();
-				scheduleEnd.set(Calendar.HOUR,
-						TimePickerPreference.getHour(endTimeSpeak));
-				scheduleEnd.set(Calendar.MINUTE,
-						TimePickerPreference.getMinute(endTimeSpeak));
+				scheduleEnd.set(Calendar.HOUR, TimePickerPreference.getHour(endTimeSpeak));
+				scheduleEnd.set(Calendar.MINUTE, TimePickerPreference.getMinute(endTimeSpeak));
 
 				speak = isScheduledTime(scheduleIni, scheduleEnd);
 			}
@@ -226,22 +221,47 @@ public class TimeService extends Service {
 				Log.i(TAG, iniTimeChime + "  " + endTimeChime);
 
 				scheduleIni = Calendar.getInstance();
-				scheduleIni.set(Calendar.HOUR,
-						TimePickerPreference.getHour(iniTimeChime));
-				scheduleIni.set(Calendar.MINUTE,
-						TimePickerPreference.getMinute(iniTimeChime));
+				scheduleIni.set(Calendar.HOUR, TimePickerPreference.getHour(iniTimeChime));
+				scheduleIni.set(Calendar.MINUTE, TimePickerPreference.getMinute(iniTimeChime));
 
 				scheduleEnd = Calendar.getInstance();
-				scheduleEnd.set(Calendar.HOUR,
-						TimePickerPreference.getHour(endTimeChime));
-				scheduleEnd.set(Calendar.MINUTE,
-						TimePickerPreference.getMinute(endTimeChime));
+				scheduleEnd.set(Calendar.HOUR, TimePickerPreference.getHour(endTimeChime));
+				scheduleEnd.set(Calendar.MINUTE, TimePickerPreference.getMinute(endTimeChime));
 
 				chime = isScheduledTime(scheduleIni, scheduleEnd);
 			}
 		} else {
 			chime = false;
 		}
+
+		boolean enabledVibration = settings.getBoolean("enableVibration", false);
+		String vibrationOnValue = settings.getString("vibrationOn", "unset");
+
+		Log.i(TAG, "vibration=" + enabledVibration + " mode=" + vibrationOnValue);
+
+		if (enabledVibration && !vibrationOnValue.equals("unset")) {
+			vibration = true;
+
+			if (vibrationOnValue.equals("vibrationHeadsetOn") && !checkHeadsetPlugged()) {
+				vibration = false;
+			} else if (vibrationOnValue.equals("vibrationTimeRange")) {
+
+				iniTimeChime = settings.getString("vibrationStartTime", "00:00");
+				endTimeChime = settings.getString("vibrationEndTime", "00:00");
+				Log.i(TAG, iniTimeChime + "  " + endTimeChime);
+
+				scheduleIni = Calendar.getInstance();
+				scheduleIni.set(Calendar.HOUR, TimePickerPreference.getHour(iniTimeChime));
+				scheduleIni.set(Calendar.MINUTE, TimePickerPreference.getMinute(iniTimeChime));
+
+				scheduleEnd = Calendar.getInstance();
+				scheduleEnd.set(Calendar.HOUR, TimePickerPreference.getHour(endTimeChime));
+				scheduleEnd.set(Calendar.MINUTE, TimePickerPreference.getMinute(endTimeChime));
+
+				vibration = isScheduledTime(scheduleIni, scheduleEnd);
+			}
+		} else
+			vibration = false;
 	}
 
 	/**
@@ -249,8 +269,7 @@ public class TimeService extends Service {
 	 */
 	public boolean isScheduledTime(Calendar ini, Calendar end) {
 
-		if (((ini.getTime()).compareTo(now.getTime()) <= 0 && (end.getTime())
-				.compareTo(now.getTime()) >= 0)) {
+		if (((ini.getTime()).compareTo(now.getTime()) <= 0 && (end.getTime()).compareTo(now.getTime()) >= 0)) {
 			return true;
 		}
 
@@ -278,8 +297,7 @@ public class TimeService extends Service {
 	public void onDestroy() {
 		super.onDestroy();
 
-		settings = PreferenceManager
-				.getDefaultSharedPreferences(getApplication());
+		settings = PreferenceManager.getDefaultSharedPreferences(getApplication());
 		boolean isSpeakTimeOn = settings.getBoolean("enableSpeak", false);
 		boolean isChimeOn = settings.getBoolean("enableChime", false);
 
@@ -344,12 +362,18 @@ public class TimeService extends Service {
 
 	@SuppressWarnings("deprecation")
 	public boolean checkHeadsetPlugged() {
-		AudioManager audio = (AudioManager) this
-				.getSystemService(Context.AUDIO_SERVICE);
+		AudioManager audio = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
 		if (audio.isWiredHeadsetOn()) {
 			return true;
 		}
 
 		return false;
+	}
+
+	public void vibration() {
+		long[] pattern = { 0, 500, 100, 500, 100, 500, 100 };
+		Log.d(TAG, "vibrating");
+		Vibrator vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+		vibrator.vibrate(pattern, -1);
 	}
 }

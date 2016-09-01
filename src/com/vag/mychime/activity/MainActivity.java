@@ -8,12 +8,14 @@ import com.vag.vaghelper.HelperFunctions;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -30,7 +32,7 @@ public class MainActivity extends Activity implements MyPreferences.OnConfigurat
 	SharedPreferences settings;
 	TimeService service;
 	CheckBox chimeCheck;
-	boolean isChimeOn, isSpeakTimeOn, isTTSAvailable;
+	boolean isChimeOn, isSpeakTimeOn, isVibrationOn, isTTSAvailable;
 	ToggleButton speakTime, chime;
 	MyPreferences pref;
 
@@ -61,7 +63,9 @@ public class MainActivity extends Activity implements MyPreferences.OnConfigurat
 		serviceIntent = new Intent(this, TimeService.class);
 
 		controlService();
-		pref = new MyPreferences();
+
+		Vibrator vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+		pref = new MyPreferences(vibrator.hasVibrator());
 		// Display the fragment as the main content
 		getFragmentManager().beginTransaction().replace(android.R.id.content, pref).commit();
 	}
@@ -97,8 +101,9 @@ public class MainActivity extends Activity implements MyPreferences.OnConfigurat
 		if (!foundOldInstall()) {
 			isSpeakTimeOn = settings.getBoolean("enableSpeak", false);
 			isChimeOn = settings.getBoolean("enableChime", false);
+			isVibrationOn = settings.getBoolean("enableVibration", false);
 
-			return (isSpeakTimeOn || isChimeOn);
+			return (isSpeakTimeOn || isChimeOn || isVibrationOn);
 		} else {
 			return false;
 		}
@@ -138,7 +143,8 @@ public class MainActivity extends Activity implements MyPreferences.OnConfigurat
 
 	public void onStop() {
 		super.onStop();
-		Log.d(TAG, "onStop isSpeakTimeOn=" + isSpeakTimeOn + " isChimeOn=" + isChimeOn);
+		Log.d(TAG,
+				"onStop isSpeakTimeOn=" + isSpeakTimeOn + " isChimeOn=" + isChimeOn + " isVibrateOn=" + isVibrationOn);
 	}
 
 	@Override
@@ -178,6 +184,7 @@ public class MainActivity extends Activity implements MyPreferences.OnConfigurat
 	}
 
 	public boolean foundOldInstall() {
+		// TODO: remove this eventually
 		if (settings.contains("speakMuteOn") || settings.contains("chimeMuteOn")) { // old
 																					// install,
 																					// reset

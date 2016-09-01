@@ -4,6 +4,7 @@
     <string name="app_name">MyChime</string>
     <string name="speakCpt">Falar hora</string>
     <string name="chimeCpt">Bipe</string>
+    <string name="vibrationCpt">Vibrar</string>
     <string name="enableCpt">Ativar</string>
     <string name="modeCpt">Modo de Operação</string>
     <string name="clockformathcpt">Tipo de relógio</string>
@@ -51,6 +52,17 @@
         <item>chimeOn</item>
         <item>chimeHeadsetOn</item>
         <item>chimeTimeRange</item>
+    </string-array>
+    <string-array name="vibrationOnOpt">
+        <item>Sempe ativado</item>
+        <item>Ativado se headset conectado</item>
+        <item>Ativado em Intervalo de Tempo</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string-array name="vibrationOnOpt_val">
+        <item>vibrationOn</item>
+        <item>vibrationHeadsetOn</item>
+        <item>vibrationTimeRange</item>
     </string-array>
 
 </resources>

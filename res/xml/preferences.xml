@@ -56,6 +56,30 @@
             android:key="chimeEndTime"
             android:title="@string/endCpt" />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:key="vibration"
+        android:title="@string/vibrationCpt" >
+        <CheckBoxPreference
+            android:key="enableVibration"
+            android:title="@string/enableCpt" />
+
+        <ListPreference
+            android:dependency="enableVibration"
+            android:dialogTitle="@string/enableCpt"
+            android:entries="@array/vibrationOnOpt"
+            android:entryValues="@array/vibrationOnOpt_val"
+            android:key="vibrationOn"
+            android:title="@string/modeCpt" />
+
+        <com.vag.mychime.preferences.TimePickerPreference
+            android:dependency="enableVibration"
+            android:key="vibrationStartTime"
+            android:title="@string/startCpt" />
+        <com.vag.mychime.preferences.TimePickerPreference
+            android:dependency="enableVibration"
+            android:key="vibrationEndTime"
+            android:title="@string/endCpt" />
+    </PreferenceCategory>
     <PreferenceCategory>
         <Preference
             android:key="saveCfg"

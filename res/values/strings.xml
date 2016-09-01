@@ -4,6 +4,7 @@
     <string name="app_name">MyChime</string>
     <string name="speakCpt">Speak time</string>
     <string name="chimeCpt">Beep</string>
+    <string name="vibrationCpt">Vibrate</string>
     <string name="enableCpt">Enable</string>
     <string name="modeCpt">Operation Mode</string>
     <string name="clockformathcpt">Clock type</string>
@@ -19,7 +20,6 @@
     <string name="speakSumm">Requires TTS language resource files</string>
     <string name="unsavedSettingsMsg">Save changes?</string>
     <string name="unsavedSettingsTitle">Unsaved settings</string>
-    
     <string name="speakTimeText_ini">The time is</string>
 
     <string-array name="clock_type">
@@ -51,6 +51,17 @@
         <item>chimeOn</item>
         <item>chimeHeadsetOn</item>
         <item>chimeTimeRange</item>
+    </string-array>
+    <string-array name="vibrationOnOpt">
+        <item>Always Enabled</item>
+        <item>Enabled on Headset</item>
+        <item>Enabled on Time Range</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string-array name="vibrationOnOpt_val">
+        <item>vibrationOn</item>
+        <item>vibrationHeadsetOn</item>
+        <item>vibrationTimeRange</item>
     </string-array>
 
 </resources>

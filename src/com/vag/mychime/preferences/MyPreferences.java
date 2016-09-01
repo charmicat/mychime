@@ -25,10 +25,17 @@ public class MyPreferences extends PreferenceFragment implements OnSharedPrefere
 
 	String TAG = "MyPreferences";
 
+	boolean hasVibration;
+
 	public interface OnConfigurationSavedListener {
 		public void onConfigurationSaved();
 
 		public void onUserInteractionFinished(boolean saveChanges);
+	}
+
+	public MyPreferences(boolean hasVibration) {
+		super();
+		this.hasVibration = hasVibration;
 	}
 
 	@Override
@@ -50,15 +57,32 @@ public class MyPreferences extends PreferenceFragment implements OnSharedPrefere
 
 		saveCfg.setEnabled(false);
 
+		final PreferenceCategory pc_speak = (PreferenceCategory) findPreference("speak");
+		final PreferenceCategory pc_chime = (PreferenceCategory) findPreference("chime");
+		final PreferenceCategory pc_vibration = (PreferenceCategory) findPreference("vibration");
+		final CheckBoxPreference enableSpeak = (CheckBoxPreference) findPreference("enableSpeak");
+		final CheckBoxPreference enableChime = (CheckBoxPreference) findPreference("enableChime");
+		final CheckBoxPreference enableVibration = (CheckBoxPreference) findPreference("enableChime");
+
 		final TimePickerPreference tp_start_speak = (TimePickerPreference) findPreference("speakStartTime");
 		final TimePickerPreference tp_end_speak = (TimePickerPreference) findPreference("speakEndTime");
 		final TimePickerPreference tp_start_chime = (TimePickerPreference) findPreference("chimeStartTime");
 		final TimePickerPreference tp_end_chime = (TimePickerPreference) findPreference("chimeEndTime");
+		final TimePickerPreference tp_start_vibration = (TimePickerPreference) findPreference("vibrationStartTime");
+		final TimePickerPreference tp_end_vibration = (TimePickerPreference) findPreference("vibrationEndTime");
 
-		final CheckBoxPreference enableSpeak = (CheckBoxPreference) findPreference("enableSpeak");
-		final CheckBoxPreference enableChime = (CheckBoxPreference) findPreference("enableChime");
-		final PreferenceCategory pc_speak = (PreferenceCategory) findPreference("speak");
-		final PreferenceCategory pc_chime = (PreferenceCategory) findPreference("chime");
+		enableSpeak.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+			@Override
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				boolean v = Boolean.valueOf(newValue.toString());
+				if (v == false) {
+					pc_speak.removePreference(tp_end_speak);
+					pc_speak.removePreference(tp_start_speak);
+				}
+
+				return true;
+			}
+		});
 
 		ListPreference speakEnableList = (ListPreference) findPreference("speakOn");
 		if (speakEnableList.getValue() == null) {
@@ -67,7 +91,7 @@ public class MyPreferences extends PreferenceFragment implements OnSharedPrefere
 			speakEnableList.setValueIndex(0);
 		}
 		speakEnableList.setSummary(speakEnableList.getEntry().toString());
-		if (!speakEnableList.getValue().equals("speakTimeRange") || !enableSpeak.isChecked()) {
+		if (!enableSpeak.isChecked() || !speakEnableList.getValue().equals("speakTimeRange")) {
 			pc_speak.removePreference(tp_end_speak);
 			pc_speak.removePreference(tp_start_speak);
 		}
@@ -89,6 +113,19 @@ public class MyPreferences extends PreferenceFragment implements OnSharedPrefere
 			}
 		});
 
+		enableChime.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+			@Override
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				boolean v = Boolean.valueOf(newValue.toString());
+				if (v == false) {
+					pc_chime.removePreference(tp_end_chime);
+					pc_chime.removePreference(tp_start_chime);
+				}
+
+				return true;
+			}
+		});
+
 		ListPreference chimeEnableList = (ListPreference) findPreference("chimeOn");
 		if (chimeEnableList.getValue() == null) {
 			// to ensure we don't get a null value
@@ -96,7 +133,7 @@ public class MyPreferences extends PreferenceFragment implements OnSharedPrefere
 			chimeEnableList.setValueIndex(0);
 		}
 		chimeEnableList.setSummary(chimeEnableList.getEntry().toString());
-		if (!chimeEnableList.getValue().equals("chimeTimeRange") || !enableChime.isChecked()) {
+		if (!enableChime.isChecked() || !chimeEnableList.getValue().equals("chimeTimeRange")) {
 			pc_chime.removePreference(tp_end_chime);
 			pc_chime.removePreference(tp_start_chime);
 		}
@@ -132,6 +169,39 @@ public class MyPreferences extends PreferenceFragment implements OnSharedPrefere
 				return true;
 			}
 		});
+
+		if (!hasVibration) {
+			pc_vibration.removeAll();
+		}
+
+		ListPreference vibrationEnableList = (ListPreference) findPreference("vibrationOn");
+		if (vibrationEnableList.getValue() == null) {
+			// to ensure we don't get a null value
+			// set first value by default
+			vibrationEnableList.setValueIndex(0);
+		}
+		vibrationEnableList.setSummary(vibrationEnableList.getEntry().toString());
+		if (!enableVibration.isChecked() || !vibrationEnableList.getValue().equals("vibrationTimeRange")) {
+			pc_vibration.removePreference(tp_end_vibration);
+			pc_vibration.removePreference(tp_start_vibration);
+		}
+		vibrationEnableList.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+			@Override
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				ListPreference lp = (ListPreference) preference;
+				CharSequence[] entries = lp.getEntries();
+				preference.setSummary(entries[lp.findIndexOfValue((String) newValue)]);
+
+				if (!newValue.equals("vibrationTimeRange")) {
+					pc_vibration.removePreference(tp_end_vibration);
+					pc_vibration.removePreference(tp_start_vibration);
+				} else {
+					pc_vibration.addPreference(tp_end_vibration);
+					pc_vibration.addPreference(tp_start_vibration);
+				}
+				return true;
+			}
+		});
 	}
 
 	@Override
@@ -162,14 +232,14 @@ public class MyPreferences extends PreferenceFragment implements OnSharedPrefere
 		// Fix PreferenceFragment's padding...
 		int paddingSize = 0;
 		if (Build.VERSION.SDK_INT < 14) {
-			paddingSize = (int) (-32 );
+			paddingSize = (int) (-32);
 		} else {
-			paddingSize = (int) (-16 );
+			paddingSize = (int) (-16);
 		}
 
 		final View v = getView();
 
-		//v.setPadding(paddingSize, 0, paddingSize, 0);
+		// v.setPadding(paddingSize, 0, paddingSize, 0);
 	}
 
 	@Override

@@ -80,10 +80,5 @@
             android:key="vibrationEndTime"
             android:title="@string/endCpt" />
     </PreferenceCategory>
-    <PreferenceCategory>
-        <Preference
-            android:key="saveCfg"
-            android:title="@string/setCpt" />
-    </PreferenceCategory>
 
 </PreferenceScreen>

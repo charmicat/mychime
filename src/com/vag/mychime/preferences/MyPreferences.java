@@ -3,59 +3,40 @@ package com.vag.mychime.preferences;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.util.Log;
-import android.view.View;
 
 import com.vag.mychime.activity.R;
 
 public class MyPreferences extends PreferenceFragment implements OnSharedPreferenceChangeListener {
 
-	OnConfigurationSavedListener onCfgSavedCB;
-	Preference saveCfg;
+	OnConfigurationChangedListener onCfgChangedCB;
 	SharedPreferences settings;
 
 	String TAG = "MyPreferences";
 
 	boolean hasVibration;
 
-	public interface OnConfigurationSavedListener {
-		public void onConfigurationSaved();
-
-		public void onUserInteractionFinished(boolean saveChanges);
+	public interface OnConfigurationChangedListener {
+		public void onConfigurationChanged();
 	}
 
 	public MyPreferences(boolean hasVibration) {
 		super();
-		this.hasVibration = hasVibration;
+		this.hasVibration = true;
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// Load the preferences from an XML resource
 		addPreferencesFromResource(R.xml.preferences);
-
-		saveCfg = (Preference) findPreference("saveCfg");
-		saveCfg.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			public boolean onPreferenceClick(Preference preference) {
-				onCfgSavedCB.onConfigurationSaved();
-				saveCfg.setEnabled(false);
-
-				return true;
-			}
-		});
-
-		saveCfg.setEnabled(false);
 
 		final PreferenceCategory pc_speak = (PreferenceCategory) findPreference("speak");
 		final PreferenceCategory pc_chime = (PreferenceCategory) findPreference("chime");
@@ -204,14 +185,16 @@ public class MyPreferences extends PreferenceFragment implements OnSharedPrefere
 		});
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
+		Log.d(TAG, "got attached to " + activity.getPackageName());
 
 		// This makes sure that the container activity has implemented
 		// the callback interface. If not, it throws an exception
 		try {
-			onCfgSavedCB = (OnConfigurationSavedListener) activity;
+			onCfgChangedCB = (OnConfigurationChangedListener) activity;
 		} catch (ClassCastException e) {
 			throw new ClassCastException(activity.toString() + " must implement OnConfigurationSavedListener");
 		}
@@ -221,25 +204,13 @@ public class MyPreferences extends PreferenceFragment implements OnSharedPrefere
 	public void onSharedPreferenceChanged(SharedPreferences pref, String key) {
 		Log.d(TAG, "onSharedPreferenceChanged");
 
-		saveCfg.setEnabled(true);
+		onCfgChangedCB.onConfigurationChanged();
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
 		getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
-
-		// Fix PreferenceFragment's padding...
-		int paddingSize = 0;
-		if (Build.VERSION.SDK_INT < 14) {
-			paddingSize = (int) (-32);
-		} else {
-			paddingSize = (int) (-16);
-		}
-
-		final View v = getView();
-
-		// v.setPadding(paddingSize, 0, paddingSize, 0);
 	}
 
 	@Override
@@ -247,16 +218,4 @@ public class MyPreferences extends PreferenceFragment implements OnSharedPrefere
 		super.onPause();
 		getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
 	}
-
-	public void onDetach() {
-		super.onDetach();
-		Log.d(TAG, "onDetach");
-		if (saveCfg.isEnabled()) { // unsaved changes
-			onCfgSavedCB.onUserInteractionFinished(true);
-		} else {
-			onCfgSavedCB.onUserInteractionFinished(false);
-		}
-
-	}
-
 }

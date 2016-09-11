@@ -18,8 +18,9 @@
     <string name="titleMsg">Missing TTS data</string>
     <string name="installMsg">TTS language resource files are needed for speaking time. Click OK to download.</string>
     <string name="speakSumm">Requires TTS language resource files</string>
-    <string name="unsavedSettingsMsg">Save changes?</string>
-    <string name="unsavedSettingsTitle">Unsaved settings</string>
+    <string name="unsavedSettingsMsg">MyChime stopped with unsaved settings</string>
+    <string name="savedSettingsTitle">Save</string>
+    <string name="changesSaved">Changes saved</string>
     <string name="speakTimeText_ini">The time is</string>
 
     <string-array name="clock_type">

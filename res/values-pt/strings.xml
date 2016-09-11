@@ -16,10 +16,10 @@
     <string name="serviceStarted">Serviço iniciado</string>
     <string name="serviceStoped">Serviço finalizado</string>
     <string name="titleMsg">Arquivos de TTS não encontrados</string>
-    <string name="installMsg">Arquivos de línguas para TTS são necessários para função de falar a hora. Clique OK para fazer download</string>
+    <string name="installMsg">Arquivos de línguas para TTS são necessários para falar a hora. Clique OK para fazer download</string>
     <string name="speakSumm">Requer arquivos de TTS</string>
-    <string name="unsavedSettingsMsg">Salvar mudanças?</string>
-    <string name="unsavedSettingsTitle">Mudanças não salvas</string>
+    <string name="unsavedSettingsMsg">MyChime finalizado com mudanças não salvas</string>
+    <string name="changesSaved">Mudanças salvas</string>
     <string name="speakTimeText_ini">Hora atual</string>
 
     <string-array name="clock_type">

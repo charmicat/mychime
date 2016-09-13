@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MyChime</string>
     <string name="speakCpt">Falar hora</string>
     <string name="chimeCpt">Bipe</string>
     <string name="vibrationCpt">Vibrar</string>
     <string name="enableCpt">Ativar</string>
     <string name="modeCpt">Modo de Operação</string>
     <string name="clockformathcpt">Tipo de relógio</string>
-    <string name="setCpt">Salvar configuração</string>
-    <string name="ok">OK</string>
     <string name="startCpt">Início</string>
     <string name="endCpt">Fim</string>
-    <string name="cancel">Cancelar</string>
     <string name="serviceStarted">Serviço iniciado</string>
     <string name="serviceStoped">Serviço finalizado</string>
     <string name="titleMsg">Arquivos de TTS não encontrados</string>
@@ -21,6 +17,7 @@
     <string name="unsavedSettingsMsg">MyChime finalizado com mudanças não salvas</string>
     <string name="changesSaved">Mudanças salvas</string>
     <string name="speakTimeText_ini">Hora atual</string>
+    <string name="rate">Rate me</string>
 
     <string-array name="clock_type">
         <item>12-horas</item>

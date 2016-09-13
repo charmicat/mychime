@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="version">4</string>
     <string name="app_name">MyChime</string>
     <string name="speakCpt">Speak time</string>
     <string name="chimeCpt">Beep</string>
@@ -8,11 +9,8 @@
     <string name="enableCpt">Enable</string>
     <string name="modeCpt">Operation Mode</string>
     <string name="clockformathcpt">Clock type</string>
-    <string name="setCpt">Save configuration</string>
-    <string name="ok">OK</string>
     <string name="startCpt">Start</string>
     <string name="endCpt">End</string>
-    <string name="cancel">Cancel</string>
     <string name="serviceStarted">Chime service started</string>
     <string name="serviceStoped">Chime service stoped</string>
     <string name="titleMsg">Missing TTS data</string>
@@ -22,6 +20,7 @@
     <string name="savedSettingsTitle">Save</string>
     <string name="changesSaved">Changes saved</string>
     <string name="speakTimeText_ini">The time is</string>
+    <string name="rate">Rate me</string>
 
     <string-array name="clock_type">
         <item>12-hours</item>

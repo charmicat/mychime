@@ -6,6 +6,7 @@ import com.vag.mychime.service.TimeService;
 import com.vag.vaghelper.HelperFunctions;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +14,8 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Vibrator;
@@ -130,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setTitle(R.string.titleMsg);
 				builder.setMessage(R.string.installMsg);
-				builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+				builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						Intent installIntent = new Intent();
 						installIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
@@ -138,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 					}
 				});
 
-				builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+				builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 					}
 				});
@@ -171,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		Log.d(TAG, "onCreateOptionsMenu");
+		getMenuInflater().inflate(R.menu.toolbar, menu);
 		setSaveBtnState(false);
 		return true;
 	}
@@ -179,11 +183,16 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.save:
-			Log.i(TAG, "Clicked on save");
+			Log.d(TAG, "Clicked on save");
 			controlService();
 			setSaveBtnState(false);
 			Toast toast = Toast.makeText(this, getResources().getString(R.string.changesSaved), Toast.LENGTH_LONG);
 			toast.show();
+			return true;
+
+		case R.id.rate:
+			Log.d(TAG, "Clicked on rate");
+			rateApp();
 			return true;
 
 		default:
@@ -195,14 +204,15 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 
 	public void setSaveBtnState(boolean enabled) {
 		uncomittedChanges = enabled;
+
 		Menu menu = myToolbar.getMenu();
 		menu.removeItem(R.id.save);
-		MenuItem saveItem = menu.add(Menu.NONE, R.id.save, Menu.NONE, R.string.savedSettingsTitle);
+		MenuItem saveItem = menu.add(Menu.NONE, R.id.save, 1, R.string.savedSettingsTitle);
 
 		saveItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		saveItem.setTitleCondensed(getString(R.string.savedSettingsTitle));
 
-		Drawable icon = getDrawable(R.drawable.ic_save_black_48dp);
+		Drawable icon = getDrawable(R.drawable.ic_menu_save_black_48dp);
 		if (enabled) {
 			icon.setAlpha(255);
 			saveItem.setEnabled(true);
@@ -211,6 +221,30 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 			saveItem.setEnabled(false);
 		}
 		saveItem.setIcon(icon);
+	}
+
+	public void rateApp() {
+		try {
+			Intent rateIntent = rateIntentForUrl("market://details");
+			startActivity(rateIntent);
+		} catch (ActivityNotFoundException e) {
+			Intent rateIntent = rateIntentForUrl("http://play.google.com/store/apps/details");
+			startActivity(rateIntent);
+		}
+	}
+
+	@SuppressWarnings("deprecation")
+	private Intent rateIntentForUrl(String url) {
+		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("%s?id=%s", url, getPackageName())));
+		int flags = Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_MULTIPLE_TASK;
+		if (Build.VERSION.SDK_INT >= 21) {
+			flags |= Intent.FLAG_ACTIVITY_NEW_DOCUMENT;
+		} else {
+			// noinspection deprecation
+			flags |= Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET;
+		}
+		intent.addFlags(flags);
+		return intent;
 	}
 
 	public boolean foundOldInstall() {

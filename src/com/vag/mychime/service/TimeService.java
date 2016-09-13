@@ -61,11 +61,6 @@ public class TimeService extends Service {
 		return mBinder;
 	}
 
-	public void onCreate() {
-		Log.d(TAG, "onCreate");
-		// startService(new Intent(this, TimeService.class));
-	}
-
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Log.i(TAG, "Service started. Received start id " + startId + ": " + intent + " flags: " + flags);
@@ -97,7 +92,7 @@ public class TimeService extends Service {
 	public void startNotification() {
 		Log.d(TAG, "Starting notification");
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-				.setSmallIcon(R.drawable.ic_launcher_notif).setContentTitle("MyChime")
+				.setSmallIcon(R.drawable.ic_stat_notify_service).setContentTitle("MyChime")
 				.setContentText("Service started");
 
 		Intent i = new Intent(this, MainActivity.class);

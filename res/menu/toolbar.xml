@@ -3,8 +3,19 @@
 
     <item
         android:id="@+id/save"
+        android:menuCategory="secondary"
+        android:orderInCategory="1"
         android:title="@string/savedSettingsTitle"
         android:titleCondensed="@string/savedSettingsTitle">
+    </item>
+    <item
+        android:id="@+id/rate"
+        android:icon="@drawable/ic_menu_star_black_48dp"
+        android:menuCategory="secondary"
+        android:orderInCategory="2"
+        android:showAsAction="never"
+        android:title="@string/rate"
+        android:titleCondensed="@string/rate">
     </item>
 
 </menu>

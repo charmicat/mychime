@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="version">4</string>
+    <string name="version">4.1</string>
     <string name="app_name">MyChime</string>
     <string name="speakCpt">Speak time</string>
     <string name="chimeCpt">Beep</string>

@@ -13,7 +13,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -84,6 +83,11 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 
 	public void controlService() {
 		settings = PreferenceManager.getDefaultSharedPreferences(getApplication());
+		if (!settings.contains("installFlag")) {
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putInt("installFlag", 1);
+			editor.commit();
+		}
 		boolean isEnabled = getState();
 		boolean isServiceRunning = HelperFunctions.isServiceRunning(getApplication(),
 				"com.vag.mychime.service.TimeService", false);
@@ -95,15 +99,10 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 				Log.d(TAG, "Starting service");
 
 				startService(serviceIntent);
-				Toast toast = Toast.makeText(getApplication(), getResources().getString(R.string.serviceStarted),
-						Toast.LENGTH_LONG);
-				toast.show();
 			}
 		} else {
 			if (!isEnabled) { // service not should be running
 				stopService(serviceIntent);
-				Toast toast = Toast.makeText(this, getResources().getString(R.string.serviceStoped), Toast.LENGTH_LONG);
-				toast.show();
 			}
 		}
 	}
@@ -158,8 +157,17 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 		Log.d(TAG,
 				"onStop isSpeakTimeOn=" + isSpeakTimeOn + " isChimeOn=" + isChimeOn + " isVibrateOn=" + isVibrationOn);
 
-		if (uncomittedChanges) {
-			Toast toast = Toast.makeText(this, getResources().getString(R.string.unsavedSettingsMsg),
+		boolean isServiceRunning = HelperFunctions.isServiceRunning(getApplication(),
+				"com.vag.mychime.service.TimeService", false);
+
+		if (!isServiceRunning) {
+			Log.d(TAG, "Service is not running");
+			Toast toast = Toast.makeText(this, getResources().getString(R.string.serviceStoped), Toast.LENGTH_LONG);
+
+			toast.show();
+		} else {
+			Log.d(TAG, "Service is running");
+			Toast toast = Toast.makeText(getApplication(), getResources().getString(R.string.serviceStarted),
 					Toast.LENGTH_LONG);
 			toast.show();
 		}
@@ -168,27 +176,19 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 	@Override
 	public void onConfigurationChanged() {
 		Log.d(TAG, "onConfigurationChanged");
-		setSaveBtnState(true);
+		controlService();
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		Log.d(TAG, "onCreateOptionsMenu");
 		getMenuInflater().inflate(R.menu.toolbar, menu);
-		setSaveBtnState(false);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.save:
-			Log.d(TAG, "Clicked on save");
-			controlService();
-			setSaveBtnState(false);
-			Toast toast = Toast.makeText(this, getResources().getString(R.string.changesSaved), Toast.LENGTH_LONG);
-			toast.show();
-			return true;
 
 		case R.id.rate:
 			Log.d(TAG, "Clicked on rate");
@@ -200,27 +200,6 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 			// Invoke the superclass to handle it.
 			return super.onOptionsItemSelected(item);
 		}
-	}
-
-	public void setSaveBtnState(boolean enabled) {
-		uncomittedChanges = enabled;
-
-		Menu menu = myToolbar.getMenu();
-		menu.removeItem(R.id.save);
-		MenuItem saveItem = menu.add(Menu.NONE, R.id.save, 1, R.string.savedSettingsTitle);
-
-		saveItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-		saveItem.setTitleCondensed(getString(R.string.savedSettingsTitle));
-
-		Drawable icon = getDrawable(R.drawable.ic_menu_save_black_48dp);
-		if (enabled) {
-			icon.setAlpha(255);
-			saveItem.setEnabled(true);
-		} else {
-			icon.setAlpha(50);
-			saveItem.setEnabled(false);
-		}
-		saveItem.setIcon(icon);
 	}
 
 	public void rateApp() {
@@ -248,7 +227,6 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 	}
 
 	public boolean foundOldInstall() {
-		// TODO: remove this eventually
 		if (settings.contains("speakMuteOn") || settings.contains("chimeMuteOn")) {
 			Log.d(TAG, "Found old install, clearing");
 			SharedPreferences.Editor editor = settings.edit();
@@ -256,6 +234,8 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
 			editor.commit();
 
 			return true;
+		} else if (settings.contains("installFlag")) {
+			// show changelog
 		}
 
 		return false;

@@ -25,7 +25,6 @@ ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.x
 		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:12:22-63
 application
 ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:14:5-46:19
-MERGED from [MyChime:vagHelper:unspecified] /home/talto/StudioProjects/MyChime/vagHelper/build/intermediates/bundles/default/AndroidManifest.xml:16:5-17:19
 MERGED from [com.android.support:appcompat-v7:25.3.1] /home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-v4:25.3.1] /home/talto/.android/build-cache/1044ddce1547873770334dd8e559c0886c88eb8b/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.1] /home/talto/.android/build-cache/00d87d10620742700aac1a36d965d0c90aff67e3/output/AndroidManifest.xml:29:5-20
@@ -35,6 +34,7 @@ MERGED from [com.android.support:support-core-utils:25.3.1] /home/talto/.android
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/talto/.android/build-cache/c56e5696d6656919ec3a6fcc8494d71033118a9e/output/AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/talto/.android/build-cache/8c9f4caa2f5f63e9427394729126be993ba3e19c/output/AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-compat:25.3.1] /home/talto/.android/build-cache/4f43897571630211718bf68d14a71c41c2c759b2/output/AndroidManifest.xml:29:5-20
+MERGED from [com.github.charmicat:VagHelper:v2.1] /home/talto/.android/build-cache/dc525621c73676a5c85ed3f3d33a8ec7dcece356/output/AndroidManifest.xml:11:5-12:19
 	android:label
 		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:18:9-41
 	android:supportsRtl
@@ -89,7 +89,6 @@ ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.x
 		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:41:25-58
 uses-sdk
 INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [MyChime:vagHelper:unspecified] /home/talto/StudioProjects/MyChime/vagHelper/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:25.3.1] /home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:support-v4:25.3.1] /home/talto/.android/build-cache/1044ddce1547873770334dd8e559c0886c88eb8b/output/AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.1] /home/talto/.android/build-cache/00d87d10620742700aac1a36d965d0c90aff67e3/output/AndroidManifest.xml:21:5-23:60
@@ -99,6 +98,7 @@ MERGED from [com.android.support:support-core-utils:25.3.1] /home/talto/.android
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/talto/.android/build-cache/c56e5696d6656919ec3a6fcc8494d71033118a9e/output/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/talto/.android/build-cache/8c9f4caa2f5f63e9427394729126be993ba3e19c/output/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-compat:25.3.1] /home/talto/.android/build-cache/4f43897571630211718bf68d14a71c41c2c759b2/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.github.charmicat:VagHelper:v2.1] /home/talto/.android/build-cache/dc525621c73676a5c85ed3f3d33a8ec7dcece356/output/AndroidManifest.xml:7:5-9:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:25.3.1] /home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/AndroidManifest.xml:23:9-75
 	android:targetSdkVersion

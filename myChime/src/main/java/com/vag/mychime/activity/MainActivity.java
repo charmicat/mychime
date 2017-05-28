@@ -30,7 +30,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements MyPreferences.OnConfigurationChangedListener {
 
 	private final String TAG = "MainActivity";
-    private final boolean DEBUG = false;
+    private final boolean DEBUG = true;
 	private final int isTTSAvailableIntentCode = 666;
 
 	private Intent serviceIntent;

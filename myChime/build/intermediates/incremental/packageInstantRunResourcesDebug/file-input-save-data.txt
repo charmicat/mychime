@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat May 27 22:30:38 GMT 2017
+#Sun May 28 02:18:58 GMT 2017
 210.set=ANDROID_RESOURCE
 14.set=ANDROID_RESOURCE
 180.file=/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/resources-debug.ap_/res/drawable/abc_ic_ab_back_material.xml

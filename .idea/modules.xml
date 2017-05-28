@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyChime.iml" filepath="$PROJECT_DIR$/MyChime.iml" />
       <module fileurl="file://$PROJECT_DIR$/myChime/myChime.iml" filepath="$PROJECT_DIR$/myChime/myChime.iml" />
-      <module fileurl="file://$PROJECT_DIR$/vagHelper/vagHelper.iml" filepath="$PROJECT_DIR$/vagHelper/vagHelper.iml" />
     </modules>
   </component>
 </project>

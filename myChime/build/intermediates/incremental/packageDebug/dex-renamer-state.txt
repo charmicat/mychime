@@ -1,4 +1,4 @@
-#Sat May 27 22:30:39 GMT 2017
+#Sun May 28 02:19:28 GMT 2017
 base.0=/home/talto/StudioProjects/MyChime/myChime/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1a5f3135ea36d1d0240f694719294d5ff7aa85e3
 renamed.1=classes.dex
 renamed.0=classes2.dex

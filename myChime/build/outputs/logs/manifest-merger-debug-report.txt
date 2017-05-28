@@ -1,0 +1,123 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:2:1-48:12
+	package
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:3:5-39
+		INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml
+		INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:5:5-30
+		INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml
+		INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml
+	android:versionCode
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:4:5-29
+		INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml
+		INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:11:22-78
+uses-permission#android.permission.VIBRATE
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:12:5-66
+	android:name
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:12:22-63
+application
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:14:5-46:19
+MERGED from [MyChime:vagHelper:unspecified] /home/talto/StudioProjects/MyChime/vagHelper/build/intermediates/bundles/default/AndroidManifest.xml:16:5-17:19
+MERGED from [com.android.support:appcompat-v7:25.3.1] /home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] /home/talto/.android/build-cache/1044ddce1547873770334dd8e559c0886c88eb8b/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] /home/talto/.android/build-cache/00d87d10620742700aac1a36d965d0c90aff67e3/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] /home/talto/.android/build-cache/4208b2b405f6d9fc53d187da69295ef9bf1f48b7/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] /home/talto/.android/build-cache/5ddff843e3b2b946dbb239e5c77339e7d12b5ead/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] /home/talto/.android/build-cache/5c08a6a5f9092905ae574268db9f57911c196f9a/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/talto/.android/build-cache/c56e5696d6656919ec3a6fcc8494d71033118a9e/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/talto/.android/build-cache/8c9f4caa2f5f63e9427394729126be993ba3e19c/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:25.3.1] /home/talto/.android/build-cache/4f43897571630211718bf68d14a71c41c2c759b2/output/AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:18:9-41
+	android:supportsRtl
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:19:9-36
+	android:allowBackup
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:15:9-35
+	android:icon
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:16:9-45
+	android:installLocation
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:17:9-47
+	android:theme
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:20:9-40
+activity#com.vag.mychime.activity.MainActivity
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:21:9-29:20
+	android:label
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:23:13-45
+	android:name
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:22:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:24:13-28:29
+action#android.intent.action.MAIN
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:25:17-69
+	android:name
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:25:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:27:17-77
+	android:name
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:27:27-74
+service#com.vag.mychime.service.TimeService
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:31:9-32:19
+	android:name
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:31:18-68
+receiver#com.vag.mychime.receiver.BootUpReceiver
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:34:9-45:20
+	android:name
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:34:19-73
+intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.category.DEFAULT
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:35:13-39:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:36:17-79
+	android:name
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:36:25-76
+category#android.intent.category.DEFAULT
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:38:17-76
+	android:name
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:38:27-73
+intent-filter#RestartTimeService+android.intent.category.DEFAULT
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:40:13-44:29
+action#RestartTimeService
+ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:41:17-61
+	android:name
+		ADDED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml:41:25-58
+uses-sdk
+INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [MyChime:vagHelper:unspecified] /home/talto/StudioProjects/MyChime/vagHelper/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:25.3.1] /home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.3.1] /home/talto/.android/build-cache/1044ddce1547873770334dd8e559c0886c88eb8b/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] /home/talto/.android/build-cache/00d87d10620742700aac1a36d965d0c90aff67e3/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] /home/talto/.android/build-cache/4208b2b405f6d9fc53d187da69295ef9bf1f48b7/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] /home/talto/.android/build-cache/5ddff843e3b2b946dbb239e5c77339e7d12b5ead/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] /home/talto/.android/build-cache/5c08a6a5f9092905ae574268db9f57911c196f9a/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/talto/.android/build-cache/c56e5696d6656919ec3a6fcc8494d71033118a9e/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/talto/.android/build-cache/8c9f4caa2f5f63e9427394729126be993ba3e19c/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-compat:25.3.1] /home/talto/.android/build-cache/4f43897571630211718bf68d14a71c41c2c759b2/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.3.1] /home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml
+		INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml
+		INJECTED from /home/talto/StudioProjects/MyChime/myChime/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:25.3.1] /home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] /home/talto/.android/build-cache/1044ddce1547873770334dd8e559c0886c88eb8b/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] /home/talto/.android/build-cache/00d87d10620742700aac1a36d965d0c90aff67e3/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] /home/talto/.android/build-cache/4208b2b405f6d9fc53d187da69295ef9bf1f48b7/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] /home/talto/.android/build-cache/5ddff843e3b2b946dbb239e5c77339e7d12b5ead/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] /home/talto/.android/build-cache/5c08a6a5f9092905ae574268db9f57911c196f9a/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /home/talto/.android/build-cache/c56e5696d6656919ec3a6fcc8494d71033118a9e/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /home/talto/.android/build-cache/8c9f4caa2f5f63e9427394729126be993ba3e19c/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-compat:25.3.1] /home/talto/.android/build-cache/4f43897571630211718bf68d14a71c41c2c759b2/output/AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:appcompat-v7:25.3.1] /home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:appcompat-v7:25.3.1] /home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/AndroidManifest.xml:26:9-47

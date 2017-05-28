@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="speakCpt">Speak time</string>
+    <string name="chimeCpt">Beep</string>
+    <string name="vibrationCpt">Vibrate</string>
+    <string name="enableCpt">Enable</string>
+    <string name="modeCpt">Operation Mode</string>
+    <string name="clockformathcpt">Clock type</string>
+    <string name="startCpt">Start</string>
+    <string name="endCpt">End</string>
+    <string name="serviceStarted">Chime service started</string>
+    <string name="serviceStoped">Chime service stoped</string>
+    <string name="titleMsg">Missing TTS data</string>
+    <string name="installMsg">TTS language resource files are needed for speaking time. Click OK to download.</string>
+    <string name="speakSumm">Requires TTS language resource files</string>
+    <string name="speakTimeText_ini">The time is</string>
+    <string name="rate">Rate me</string>
+    <string name="chimeHalfCpt">Beep at half-hour</string>
+
+    <string-array name="clock_type">
+        <item>12-hours</item>
+        <item>24-hours</item>
+    </string-array>
+    <string-array name="clock_type_val">
+        <item>12-hours</item>
+        <item>24-hours</item>
+    </string-array>
+    <string-array name="speakOnOpt">
+        <item>Always Enabled</item>
+        <item>Enabled on Headset</item>
+        <item>Enabled on Time Range</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string-array name="speakOnOpt_val">
+        <item>speakOn</item>
+        <item>speakHeadsetOn</item>
+        <item>speakTimeRange</item>
+    </string-array>
+    <string-array name="chimeOnOpt">
+        <item>Always Enabled</item>
+        <item>Enabled on Headset</item>
+        <item>Enabled on Time Range</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string-array name="chimeOnOpt_val">
+        <item>chimeOn</item>
+        <item>chimeHeadsetOn</item>
+        <item>chimeTimeRange</item>
+    </string-array>
+    <string-array name="vibrationOnOpt">
+        <item>Always Enabled</item>
+        <item>Enabled on Headset</item>
+        <item>Enabled on Time Range</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string-array name="vibrationOnOpt_val">
+        <item>vibrationOn</item>
+        <item>vibrationHeadsetOn</item>
+        <item>vibrationTimeRange</item>
+    </string-array>
+
+</resources>

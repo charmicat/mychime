@@ -1,0 +1,878 @@
+[
+    {
+        "outputFile": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt/values-pt.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 6,
+                    "endColumn": 19,
+                    "endOffset": 243
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 1644,
+                        "endLine": 44,
+                        "endColumn": 19,
+                        "endOffset": 1832
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 248,
+                    "endLine": 11,
+                    "endColumn": 19,
+                    "endOffset": 405
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 1873,
+                        "endLine": 50,
+                        "endColumn": 19,
+                        "endOffset": 2030
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 410,
+                    "endLine": 15,
+                    "endColumn": 19,
+                    "endOffset": 522
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 979,
+                        "endLine": 23,
+                        "endColumn": 19,
+                        "endOffset": 1091
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 527,
+                    "endLine": 19,
+                    "endColumn": 19,
+                    "endOffset": 643
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 1132,
+                        "endLine": 28,
+                        "endColumn": 19,
+                        "endOffset": 1248
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 648,
+                    "endLine": 24,
+                    "endColumn": 19,
+                    "endOffset": 836
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1253,
+                        "endLine": 33,
+                        "endColumn": 19,
+                        "endOffset": 1441
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 841,
+                    "endLine": 29,
+                    "endColumn": 19,
+                    "endOffset": 998
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 1482,
+                        "endLine": 39,
+                        "endColumn": 19,
+                        "endOffset": 1639
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 1003,
+                    "endLine": 34,
+                    "endColumn": 19,
+                    "endOffset": 1195
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 2035,
+                        "endLine": 55,
+                        "endColumn": 19,
+                        "endOffset": 2227
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 1200,
+                    "endLine": 39,
+                    "endColumn": 19,
+                    "endOffset": 1373
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 57,
+                        "startColumn": 4,
+                        "startOffset": 2268,
+                        "endLine": 61,
+                        "endColumn": 19,
+                        "endOffset": 2441
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 1378,
+                    "endColumn": 119,
+                    "endOffset": 1493
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 119,
+                        "endOffset": 170
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 1498,
+                    "endColumn": 107,
+                    "endOffset": 1601
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 175,
+                        "endColumn": 107,
+                        "endOffset": 278
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 1606,
+                    "endColumn": 122,
+                    "endOffset": 1724
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 283,
+                        "endColumn": 122,
+                        "endOffset": 401
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 1729,
+                    "endColumn": 105,
+                    "endOffset": 1830
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 406,
+                        "endColumn": 105,
+                        "endOffset": 507
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 1835,
+                    "endColumn": 106,
+                    "endOffset": 1937
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 512,
+                        "endColumn": 106,
+                        "endOffset": 614
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 1942,
+                    "endColumn": 88,
+                    "endOffset": 2026
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 619,
+                        "endColumn": 88,
+                        "endOffset": 703
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 2031,
+                    "endColumn": 100,
+                    "endOffset": 2127
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 708,
+                        "endColumn": 100,
+                        "endOffset": 804
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 47,
+                    "startColumn": 4,
+                    "startOffset": 2132,
+                    "endColumn": 117,
+                    "endOffset": 2245
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 809,
+                        "endColumn": 117,
+                        "endOffset": 922
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 2250,
+                    "endColumn": 82,
+                    "endOffset": 2328
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 927,
+                        "endColumn": 82,
+                        "endOffset": 1005
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 49,
+                    "startColumn": 4,
+                    "startOffset": 2333,
+                    "endColumn": 79,
+                    "endOffset": 2408
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1010,
+                        "endColumn": 79,
+                        "endOffset": 1085
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 50,
+                    "startColumn": 4,
+                    "startOffset": 2413,
+                    "endColumn": 86,
+                    "endOffset": 2495
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1090,
+                        "endColumn": 86,
+                        "endOffset": 1172
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 51,
+                    "startColumn": 4,
+                    "startOffset": 2500,
+                    "endColumn": 106,
+                    "endOffset": 2602
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1177,
+                        "endColumn": 106,
+                        "endOffset": 1279
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 52,
+                    "startColumn": 4,
+                    "startOffset": 2607,
+                    "endColumn": 111,
+                    "endOffset": 2714
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1284,
+                        "endColumn": 111,
+                        "endOffset": 1391
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 53,
+                    "startColumn": 4,
+                    "startOffset": 2719,
+                    "endColumn": 101,
+                    "endOffset": 2816
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1396,
+                        "endColumn": 101,
+                        "endOffset": 1493
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 2821,
+                    "endColumn": 107,
+                    "endOffset": 2924
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1498,
+                        "endColumn": 107,
+                        "endOffset": 1601
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 55,
+                    "startColumn": 4,
+                    "startOffset": 2929,
+                    "endColumn": 106,
+                    "endOffset": 3031
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1606,
+                        "endColumn": 106,
+                        "endOffset": 1708
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 3036,
+                    "endColumn": 109,
+                    "endOffset": 3141
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1713,
+                        "endColumn": 109,
+                        "endOffset": 1818
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 57,
+                    "startColumn": 4,
+                    "startOffset": 3146,
+                    "endColumn": 124,
+                    "endOffset": 3266
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1823,
+                        "endColumn": 124,
+                        "endOffset": 1943
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 58,
+                    "startColumn": 4,
+                    "startOffset": 3271,
+                    "endColumn": 99,
+                    "endOffset": 3366
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1948,
+                        "endColumn": 99,
+                        "endOffset": 2043
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 59,
+                    "startColumn": 4,
+                    "startOffset": 3371,
+                    "endColumn": 41,
+                    "endOffset": 3408
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 104,
+                        "endColumn": 41,
+                        "endOffset": 141
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 60,
+                    "startColumn": 4,
+                    "startOffset": 3413,
+                    "endColumn": 58,
+                    "endOffset": 3467
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 919,
+                        "endColumn": 58,
+                        "endOffset": 973
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 61,
+                    "startColumn": 4,
+                    "startOffset": 3472,
+                    "endColumn": 59,
+                    "endOffset": 3527
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 292,
+                        "endColumn": 59,
+                        "endOffset": 347
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 62,
+                    "startColumn": 4,
+                    "startOffset": 3532,
+                    "endColumn": 44,
+                    "endOffset": 3572
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 194,
+                        "endColumn": 44,
+                        "endOffset": 234
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 63,
+                    "startColumn": 4,
+                    "startOffset": 3577,
+                    "endColumn": 38,
+                    "endOffset": 3611
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 396,
+                        "endColumn": 38,
+                        "endOffset": 430
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 64,
+                    "startColumn": 4,
+                    "startOffset": 3616,
+                    "endColumn": 132,
+                    "endOffset": 3744
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 625,
+                        "endColumn": 132,
+                        "endOffset": 753
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 65,
+                    "startColumn": 4,
+                    "startOffset": 3749,
+                    "endColumn": 52,
+                    "endOffset": 3797
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 239,
+                        "endColumn": 52,
+                        "endOffset": 287
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 66,
+                    "startColumn": 4,
+                    "startOffset": 3802,
+                    "endColumn": 42,
+                    "endOffset": 3840
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 876,
+                        "endColumn": 42,
+                        "endOffset": 914
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 67,
+                    "startColumn": 4,
+                    "startOffset": 3845,
+                    "endColumn": 84,
+                    "endOffset": 3925
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 2048,
+                        "endColumn": 84,
+                        "endOffset": 2128
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 68,
+                    "startColumn": 4,
+                    "startOffset": 3930,
+                    "endColumn": 59,
+                    "endOffset": 3985
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 435,
+                        "endColumn": 59,
+                        "endOffset": 490
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 69,
+                    "startColumn": 4,
+                    "startOffset": 3990,
+                    "endColumn": 60,
+                    "endOffset": 4046
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 495,
+                        "endColumn": 60,
+                        "endOffset": 551
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 70,
+                    "startColumn": 4,
+                    "startOffset": 4051,
+                    "endColumn": 47,
+                    "endOffset": 4094
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 47,
+                        "endOffset": 99
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 71,
+                    "startColumn": 4,
+                    "startOffset": 4099,
+                    "endColumn": 60,
+                    "endOffset": 4155
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 758,
+                        "endColumn": 60,
+                        "endOffset": 814
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 72,
+                    "startColumn": 4,
+                    "startOffset": 4160,
+                    "endColumn": 56,
+                    "endOffset": 4212
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 819,
+                        "endColumn": 56,
+                        "endOffset": 871
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 73,
+                    "startColumn": 4,
+                    "startOffset": 4217,
+                    "endColumn": 43,
+                    "endOffset": 4256
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 352,
+                        "endColumn": 43,
+                        "endOffset": 391
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 74,
+                    "startColumn": 4,
+                    "startOffset": 4261,
+                    "endColumn": 100,
+                    "endOffset": 4357
+                },
+                "from": {
+                    "file": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/values-pt/values-pt.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 2133,
+                        "endColumn": 100,
+                        "endOffset": 2229
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 75,
+                    "startColumn": 4,
+                    "startOffset": 4362,
+                    "endColumn": 68,
+                    "endOffset": 4426
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 556,
+                        "endColumn": 68,
+                        "endOffset": 620
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 4431,
+                    "endColumn": 47,
+                    "endOffset": 4474
+                },
+                "from": {
+                    "file": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/values-pt/strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 146,
+                        "endColumn": 47,
+                        "endOffset": 189
+                    }
+                }
+            }
+        ]
+    }
+]

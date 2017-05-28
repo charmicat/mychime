@@ -1,0 +1,92 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="chime"
+        android:title="@string/chimeCpt">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="enableChime"
+            android:title="@string/enableCpt"/>
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="enableChime"
+            android:key="chimeHalf"
+            android:title="@string/chimeHalfCpt"/>
+        <ListPreference
+            android:dependency="enableChime"
+            android:dialogTitle="@string/enableCpt"
+            android:entries="@array/chimeOnOpt"
+            android:entryValues="@array/chimeOnOpt_val"
+            android:key="chimeOn"
+            android:title="@string/modeCpt"/>
+
+        <com.vag.mychime.preferences.TimePickerPreference
+            android:dependency="enableChime"
+            android:key="chimeStartTime"
+            android:title="@string/startCpt"/>
+        <com.vag.mychime.preferences.TimePickerPreference
+            android:dependency="enableChime"
+            android:key="chimeEndTime"
+            android:title="@string/endCpt"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="vibration"
+        android:title="@string/vibrationCpt">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="enableVibration"
+            android:title="@string/enableCpt"/>
+
+        <ListPreference
+            android:dependency="enableVibration"
+            android:dialogTitle="@string/enableCpt"
+            android:entries="@array/vibrationOnOpt"
+            android:entryValues="@array/vibrationOnOpt_val"
+            android:key="vibrationOn"
+            android:title="@string/modeCpt"/>
+
+        <com.vag.mychime.preferences.TimePickerPreference
+            android:dependency="enableVibration"
+            android:key="vibrationStartTime"
+            android:title="@string/startCpt"/>
+        <com.vag.mychime.preferences.TimePickerPreference
+            android:dependency="enableVibration"
+            android:key="vibrationEndTime"
+            android:title="@string/endCpt"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="speak"
+        android:title="@string/speakCpt">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="enableSpeak"
+            android:summary="@string/speakSumm"
+            android:title="@string/enableCpt"/>
+
+        <ListPreference
+            android:dependency="enableSpeak"
+            android:dialogTitle="@string/enableCpt"
+            android:entries="@array/speakOnOpt"
+            android:entryValues="@array/speakOnOpt_val"
+            android:key="speakOn"
+            android:title="@string/modeCpt"/>
+        <ListPreference
+            android:dependency="enableSpeak"
+            android:dialogTitle="@string/clockformathcpt"
+            android:entries="@array/clock_type"
+            android:entryValues="@array/clock_type_val"
+            android:key="clockType"
+            android:title="@string/clockformathcpt"/>
+
+        <com.vag.mychime.preferences.TimePickerPreference
+            android:dependency="enableSpeak"
+            android:key="speakStartTime"
+            android:title="@string/startCpt"/>
+        <com.vag.mychime.preferences.TimePickerPreference
+            android:dependency="enableSpeak"
+            android:key="speakEndTime"
+            android:title="@string/endCpt"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

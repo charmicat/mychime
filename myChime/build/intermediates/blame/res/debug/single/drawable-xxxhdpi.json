@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable-xxxhdpi/ic_stat_notify_service.png",
+        "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-xxxhdpi/ic_stat_notify_service.png"
+    },
+    {
+        "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable-xxxhdpi/ic_menu_save_black_48dp.png",
+        "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-xxxhdpi/ic_menu_save_black_48dp.png"
+    },
+    {
+        "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable-xxxhdpi/ic_menu_star_black_48dp.png",
+        "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-xxxhdpi/ic_menu_star_black_48dp.png"
+    },
+    {
+        "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable-xxxhdpi/ic_launcher.png",
+        "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-xxxhdpi/ic_launcher.png"
+    }
+]

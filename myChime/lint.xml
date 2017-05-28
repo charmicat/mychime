@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <issue id="AlwaysShowAction" severity="ignore" />
+    <issue id="InlinedApi" severity="ignore" />
+    <issue id="MissingTranslation" severity="warning" />
+    <issue id="NewApi" severity="ignore" />
+</lint>

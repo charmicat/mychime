@@ -4,10 +4,6 @@
         "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-xxhdpi/ic_menu_star_black_48dp.png"
     },
     {
-        "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_menu_save_black_48dp.png",
-        "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-xxhdpi/ic_menu_save_black_48dp.png"
-    },
-    {
         "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_launcher.png",
         "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-xxhdpi/ic_launcher.png"
     },

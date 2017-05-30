@@ -8,10 +8,6 @@
         "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-mdpi/ic_menu_star_black_48dp.png"
     },
     {
-        "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable-mdpi/ic_menu_save_black_48dp.png",
-        "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-mdpi/ic_menu_save_black_48dp.png"
-    },
-    {
         "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable-mdpi/ic_stat_notify_service.png",
         "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-mdpi/ic_stat_notify_service.png"
     }

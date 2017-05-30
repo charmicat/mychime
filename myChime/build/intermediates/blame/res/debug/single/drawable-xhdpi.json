@@ -10,9 +10,5 @@
     {
         "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher.png",
         "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-xhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable-xhdpi/ic_menu_save_black_48dp.png",
-        "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/drawable-xhdpi/ic_menu_save_black_48dp.png"
     }
 ]

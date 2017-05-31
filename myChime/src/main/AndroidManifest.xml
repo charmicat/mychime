@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.vag.mychime.activity"
-    android:versionCode="16"
-    android:versionName="4.1" >
-
-    <!--<uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="25" />-->
+    package="com.vag.mychime.activity">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />

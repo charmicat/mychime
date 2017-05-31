@@ -66,20 +66,11 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/talto/.android/build-cache/dc525621c73676a5c85ed3f3d33a8ec7dcece356/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="36cd45cd9f392434fa71dff4b70720664d6762b0">
-        <dex dex="/home/talto/StudioProjects/MyChime/myChime/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e87d37eca4860bbef7c4088b8e3725d88fe9d19f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/talto/StudioProjects/MyChime/myChime/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="7728209f8c57476b2c4e8ae59d3b74b377a810b2">
+        sha1="5ef4b21e24af29cec1743db0ee66b2ddff8f1ba9">
         <dex dex="/home/talto/StudioProjects/MyChime/myChime/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1a5f3135ea36d1d0240f694719294d5ff7aa85e3/classes.dex" />
     </item>
     <item
@@ -108,6 +99,15 @@
         revision="25.0.0"
         sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
         <dex dex="/home/talto/StudioProjects/MyChime/myChime/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9705fd390866eb8a0b2286b1f92456ce37245ee9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/talto/.android/build-cache/bc8698d3eb9a53d5c60059f8c681929bbb7d5c0a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="786d92b87b48deb3c9684f1c6a02634d86434d45">
+        <dex dex="/home/talto/StudioProjects/MyChime/myChime/build/intermediates/transforms/dex/debug/folders/1000/10/classes_71a2459fb7ca505ad09daa9f51ac70cd550d8103/classes.dex" />
     </item>
     <item
         is-multidex="true"

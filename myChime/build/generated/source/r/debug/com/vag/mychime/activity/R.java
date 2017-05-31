@@ -1847,6 +1847,7 @@ containing a value of this type.
         public static final int notify_panel_notification_icon_bg=0x7f02005f;
     }
     public static final class id {
+        public static final int about=0x7f0d0070;
         public static final int action0=0x7f0d005b;
         public static final int action_bar=0x7f0d0047;
         public static final int action_bar_activity_content=0x7f0d0000;
@@ -2021,6 +2022,7 @@ containing a value of this type.
     public static final class raw {
         public static final int casiochime=0x7f060000;
         public static final int casiochimehalf=0x7f060001;
+        public static final int changelog=0x7f060002;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f070000;
@@ -2033,18 +2035,18 @@ containing a value of this type.
         public static final int abc_activitychooserview_choose_application=0x7f070007;
         public static final int abc_capital_off=0x7f070008;
         public static final int abc_capital_on=0x7f070009;
-        public static final int abc_font_family_body_1_material=0x7f070025;
-        public static final int abc_font_family_body_2_material=0x7f070026;
-        public static final int abc_font_family_button_material=0x7f070027;
-        public static final int abc_font_family_caption_material=0x7f070028;
-        public static final int abc_font_family_display_1_material=0x7f070029;
-        public static final int abc_font_family_display_2_material=0x7f07002a;
-        public static final int abc_font_family_display_3_material=0x7f07002b;
-        public static final int abc_font_family_display_4_material=0x7f07002c;
-        public static final int abc_font_family_headline_material=0x7f07002d;
-        public static final int abc_font_family_menu_material=0x7f07002e;
-        public static final int abc_font_family_subhead_material=0x7f07002f;
-        public static final int abc_font_family_title_material=0x7f070030;
+        public static final int abc_font_family_body_1_material=0x7f07002a;
+        public static final int abc_font_family_body_2_material=0x7f07002b;
+        public static final int abc_font_family_button_material=0x7f07002c;
+        public static final int abc_font_family_caption_material=0x7f07002d;
+        public static final int abc_font_family_display_1_material=0x7f07002e;
+        public static final int abc_font_family_display_2_material=0x7f07002f;
+        public static final int abc_font_family_display_3_material=0x7f070030;
+        public static final int abc_font_family_display_4_material=0x7f070031;
+        public static final int abc_font_family_headline_material=0x7f070032;
+        public static final int abc_font_family_menu_material=0x7f070033;
+        public static final int abc_font_family_subhead_material=0x7f070034;
+        public static final int abc_font_family_title_material=0x7f070035;
         public static final int abc_search_hint=0x7f07000a;
         public static final int abc_searchview_description_clear=0x7f07000b;
         public static final int abc_searchview_description_query=0x7f07000c;
@@ -2054,26 +2056,31 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with=0x7f070010;
         public static final int abc_shareactionprovider_share_with_application=0x7f070011;
         public static final int abc_toolbar_collapse_description=0x7f070012;
-        public static final int app_name=0x7f070031;
-        public static final int chimeCpt=0x7f070015;
-        public static final int chimeHalfCpt=0x7f070016;
-        public static final int clockformathcpt=0x7f070017;
-        public static final int enableCpt=0x7f070018;
-        public static final int endCpt=0x7f070019;
-        public static final int installMsg=0x7f07001a;
-        public static final int modeCpt=0x7f07001b;
-        public static final int rate=0x7f07001c;
+        public static final int about=0x7f070015;
+        public static final int app_name=0x7f070036;
+        public static final int background_color=0x7f070037;
+        public static final int changelog_full_title=0x7f070016;
+        public static final int changelog_ok_button=0x7f070017;
+        public static final int changelog_show_full=0x7f070018;
+        public static final int changelog_title=0x7f070019;
+        public static final int chimeCpt=0x7f07001a;
+        public static final int chimeHalfCpt=0x7f07001b;
+        public static final int clocktypeCpt=0x7f07001c;
+        public static final int currentTimeText=0x7f07001d;
+        public static final int enableCpt=0x7f07001e;
+        public static final int endCpt=0x7f07001f;
+        public static final int installMsg=0x7f070020;
+        public static final int modeCpt=0x7f070021;
+        public static final int rate=0x7f070022;
         public static final int search_menu_title=0x7f070013;
-        public static final int serviceStarted=0x7f07001d;
-        public static final int serviceStoped=0x7f07001e;
-        public static final int speakCpt=0x7f07001f;
-        public static final int speakSumm=0x7f070020;
-        public static final int speakTimeText_ini=0x7f070021;
-        public static final int startCpt=0x7f070022;
+        public static final int serviceRunning=0x7f070023;
+        public static final int serviceStopped=0x7f070024;
+        public static final int speakCpt=0x7f070025;
+        public static final int speakSummary=0x7f070026;
+        public static final int startCpt=0x7f070027;
         public static final int status_bar_notification_info_overflow=0x7f070014;
-        public static final int titleMsg=0x7f070023;
-        public static final int version=0x7f070032;
-        public static final int vibrationCpt=0x7f070024;
+        public static final int titleMsg=0x7f070028;
+        public static final int vibrationCpt=0x7f070029;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f09009f;
@@ -2081,8 +2088,6 @@ containing a value of this type.
         public static final int Animation_AppCompat_Dialog=0x7f0900a1;
         public static final int Animation_AppCompat_DropDownUp=0x7f0900a2;
         public static final int AppBaseTheme=0x7f0900a3;
-        /**  All customizations that are NOT specific to a particular API-level can go here. 
-         */
         public static final int AppTheme=0x7f0900a4;
         public static final int Base_AlertDialog_AppCompat=0x7f0900a5;
         public static final int Base_AlertDialog_AppCompat_Light=0x7f0900a6;

@@ -4,6 +4,10 @@
         "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/raw/casiochime.mp3"
     },
     {
+        "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/raw/changelog.html",
+        "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/raw/changelog.html"
+    },
+    {
         "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/raw/casiochimehalf.mp3",
         "source": "/home/talto/StudioProjects/MyChime/myChime/src/main/res/raw/casiochimehalf.mp3"
     }

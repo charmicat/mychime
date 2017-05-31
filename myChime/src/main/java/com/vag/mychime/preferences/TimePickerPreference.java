@@ -43,6 +43,7 @@ public class TimePickerPreference extends DialogPreference {
 		return (picker);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onBindDialogView(View v) {
 		super.onBindDialogView(v);
@@ -51,6 +52,7 @@ public class TimePickerPreference extends DialogPreference {
 		picker.setCurrentMinute(lastMinute);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onDialogClosed(boolean positiveResult) {
 		super.onDialogClosed(positiveResult);
@@ -150,6 +152,7 @@ public class TimePickerPreference extends DialogPreference {
 		return myState;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onRestoreInstanceState(Parcelable state) {
 		// Check whether we saved the state in onSaveInstanceState

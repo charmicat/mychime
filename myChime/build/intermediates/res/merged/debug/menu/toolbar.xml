@@ -6,10 +6,20 @@
         android:id="@+id/rate"
         android:icon="@drawable/ic_menu_star_black_48dp"
         android:menuCategory="secondary"
-        android:orderInCategory="2"
+        android:orderInCategory="1"
         app:showAsAction="never"
         android:title="@string/rate"
         android:titleCondensed="@string/rate">
+    </item>
+
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/ic_menu_star_black_48dp"
+        android:menuCategory="secondary"
+        android:orderInCategory="2"
+        app:showAsAction="never"
+        android:title="@string/about"
+        android:titleCondensed="@string/about">
     </item>
 
 </menu>

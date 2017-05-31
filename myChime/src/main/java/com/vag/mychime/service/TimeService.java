@@ -1,20 +1,11 @@
 package com.vag.mychime.service;
 
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Locale;
-
-import com.vag.mychime.activity.MainActivity;
-import com.vag.mychime.activity.R;
-import com.vag.mychime.preferences.TimePickerPreference;
-
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.Build;
 import android.os.CountDownTimer;
@@ -24,6 +15,14 @@ import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import com.vag.mychime.activity.MainActivity;
+import com.vag.mychime.activity.R;
+import com.vag.mychime.preferences.TimePickerPreference;
+import com.vag.vaghelper.HelperFunctions;
+
+import java.util.Calendar;
+import java.util.Locale;
 
 public class TimeService extends Service {
 
@@ -91,8 +90,8 @@ public class TimeService extends Service {
     private void startNotification() {
         Log.d(TAG, "Starting notification");
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_stat_notify_service).setContentTitle("MyChime")
-                .setContentText("Service started");
+                .setSmallIcon(R.drawable.ic_stat_notify_service).setContentTitle(getResources().getString(R.string.app_name))
+                .setContentText(getResources().getString(R.string.serviceRunning));
 
         Intent i = new Intent(this, MainActivity.class);
 
@@ -117,37 +116,19 @@ public class TimeService extends Service {
         // + ": Checking time");
 
         if ((currentMinute == 0 || currentMinute == 30) && !hasSpoken) {
-            // if (currentMinute % 2 == 0) { // debugging
-            MediaPlayer mediaPlayer = null;
+//        if ((currentMinute % 2 == 0) && !hasSpoken) { // debugging
             hasSpoken = true; // meant to avoid doublespeaking
 
             Log.d(TAG, "Time to chime!");
 
-            // TODO: detect changes instead of reading every time
             getSettings();
 
-            if (chimeHalf) {
-                mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.casiochimehalf);
-                if (mediaPlayer != null) {
-                    try {
-                        mediaPlayer.prepare();
-                        mediaPlayer.start();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+            if (currentMinute == 30 && chimeHalf) {
+                HelperFunctions.playAudio(this, R.raw.casiochimehalf, true);
             } else {
 
                 if (chime) {
-                    mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.casiochime);
-                    if (mediaPlayer != null) {
-                        try {
-                            mediaPlayer.prepare();
-                            mediaPlayer.start();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
+                    HelperFunctions.playAudio(this, R.raw.casiochime, true);
                 }
 
                 if (speak) {
@@ -157,12 +138,10 @@ public class TimeService extends Service {
                         e.printStackTrace();
                     }
 
-                    text = getResources().getString(R.string.speakTimeText_ini);
-
                     if (clockType.equals("24-hours"))
                         currentHour = now.get(Calendar.HOUR_OF_DAY);
 
-                    text += (currentHour == 0 ? 12 : currentHour);
+                    text = String.valueOf(currentHour == 0 ? 12 : currentHour);
 
                     startTTS();
                 }
@@ -170,12 +149,6 @@ public class TimeService extends Service {
                 if (vibration) {
                     vibration();
                 }
-            }
-
-            if (mediaPlayer != null) { // cleanup
-                mediaPlayer.reset();
-                mediaPlayer.release();
-                mediaPlayer = null;
             }
         } else {
             hasSpoken = false;
@@ -342,10 +315,16 @@ public class TimeService extends Service {
 
             tts.setLanguage(current);
 
+            String currTime = getResources().getString(R.string.currentTimeText);
+
             if (sdkVersion < Build.VERSION_CODES.LOLLIPOP) {
+                if (tts.speak(currTime, TextToSpeech.QUEUE_ADD, null) != TextToSpeech.SUCCESS) {
+                    Log.e(TAG, "TTS queueing failed. Trying again");
+                    tts.speak(currTime, TextToSpeech.QUEUE_ADD, null);
+                }
+
                 if (tts.speak(text, TextToSpeech.QUEUE_ADD, null) != TextToSpeech.SUCCESS) {
                     Log.e(TAG, "TTS queueing failed. Trying again");
-                    // startTTS();
                     tts.speak(text, TextToSpeech.QUEUE_ADD, null);
                 }
 
@@ -355,9 +334,13 @@ public class TimeService extends Service {
                 }
             } else {
                 // I rather repeat code than use giant one-liners
+                if (tts.speak(currTime, TextToSpeech.QUEUE_ADD, null) != TextToSpeech.SUCCESS) {
+                    Log.e(TAG, "TTS queueing failed. Trying again");
+                    tts.speak(currTime, TextToSpeech.QUEUE_ADD, null);
+                }
+
                 if (tts.speak(text, TextToSpeech.QUEUE_ADD, null, "mychime") != TextToSpeech.SUCCESS) {
                     Log.e(TAG, "TTS queueing failed. Trying again");
-                    // startTTS();
                     tts.speak(text, TextToSpeech.QUEUE_ADD, null, "mychime");
                 }
 

@@ -61,7 +61,7 @@
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="enableSpeak"
-            android:summary="@string/speakSumm"
+            android:summary="@string/speakSummary"
             android:title="@string/enableCpt"/>
 
         <ListPreference
@@ -73,11 +73,11 @@
             android:title="@string/modeCpt"/>
         <ListPreference
             android:dependency="enableSpeak"
-            android:dialogTitle="@string/clockformathcpt"
+            android:dialogTitle="@string/clocktypeCpt"
             android:entries="@array/clock_type"
             android:entryValues="@array/clock_type_val"
             android:key="clockType"
-            android:title="@string/clockformathcpt"/>
+            android:title="@string/clocktypeCpt"/>
 
         <com.vag.mychime.preferences.TimePickerPreference
             android:dependency="enableSpeak"

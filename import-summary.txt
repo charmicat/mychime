@@ -1,156 +1,24 @@
 ECLIPSE ANDROID PROJECT IMPORT SUMMARY
 ======================================
 
-Manifest Merging:
------------------
-Your project uses libraries that provide manifests, and your Eclipse
-project did not explicitly turn on manifest merging. In Android Gradle
-projects, manifests are always merged (meaning that contents from your
-libraries' manifests will be merged into the app manifest. If you had
-manually copied contents from library manifests into your app manifest
-you may need to remove these for the app to build correctly.
-
 Ignored Files:
 --------------
 The following files were *not* copied into the new Gradle project; you
 should evaluate whether these are still needed in your project and if
 so manually move them:
 
-From MyChime:
-* .gitignore
-* .idea/
-* .idea/MyChime.iml
-* .idea/compiler.xml
-* .idea/copyright/
-* .idea/copyright/profiles_settings.xml
-* .idea/misc.xml
-* .idea/modules.xml
-* .idea/vcs.xml
-* LICENSE
-* ic_launcher-notif.png
-* ic_launcher-web.png
-* stuff/
-* stuff/MyChime.apk
-* stuff/MyChime_unsg.apk
-* stuff/OldMainActivity.java
-* stuff/banner.png
-* stuff/banner.xcf
-* stuff/colors.xml
-* stuff/dimens.xml
-* stuff/ic_launcher_old.png
-* stuff/icon.png
-* stuff/icon.psd
-* stuff/icon.xcf
-* stuff/icon_114.png
-* stuff/icon_512.png
-* stuff/icon_notif.png
-* stuff/layout/
-* stuff/layout/activity_main.xml
-* stuff/layout/list_group.xml
-* stuff/layout/list_item.xml
-* stuff/layout/list_item_timepicker.xml
-* stuff/screenshots/
-* stuff/screenshots/Screenshot_1474750430.png
-* stuff/screenshots/Screenshot_1474750489.png
-* stuff/screenshots/Screenshot_1474750502.png
-* stuff/screenshots/Screenshot_1474750514.png
-* stuff/screenshots/Screenshot_1474751676.png
-* stuff/screenshots/Screenshot_1474751698.png
-* stuff/screenshots/Screenshot_1474751703.png
-* stuff/screenshots/Screenshot_1474751718.png
-* stuff/screenshots/Screenshot_1474751956.png
-* stuff/screenshots/Screenshot_1474751965.png
-* stuff/screenshots/Screenshot_1474751970.png
-* stuff/screenshots/Screenshot_1474751977.png
-* stuff/screenshots/Screenshot_1474752232.png
-* stuff/screenshots/Screenshot_1474752244.png
-* stuff/screenshots/Screenshot_1474752264.png
-* stuff/screenshots/Screenshot_1474752288.png
-* stuff/screenshots/Screenshot_1493855024.png
-* stuff/screenshots/Screenshot_1493855042.png
-* stuff/screenshots/Screenshot_1493855077.png
-* stuff/screenshots/Screenshot_1493855098.png
-* stuff/screenshots/Screenshot_1493855508.png
-* stuff/screenshots/Screenshot_1493855520.png
-* stuff/screenshots/Screenshot_1493855567.png
-* stuff/screenshots/Screenshot_1493856178.png
-* stuff/screenshots/old/
-* stuff/screenshots/old/Screenshot_1474586255.png
-* stuff/screenshots/old/Screenshot_1474586269.png
-* stuff/screenshots/old/Screenshot_1474586335.png
-* stuff/screenshots/old/Screenshot_1474586411.png
-* stuff/screenshots/old/Screenshot_1474586575.png
-* stuff/screenshots/old/Screenshot_1474586585.png
-* stuff/screenshots/old/Screenshot_1474586598.png
-* stuff/screenshots/old/Screenshot_1474586616.png
-* stuff/screenshots/old/Screenshot_1474750430.png
-* stuff/screenshots/old/Screenshot_1474750489.png
-* stuff/screenshots/old/Screenshot_1474750502.png
-* stuff/screenshots/old/Screenshot_1474750514.png
-* stuff/screenshots/old/Screenshot_1474751676.png
-* stuff/screenshots/old/Screenshot_1474751698.png
-* stuff/screenshots/old/Screenshot_1474751703.png
-* stuff/screenshots/old/Screenshot_1474751718.png
-* stuff/screenshots/old/Screenshot_1474751956.png
-* stuff/screenshots/old/Screenshot_1474751965.png
-* stuff/screenshots/old/Screenshot_1474751970.png
-* stuff/screenshots/old/Screenshot_1474751977.png
-* stuff/screenshots/old/Screenshot_1474752232.png
-* stuff/screenshots/old/Screenshot_1474752244.png
-* stuff/screenshots/old/Screenshot_1474752264.png
-* stuff/screenshots/old/Screenshot_1474752288.png
-* stuff/screenshots/old/Screenshot_2014-05-22-01-32-49.png
-* stuff/screenshots/old/Screenshot_2014-05-22-01-32-54.png
-* stuff/screenshots/old/Screenshot_2014-05-22-01-37-21.png
-* stuff/screenshots/old/Screenshot_2014-05-22-01-37-47.png
-* stuff/w820dpdimens.xml
-From VagHelper:
 * VagHelper.iml
 * proguard-project.txt
-
-Replaced Jars with Dependencies:
---------------------------------
-The importer recognized the following .jar files as third party
-libraries and replaced them with Gradle dependencies instead. This has
-the advantage that more explicit version information is known, and the
-libraries can be updated automatically. However, it is possible that
-the .jar file in your project was of an older version than the
-dependency we picked, which could render the project not compileable.
-You can disable the jar replacement in the import wizard and try again:
-
-android-support-v4.jar => com.android.support:support-v4:24.2.1
-android-support-v7-appcompat.jar => com.android.support:appcompat-v7:25.3.1
-
-Replaced Libraries with Dependencies:
--------------------------------------
-The importer recognized the following library projects as third party
-libraries and replaced them with Gradle dependencies instead. This has
-the advantage that more explicit version information is known, and the
-libraries can be updated automatically. However, it is possible that
-the source files in your project were of an older version than the
-dependency we picked, which could render the project not compileable.
-You can disable the library replacement in the import wizard and try
-again:
-
-android-support-v7-appcompat => [com.android.support:appcompat-v7:25.3.1]
 
 Moved Files:
 ------------
 Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
-In VagHelper:
 * AndroidManifest.xml => vagHelper/src/main/AndroidManifest.xml
 * lint.xml => vagHelper/lint.xml
 * res/ => vagHelper/src/main/res
 * src/ => vagHelper/src/main/java/
-In MyChime:
-* AndroidManifest.xml => myChime/src/main/AndroidManifest.xml
-* assets/ => myChime/src/main/assets
-* lint.xml => myChime/lint.xml
-* proguard-project.txt => myChime/proguard-project.txt
-* res/ => myChime/src/main/res/
-* src/ => myChime/src/main/java/
 
 Next Steps:
 -----------

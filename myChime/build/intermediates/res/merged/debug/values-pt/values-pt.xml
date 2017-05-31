@@ -57,20 +57,25 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Compartilhar com"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Compartilhar com %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Recolher"</string>
+    <string name="about">Sobre</string>
+    <string name="changelog_full_title">Sobre</string>
+    <string name="changelog_ok_button">OK</string>
+    <string name="changelog_show_full">mais</string>
+    <string name="changelog_title">Sobre</string>
     <string name="chimeCpt">Bipe</string>
-    <string name="chimeHalfCpt">Beep at half-hour</string>
-    <string name="clockformathcpt">Tipo de relógio</string>
+    <string name="chimeHalfCpt">Bipe a cada meia hora</string>
+    <string name="clocktypeCpt">Tipo de relógio</string>
+    <string name="currentTimeText">Hora atual</string>
     <string name="enableCpt">Ativar</string>
     <string name="endCpt">Fim</string>
     <string name="installMsg">Arquivos de línguas para TTS são necessários para falar a hora. Clique OK para fazer download</string>
     <string name="modeCpt">Modo de Operação</string>
     <string name="rate">Me avalie</string>
     <string msgid="146198913615257606" name="search_menu_title">"Pesquisar"</string>
-    <string name="serviceStarted">Serviço iniciado</string>
-    <string name="serviceStoped">Serviço finalizado</string>
+    <string name="serviceRunning">Serviço em execução</string>
+    <string name="serviceStopped">Serviço finalizado</string>
     <string name="speakCpt">Falar hora</string>
-    <string name="speakSumm">Requer arquivos de TTS</string>
-    <string name="speakTimeText_ini">Hora atual</string>
+    <string name="speakSummary">Requer arquivos de TTS</string>
     <string name="startCpt">Início</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
     <string name="titleMsg">Arquivos de TTS não encontrados</string>

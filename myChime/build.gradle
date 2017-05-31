@@ -13,14 +13,16 @@ android {
     buildToolsVersion '25.0.3'
     defaultConfig {
         applicationId "com.vag.mychime.activity"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 25
         signingConfig signingConfigs.config
+        versionCode 17
+        versionName '5'
     }
     buildTypes {
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-project.txt'
             signingConfig signingConfigs.config
         }
         debug {
@@ -35,5 +37,5 @@ android {
 dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.github.charmicat:VagHelper:v2.1'
+    compile 'com.github.charmicat:VagHelper:v2.2'
 }

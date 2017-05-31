@@ -1,11 +1,11 @@
 package com.vag.mychime.receiver;
 
-import com.vag.mychime.service.TimeService;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
+import com.vag.mychime.service.TimeService;
 
 public class BootUpReceiver extends BroadcastReceiver {
 	// starting the app on boot-up

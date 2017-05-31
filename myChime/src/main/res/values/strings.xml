@@ -6,17 +6,24 @@
     <string name="vibrationCpt">Vibrate</string>
     <string name="enableCpt">Enable</string>
     <string name="modeCpt">Operation Mode</string>
-    <string name="clockformathcpt">Clock type</string>
+    <string name="clocktypeCpt">Clock type</string>
     <string name="startCpt">Start</string>
     <string name="endCpt">End</string>
-    <string name="serviceStarted">Chime service started</string>
-    <string name="serviceStoped">Chime service stoped</string>
+    <string name="serviceRunning">Service running</string>
+    <string name="serviceStopped">Service stopped</string>
     <string name="titleMsg">Missing TTS data</string>
     <string name="installMsg">TTS language resource files are needed for speaking time. Click OK to download.</string>
-    <string name="speakSumm">Requires TTS language resource files</string>
-    <string name="speakTimeText_ini">The time is</string>
+    <string name="speakSummary">Requires TTS language resource files</string>
     <string name="rate">Rate me</string>
     <string name="chimeHalfCpt">Beep at half-hour</string>
+    <string name="currentTimeText">Current time</string>
+
+    <!-- changelog stuff-->
+    <string name="changelog_full_title">About</string>
+    <string name="changelog_title">About</string>
+    <string name="changelog_ok_button">OK</string>
+    <string name="changelog_show_full">more</string>
+    <string name="about">About</string>
 
     <string-array name="clock_type">
         <item>12-hours</item>
@@ -59,5 +66,6 @@
         <item>vibrationHeadsetOn</item>
         <item>vibrationTimeRange</item>
     </string-array>
+
 
 </resources>

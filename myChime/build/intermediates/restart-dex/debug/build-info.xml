@@ -6,7 +6,7 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.2"
-    timestamp="1496268734884"
+    timestamp="1496271704885"
     token="6634437742280469069"
     verifier="FULL_BUILD_REQUESTED" >
 
@@ -62,7 +62,7 @@
 
     <build
         build-mode="FULL"
-        timestamp="1496268734884"
+        timestamp="1496271704885"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/talto/StudioProjects/MyChime/myChime/build/intermediates/split-apk/debug/slices/slice_7.apk"

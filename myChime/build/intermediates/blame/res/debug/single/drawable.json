@@ -24,12 +24,12 @@
         "source": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/drawable/abc_cab_background_internal_bg.xml"
     },
     {
-        "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
-        "source": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/drawable/abc_btn_radio_material.xml"
-    },
-    {
         "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable/abc_text_cursor_material.xml",
         "source": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/drawable/abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
+        "source": "/home/talto/.android/build-cache/b97c884e53c8580c75cb457a2ced9238989fd96c/output/res/drawable/abc_btn_radio_material.xml"
     },
     {
         "merged": "/home/talto/StudioProjects/MyChime/myChime/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",

@@ -1,4 +1,0 @@
-#Wed May 31 22:11:37 GMT 2017
-base.0=/home/talto/StudioProjects/MyChime/myChime/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4
-renamed.0=classes.dex
-file.0=/home/talto/StudioProjects/MyChime/myChime/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex

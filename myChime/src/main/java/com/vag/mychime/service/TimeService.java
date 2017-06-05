@@ -110,21 +110,19 @@ public class TimeService extends Service {
 
         int currentMinute = now.get(Calendar.MINUTE);
         int currentHour = now.get(Calendar.HOUR);
-        am_pm = (now.get(Calendar.AM_PM) == Calendar.AM) ? "A " : "P ";
-
-        // Log.i(TAG, currentHour + ":" + currentMinute + " " + am_pm
-        // + ": Checking time");
 
         if ((currentMinute == 0 || currentMinute == 30) && !hasSpoken) {
-//        if ((currentMinute % 2 == 0) && !hasSpoken) { // debugging
+
+            am_pm = (now.get(Calendar.AM_PM) == Calendar.AM) ? "A " : "P ";
             hasSpoken = true; // meant to avoid doublespeaking
 
-            Log.d(TAG, "Time to chime!");
+            Log.d(TAG, "Time to chime! " + currentHour + " " + currentMinute);
 
             getSettings();
 
-            if (currentMinute == 30 && chimeHalf) {
-                HelperFunctions.playAudio(this, R.raw.casiochimehalf, true);
+            if (currentMinute == 30) {
+                if (chimeHalf)
+                    HelperFunctions.playAudio(this, R.raw.casiochimehalf, true);
             } else {
 
                 if (chime) {
@@ -195,7 +193,7 @@ public class TimeService extends Service {
         String chimeOnValue = settings.getString("chimeOn", "unset");
         boolean enabledChimeHalf = settings.getBoolean("chimeHalf", false);
 
-        Log.i(TAG, "chime=" + enabledChime + " mode=" + chimeOnValue);
+        Log.i(TAG, "chime=" + enabledChime + " enabledChimeHalf=" + enabledChimeHalf + " mode=" + chimeOnValue);
 
         if (enabledChime && !chimeOnValue.equals("unset")) {
 

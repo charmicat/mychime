@@ -12,23 +12,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df272ed7-8d90-4f80-b1b3-7d2303c208ed" name="Changes" comment="upgrade to current android app shenanigans">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyChime.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/activity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/TimePickerPreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/TimePickerPreference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/service/TimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/service/TimeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vagHelper/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/vagHelper/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/.idea/workspace.xml" beforeDir="false" afterPath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/MyChime.iml" beforeDir="false" />
-      <change beforePath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/build.gradle" beforeDir="false" afterPath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/build.gradle" afterDir="false" />
-      <change beforePath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/src/main/java/com/vag/mychime/activity/MainActivity.java" beforeDir="false" afterPath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/src/main/java/com/vag/mychime/activity/MainActivity.java" afterDir="false" />
-      <change beforePath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/src/main/java/com/vag/mychime/preferences/TimePickerPreference.java" beforeDir="false" afterPath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/src/main/java/com/vag/mychime/preferences/TimePickerPreference.java" afterDir="false" />
-      <change beforePath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/src/main/java/com/vag/mychime/service/TimeService.java" beforeDir="false" afterPath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/src/main/java/com/vag/mychime/service/TimeService.java" afterDir="false" />
-      <change beforePath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/vagHelper/src/main/AndroidManifest.xml" beforeDir="false" afterPath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/vagHelper/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-    </list>
+    <list default="true" id="df272ed7-8d90-4f80-b1b3-7d2303c208ed" name="Changes" comment="upgrade to current android app shenanigans" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -245,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671630534589</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="upgrade to current android app shenanigans">
+      <created>1671630978537</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671630978538</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
         }
         boolean isEnabled = getState();
         boolean isServiceRunning = HelperFunctions.isServiceRunning(getApplication(),
-                "com.vag.mychime2.service.TimeService", false);
+                "com.vag.mychime.service.TimeService", false);
         Log.d(TAG, "isEnabled " + isEnabled);
 
         if (!isServiceRunning) {

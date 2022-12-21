@@ -102,7 +102,7 @@ public class TimeService extends Service {
 
         PendingIntent pi = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_IMMUTABLE);
 
-        String NOTIFICATION_CHANNEL_ID = "com.vag.mychime2";
+        String NOTIFICATION_CHANNEL_ID = "com.vag.mychime";
         String channelName = "MyChime Time Service";
 
         NotificationChannelCompat.Builder chan = new NotificationChannelCompat.Builder(NOTIFICATION_CHANNEL_ID, NotificationManagerCompat.IMPORTANCE_NONE);

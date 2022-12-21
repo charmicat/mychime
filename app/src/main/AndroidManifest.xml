@@ -14,13 +14,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyChime2"
+        android:theme="@style/Theme.MyChime"
         tools:targetApi="31">
         <activity
             android:name="com.vag.mychime.activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyChime2.NoActionBar">
+            android:theme="@style/Theme.MyChime.NoActionBar">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

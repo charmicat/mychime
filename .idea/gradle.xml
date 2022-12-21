@@ -10,9 +10,9 @@
         <option name="gradleJvm" value="Android Studio default JDK" />
         <option name="modules">
           <set>
-            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime" />
-            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app" />
-            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/vagHelper" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app/vagHelper" />
           </set>
         </option>
       </GradleProjectSettings>

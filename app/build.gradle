@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace 'com.vag.mychime2'
-    compileSdk 32
+    namespace 'com.vag.mychime'
+    compileSdk 33
 
     defaultConfig {
         applicationId 'com.vag.mychime'
         minSdk 24
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -39,7 +39,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment:2.5.3'
     implementation 'androidx.navigation:navigation-ui:2.5.3'
-    implementation fileTree(dir: '/home/talto/AndroidStudioProjects/MyChime2/VagHelper/', include: ['*.aar', '*.jar'], exclude: [])
+    implementation fileTree(dir: '/home/talto/AndroidStudioProjects/MyChime/VagHelper/', include: ['*.aar', '*.jar'], exclude: [])
     implementation project(path: ':app:vagHelper')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'

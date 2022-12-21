@@ -7,11 +7,12 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="Android Studio default JDK" />
         <option name="modules">
           <set>
-            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime2" />
-            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app" />
-            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper" />
+            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime" />
+            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app" />
+            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/vagHelper" />
           </set>
         </option>
       </GradleProjectSettings>

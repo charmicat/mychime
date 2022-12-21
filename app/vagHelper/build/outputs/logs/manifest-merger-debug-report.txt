@@ -1,0 +1,31 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml:2:1-10:12
+INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml:2:1-10:12
+INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml:2:1-10:12
+	package
+		ADDED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml:3:5-32
+		INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+		INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml:5:5-30
+	xmlns:android
+		ADDED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml:4:5-28
+application
+ADDED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml:7:5-8:19
+uses-sdk
+INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+		ADDED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+		INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+		ADDED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml
+		INJECTED from /mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper/src/main/AndroidManifest.xml

@@ -1,0 +1,122 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:key="chime"
+        app:title="@string/chimeCpt">
+        <CheckBoxPreference
+            app:key="enableChime"
+            app:defaultValue="true"
+            app:title="@string/enableCpt" />
+
+        <ListPreference
+            app:defaultValue="@string/chimeOnDefault"
+            app:dependency="enableChime"
+            app:dialogTitle="@string/enableCpt"
+            app:entries="@array/chimeOnOpt"
+            app:entryValues="@array/chimeOnOpt_val"
+            app:key="chimeOn"
+            app:title="@string/modeCpt" />
+
+        <com.vag.mychime.preferences.TimePickerPreference
+            app:dependency="enableChime"
+            app:key="chimeStartTime"
+            app:title="@string/startCpt" />
+        <com.vag.mychime.preferences.TimePickerPreference
+            app:dependency="enableChime"
+            app:key="chimeEndTime"
+            app:title="@string/endCpt" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        app:key="vibration"
+        app:title="@string/vibrationCpt">
+        <CheckBoxPreference
+            app:key="enableVibration"
+            app:defaultValue="true"
+            app:title="@string/enableCpt" />
+
+        <ListPreference
+            app:defaultValue="@string/vibOnDefault"
+            app:dependency="enableVibration"
+            app:dialogTitle="@string/enableCpt"
+            app:entries="@array/vibrationOnOpt"
+            app:entryValues="@array/vibrationOnOpt_val"
+            app:key="vibrationOn"
+            app:title="@string/modeCpt" />
+
+        <com.vag.mychime.preferences.TimePickerPreference
+            app:dependency="enableVibration"
+            app:key="vibrationStartTime"
+            app:title="@string/startCpt" />
+        <com.vag.mychime.preferences.TimePickerPreference
+            app:dependency="enableVibration"
+            app:key="vibrationEndTime"
+            app:title="@string/endCpt" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        app:key="speak"
+        app:title="@string/speakCpt">
+        <CheckBoxPreference
+            app:key="enableSpeak"
+            app:defaultValue="true"
+            app:summary="@string/speakSumm"
+            app:title="@string/enableCpt" />
+
+        <ListPreference
+            app:dependency="enableSpeak"
+            app:dialogTitle="@string/enableCpt"
+            app:entries="@array/speakOnOpt"
+            app:entryValues="@array/speakOnOpt_val"
+            app:defaultValue="@string/speakOnDefault"
+            app:key="speakOn"
+            app:title="@string/modeCpt" />
+        <ListPreference
+            app:dependency="enableSpeak"
+            app:dialogTitle="@string/clockformathcpt"
+            app:entries="@array/clock_type"
+            app:entryValues="@array/clock_type_val"
+            app:key="clockType"
+            app:title="@string/clockformathcpt" />
+
+        <com.vag.mychime.preferences.TimePickerPreference
+            app:dependency="enableSpeak"
+            app:key="speakStartTime"
+            app:title="@string/startCpt" />
+        <com.vag.mychime.preferences.TimePickerPreference
+            app:dependency="enableSpeak"
+            app:key="speakEndTime"
+            app:title="@string/endCpt" />
+    </PreferenceCategory>
+
+    <!--
+    <PreferenceCategory app:title="@string/messages_header">
+
+        <EditTextPreference
+            app:key="signature"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="reply"
+            app:entries="@array/reply_entries"
+            app:entryValues="@array/reply_values"
+            app:key="reply"
+            app:title="@string/reply_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/sync_header">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="@string/sync_title" />
+
+        <SwitchPreferenceCompat
+            app:dependency="sync"
+            app:key="attachment"
+            app:summaryOff="@string/attachment_summary_off"
+            app:summaryOn="@string/attachment_summary_on"
+            app:title="@string/attachment_title" />
+
+    </PreferenceCategory>
+-->
+</PreferenceScreen>

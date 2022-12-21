@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">My Chime2</string>
+    <!-- Settings Activity Title -->
+    <string name="title_activity_settings" translatable="false">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header" translatable="false">Messages</string>
+    <string name="sync_header" translatable="false">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title" translatable="false">Your signature</string>
+    <string name="reply_title" translatable="false">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="attachment_title" translatable="false">Download incoming attachments</string>
+    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
+
+
+    <string name="speakCpt">Speak time</string>
+    <string name="chimeCpt">Beep</string>
+    <string name="vibrationCpt">Vibrate</string>
+    <string name="enableCpt">Enable</string>
+    <string name="modeCpt">Operation Mode</string>
+    <string name="clockformathcpt">Clock type</string>
+    <string name="startCpt">Start</string>
+    <string name="endCpt">End</string>
+    <string name="serviceStarted">Chime service started</string>
+    <string name="serviceStoped">Chime service stoped</string>
+    <string name="titleMsg">Missing TTS data</string>
+    <string name="installMsg">TTS language resource files are needed for speaking time. Click OK to download.</string>
+    <string name="speakSumm">Requires TTS language resource files</string>
+    <string name="unsavedSettingsMsg">MyChime stopped with unsaved settings</string>
+    <string name="savedSettingsTitle">Save</string>
+    <string name="changesSaved">Changes saved</string>
+    <string name="speakTimeText_ini">The time is</string>
+    <string name="rate">Rate me</string>
+
+    <string-array name="clock_type">
+        <item>12-hours</item>
+        <item>24-hours</item>
+    </string-array>
+    <string-array name="clock_type_val">
+        <item>12-hours</item>
+        <item>24-hours</item>
+    </string-array>
+    <string-array name="speakOnOpt">
+        <item>Always Enabled</item>
+        <item>Enabled on Headset</item>
+        <item>Enabled on Time Range</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string name="speakOnDefault" translatable="false">speakOn</string>
+    <string-array name="speakOnOpt_val">
+        <item>speakOn</item>
+        <item>speakHeadsetOn</item>
+        <item>speakTimeRange</item>
+    </string-array>
+    <string-array name="chimeOnOpt">
+        <item>Always Enabled</item>
+        <item>Enabled on Headset</item>
+        <item>Enabled on Time Range</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string name="chimeOnDefault" translatable="false">chimeOn</string>
+    <string-array name="chimeOnOpt_val">
+        <item>chimeOn</item>
+        <item>chimeHeadsetOn</item>
+        <item>chimeTimeRange</item>
+    </string-array>
+    <string-array name="vibrationOnOpt">
+        <item>Always Enabled</item>
+        <item>Enabled on Headset</item>
+        <item>Enabled on Time Range</item>
+    </string-array>
+    <!-- needs to be in english -->
+    <string name="vibOnDefault" translatable="false">vibrationOn</string>
+    <string-array name="vibrationOnOpt_val">
+        <item>vibrationOn</item>
+        <item>vibrationHeadsetOn</item>
+        <item>vibrationTimeRange</item>
+    </string-array>
+
+</resources>

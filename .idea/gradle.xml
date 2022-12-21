@@ -9,8 +9,9 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/myChime" />
+            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime2" />
+            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app" />
+            <option value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime2/app/vagHelper" />
           </set>
         </option>
       </GradleProjectSettings>

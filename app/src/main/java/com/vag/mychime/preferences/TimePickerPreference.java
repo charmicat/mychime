@@ -46,17 +46,13 @@ public class TimePickerPreference extends DialogPreference {
     }
 
     @Override
-    protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
+    protected void onSetInitialValue(Object defaultValue) {
         time = null;
         Log.d(TAG, "onSetInitialValue");
-        if (restoreValue) {
-            if (defaultValue == null) {
-                time = getPersistedString("00:00");
-            } else {
-                time = getPersistedString(defaultValue.toString());
-            }
+        if (defaultValue == null) {
+            time = getPersistedString("00:00");
         } else {
-            time = defaultValue.toString();
+            time = getPersistedString(defaultValue.toString());
         }
 
         lastHour = getHour(time);

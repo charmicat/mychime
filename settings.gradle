@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "My Chime"
 include ':app'
-include ':app:vagHelper'

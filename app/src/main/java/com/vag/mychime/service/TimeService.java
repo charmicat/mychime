@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Binder;
@@ -23,12 +24,13 @@ import androidx.core.app.NotificationManagerCompat;
 import com.vag.mychime.R;
 import com.vag.mychime.activity.MainActivity;
 import com.vag.mychime.preferences.TimePickerPreference;
+import com.vag.vaghelper.HelperFunctions;
 
 import java.util.Calendar;
 import java.util.Locale;
 
 public class TimeService extends Service {
-    private final IBinder mBinder = (IBinder) new MyBinder();
+    private final IBinder mBinder = new MyBinder();
 
     private final int sdkVersion = Build.VERSION.SDK_INT;
     private final String TAG = "TimeService";
@@ -48,7 +50,6 @@ public class TimeService extends Service {
     CountDownTimer minutesTimer;
     TextToSpeech tts;
     boolean chime, speak, vibration, hasSpoken, scheduledSpeak, scheduledChime, scheduledVibration;
-    boolean headsetPlugged;
     String clockType;
     String iniTimeSpeak, endTimeSpeak, iniTimeChime, endTimeChime;
     Calendar scheduleIni, scheduleEnd;
@@ -139,8 +140,7 @@ public class TimeService extends Service {
                 getSettings();
 
                 if (chime) {
-                    mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.casiochime);
-                    mediaPlayer.start();
+                    HelperFunctions.playAudio(getBaseContext(), R.raw.casiochime);
 
                     try {
                         Thread.sleep(1000);
@@ -163,12 +163,6 @@ public class TimeService extends Service {
                 if (vibration) {
                     vibration();
                 }
-
-                if (mediaPlayer != null) { // cleanup
-                    mediaPlayer.reset();
-                    mediaPlayer.release();
-                    mediaPlayer = null;
-                }
             }
         } else {
             hasSpoken = false;
@@ -188,7 +182,7 @@ public class TimeService extends Service {
             clockType = settings.getString("clockType", "12-hours");
             speak = true;
 
-            if (speakOnValue.equals("speakHeadsetOn") && !checkHeadsetPlugged()) {
+            if (speakOnValue.equals("speakHeadsetOn") && !isHeadsetPlugged(getBaseContext())) {
                 speak = false;
             } else if (speakOnValue.equals("speakTimeRange")) {
                 iniTimeSpeak = settings.getString("speakStartTime", "00:00");
@@ -217,7 +211,7 @@ public class TimeService extends Service {
 
             chime = true;
 
-            if (chimeOnValue.equals("chimeHeadsetOn") && !checkHeadsetPlugged()) {
+            if (chimeOnValue.equals("chimeHeadsetOn") && !isHeadsetPlugged(getBaseContext())) {
                 chime = false;
             } else if (chimeOnValue.equals("chimeTimeRange")) {
 
@@ -247,7 +241,7 @@ public class TimeService extends Service {
         if (enabledVibration && !vibrationOnValue.equals("unset")) {
             vibration = true;
 
-            if (vibrationOnValue.equals("vibrationHeadsetOn") && !checkHeadsetPlugged()) {
+            if (vibrationOnValue.equals("vibrationHeadsetOn") && !isHeadsetPlugged(getBaseContext())) {
                 vibration = false;
             } else if (vibrationOnValue.equals("vibrationTimeRange")) {
 
@@ -273,18 +267,11 @@ public class TimeService extends Service {
      * Checks if it's on scheduled time
      */
     public boolean isScheduledTime(Calendar ini, Calendar end) {
-
         return (ini.getTime()).compareTo(now.getTime()) <= 0 && (end.getTime()).compareTo(now.getTime()) >= 0;
-
     }
 
     public void startTTS() {
-        if (sdkVersion < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            tts = new TextToSpeech(this, ttsListener);
-            tts.setEngineByPackageName("com.svox.pico");
-        } else {
-            tts = new TextToSpeech(this, ttsListener, "com.svox.pico");
-        }
+        tts = new TextToSpeech(this, ttsListener, "com.svox.pico");
     }
 
     public void stopTTS() {
@@ -326,29 +313,16 @@ public class TimeService extends Service {
 
             tts.setLanguage(current);
 
-            if (sdkVersion < Build.VERSION_CODES.LOLLIPOP) {
-                if (tts.speak(text, TextToSpeech.QUEUE_ADD, null) != TextToSpeech.SUCCESS) {
-                    Log.e(TAG, "TTS queueing failed. Trying again");
-                    // startTTS();
-                    tts.speak(text, TextToSpeech.QUEUE_ADD, null);
-                }
+            // I rather repeat code than use giant one-liners
+            if (tts.speak(text, TextToSpeech.QUEUE_ADD, null, "") != TextToSpeech.SUCCESS) {
+                Log.e(TAG, "TTS queueing failed. Trying again");
+                // startTTS();
+                tts.speak(text, TextToSpeech.QUEUE_ADD, null, "");
+            }
 
-                if (clockType.equals("12-hours")) {
-                    tts.speak(am_pm, TextToSpeech.QUEUE_ADD, null);
-                    tts.speak("M", TextToSpeech.QUEUE_ADD, null);
-                }
-            } else {
-                // I rather repeat code than use giant one-liners
-                if (tts.speak(text, TextToSpeech.QUEUE_ADD, null, "") != TextToSpeech.SUCCESS) {
-                    Log.e(TAG, "TTS queueing failed. Trying again");
-                    // startTTS();
-                    tts.speak(text, TextToSpeech.QUEUE_ADD, null, "");
-                }
-
-                if (clockType.equals("12-hours")) {
-                    tts.speak(am_pm, TextToSpeech.QUEUE_ADD, null, "");
-                    tts.speak("M", TextToSpeech.QUEUE_ADD, null, "");
-                }
+            if (clockType.equals("12-hours")) {
+                tts.speak(am_pm, TextToSpeech.QUEUE_ADD, null, "");
+                tts.speak("M", TextToSpeech.QUEUE_ADD, null, "");
             }
         }
     };
@@ -359,9 +333,23 @@ public class TimeService extends Service {
         }
     }
 
-    public boolean checkHeadsetPlugged() {
-        AudioManager audio = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
-        return audio.isWiredHeadsetOn();
+    public boolean isHeadsetPlugged(Context context) {
+        AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+
+        if (am == null)
+            return false;
+
+        AudioDeviceInfo[] devices = am.getDevices(AudioManager.GET_DEVICES_OUTPUTS);
+
+        for (AudioDeviceInfo device : devices) {
+            if (device.getType() == AudioDeviceInfo.TYPE_WIRED_HEADSET
+                    || device.getType() == AudioDeviceInfo.TYPE_WIRED_HEADPHONES
+                    || device.getType() == AudioDeviceInfo.TYPE_BLUETOOTH_A2DP
+                    || device.getType() == AudioDeviceInfo.TYPE_BLUETOOTH_SCO) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void vibration() {

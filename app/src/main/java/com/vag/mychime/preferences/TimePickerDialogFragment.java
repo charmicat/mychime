@@ -21,6 +21,7 @@ public class TimePickerDialogFragment extends PreferenceDialogFragmentCompat imp
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateDialog");
         // Use the current time as the default values for the picker
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -34,13 +35,14 @@ public class TimePickerDialogFragment extends PreferenceDialogFragmentCompat imp
     }
 
     public void onTimeSet(TimePicker view, int hour, int minute) {
+        Log.d(TAG, "onTimeSet hour " + hour + " minute " + minute);
         lastHour = hour;
         lastMinute = minute;
 
-        String time = (lastHour < 10 ? "0" + String.valueOf(lastHour)
+        String time = (lastHour < 10 ? "0" + lastHour
                 : String.valueOf(lastHour))
                 + ":"
-                + (lastMinute < 10 ? "0" + String.valueOf(lastMinute)
+                + (lastMinute < 10 ? "0" + lastMinute
                 : String.valueOf(lastMinute));
     }
 

@@ -195,7 +195,7 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences pref, String key) {
-        Log.d(TAG, "onSharedPreferenceChanged");
+        Log.d(TAG, "onSharedPreferenceChanged: key " + key);
 
         onCfgChangedCB.onConfigurationChanged();
     }

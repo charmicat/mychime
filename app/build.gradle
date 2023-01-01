@@ -3,17 +3,26 @@ plugins {
 }
 
 android {
+    compileSdkVersion 33
+
+    signingConfigs {
+        debug {
+            storeFile file('/home/talto/GoogleDrive/workspace/android.keystore')
+            keyAlias 'ldukeystore'
+        }
+    }
     namespace 'com.vag.mychime'
-    compileSdk 33
 
     defaultConfig {
         applicationId 'com.vag.mychime'
-        minSdk 24
+        minSdk 23
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 19
+        versionName '6.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
+        proguardFiles getDefaultProguardFile('proguard-android.txt')
     }
 
     buildTypes {
@@ -23,8 +32,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     buildFeatures {
         viewBinding true
@@ -32,16 +41,24 @@ android {
 }
 
 dependencies {
-
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+//    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.preference:preference:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment:2.5.3'
     implementation 'androidx.navigation:navigation-ui:2.5.3'
-    implementation fileTree(dir: '/home/talto/AndroidStudioProjects/MyChime/VagHelper/', include: ['*.aar', '*.jar'], exclude: [])
-    implementation project(path: ':app:vagHelper')
+    implementation 'io.github.charmicat:vaghelper:2.0.0'
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation('androidx.test:monitor:1.6.0')
+    testImplementation('androidx.test.ext:junit:1.1.4')
+    // Required -- JUnit 4 framework
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    testImplementation 'androidx.test:core:1.5.0'
+    testImplementation 'androidx.test.ext:junit:1.1.4'
+// Robolectric environment
+    testImplementation 'org.robolectric:robolectric:4.9'
+// Optional -- Mockito framework
+    testImplementation 'org.mockito:mockito-core:4.11.0'
 }

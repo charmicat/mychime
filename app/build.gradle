@@ -1,14 +1,24 @@
 plugins {
-    id 'com.android.application'
+    id('com.android.application')
 }
+
+// Creates a variable called keystorePropertiesFile, and initializes it to the
+// keystore.properties file.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+// Initializes a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+// Loads the keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     compileSdkVersion 33
 
     signingConfigs {
         debug {
-            storeFile file('/home/talto/GoogleDrive/workspace/android.keystore')
-            keyAlias 'ldukeystore'
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
         }
     }
     namespace 'com.vag.mychime'
@@ -41,24 +51,21 @@ android {
 }
 
 dependencies {
-//    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.preference:preference:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment:2.5.3'
     implementation 'androidx.navigation:navigation-ui:2.5.3'
-    implementation 'io.github.charmicat:vaghelper:2.0.0'
+    implementation 'io.github.charmicat:vaghelper:2.0.1'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     testImplementation('androidx.test:monitor:1.6.0')
-    testImplementation('androidx.test.ext:junit:1.1.4')
     // Required -- JUnit 4 framework
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'androidx.test:core:1.5.0'
     testImplementation 'androidx.test.ext:junit:1.1.4'
 // Robolectric environment
-    testImplementation 'org.robolectric:robolectric:4.9'
+    testImplementation 'org.robolectric:robolectric:4.9.2'
 // Optional -- Mockito framework
     testImplementation 'org.mockito:mockito-core:4.11.0'
 }

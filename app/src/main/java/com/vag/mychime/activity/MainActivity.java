@@ -37,7 +37,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.vag.mychime.R;
 import com.vag.mychime.preferences.MyPreferences;
 import com.vag.mychime.service.TimeService;
-import com.vag.vaghelper.HelperFunctions;
+
+import io.github.charmicat.vaghelper.HelperFunctions;
 
 public class MainActivity extends AppCompatActivity implements MyPreferences.OnConfigurationChangedListener {
 

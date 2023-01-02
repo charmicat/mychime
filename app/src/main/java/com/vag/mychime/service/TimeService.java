@@ -24,10 +24,11 @@ import androidx.core.app.NotificationManagerCompat;
 import com.vag.mychime.R;
 import com.vag.mychime.activity.MainActivity;
 import com.vag.mychime.preferences.TimePickerPreference;
-import com.vag.vaghelper.HelperFunctions;
 
 import java.util.Calendar;
 import java.util.Locale;
+
+import io.github.charmicat.vaghelper.HelperFunctions;
 
 public class TimeService extends Service {
     private final IBinder mBinder = new MyBinder();

@@ -1,11 +1,34 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:orderingFromXml="true"
+    app:persistent="true"
+    app:title="@string/app_name">
+    <PreferenceCategory
+        app:enabled="true"
+        app:key="period"
+        app:title="@string/periodCpt">
+        <EditTextPreference
+            android:defaultValue="60"
+            android:key="repeatVal"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            app:defaultValue="@string/periodDefault"
+            app:dialogTitle="@string/periodCpt"
+            app:entries="@array/periodOpt"
+            app:entryValues="@array/periodOpt_val"
+            app:key="periodList"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
 
     <PreferenceCategory
+        app:enabled="true"
         app:key="chime"
         app:title="@string/chimeCpt">
         <CheckBoxPreference
-            app:key="enableChime"
             app:defaultValue="true"
+            app:key="enableChime"
             app:title="@string/enableCpt" />
 
         <ListPreference
@@ -26,12 +49,15 @@
             app:key="chimeEndTime"
             app:title="@string/endCpt" />
     </PreferenceCategory>
+
     <PreferenceCategory
+        app:enabled="true"
         app:key="vibration"
         app:title="@string/vibrationCpt">
         <CheckBoxPreference
-            app:key="enableVibration"
             app:defaultValue="true"
+            app:key="enableVibration"
+            app:persistent="true"
             app:title="@string/enableCpt" />
 
         <ListPreference
@@ -41,33 +67,40 @@
             app:entries="@array/vibrationOnOpt"
             app:entryValues="@array/vibrationOnOpt_val"
             app:key="vibrationOn"
+            app:shouldDisableView="true"
             app:title="@string/modeCpt" />
 
         <com.vag.mychime.preferences.TimePickerPreference
             app:dependency="enableVibration"
             app:key="vibrationStartTime"
+            app:shouldDisableView="true"
             app:title="@string/startCpt" />
         <com.vag.mychime.preferences.TimePickerPreference
             app:dependency="enableVibration"
             app:key="vibrationEndTime"
+            app:shouldDisableView="true"
             app:title="@string/endCpt" />
     </PreferenceCategory>
+
     <PreferenceCategory
+        app:enabled="true"
         app:key="speak"
         app:title="@string/speakCpt">
         <CheckBoxPreference
-            app:key="enableSpeak"
             app:defaultValue="true"
+            app:key="enableSpeak"
             app:summary="@string/speakSumm"
             app:title="@string/enableCpt" />
 
         <ListPreference
+            app:defaultValue="@string/speakOnDefault"
             app:dependency="enableSpeak"
             app:dialogTitle="@string/enableCpt"
             app:entries="@array/speakOnOpt"
             app:entryValues="@array/speakOnOpt_val"
-            app:defaultValue="@string/speakOnDefault"
             app:key="speakOn"
+            app:persistent="true"
+            app:shouldDisableView="true"
             app:title="@string/modeCpt" />
         <ListPreference
             app:dependency="enableSpeak"
@@ -75,15 +108,19 @@
             app:entries="@array/clock_type"
             app:entryValues="@array/clock_type_val"
             app:key="clockType"
+            app:persistent="true"
+            app:shouldDisableView="true"
             app:title="@string/clockformathcpt" />
 
         <com.vag.mychime.preferences.TimePickerPreference
             app:dependency="enableSpeak"
             app:key="speakStartTime"
+            app:shouldDisableView="true"
             app:title="@string/startCpt" />
         <com.vag.mychime.preferences.TimePickerPreference
             app:dependency="enableSpeak"
             app:key="speakEndTime"
+            app:shouldDisableView="true"
             app:title="@string/endCpt" />
     </PreferenceCategory>
 

@@ -34,7 +34,7 @@ public class TimePickerPreference extends DialogPreference {
     public TimePickerPreference(Context ctxt, AttributeSet attrs) {
         super(ctxt, attrs);
         Log.d(TAG, "TimePickerPreference");
-        this.ctx = ctx;
+        this.ctx = ctxt;
         setPositiveButtonText("Set");
         setNegativeButtonText("Cancel");
     }

@@ -47,6 +47,8 @@ public class TimeService extends Service {
         OFF, ALWAYS, HEADSET, TIMERANGE
     }
 
+    //TODO: use a notification type which doesnt appear on lock screen, "softer"
+
     SharedPreferences settings;
     CountDownTimer minutesTimer;
     TextToSpeech tts;

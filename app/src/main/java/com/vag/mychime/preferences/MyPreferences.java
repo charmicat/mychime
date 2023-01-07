@@ -48,7 +48,7 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 //        super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreatePreferences rootKey:" + rootKey);
+        Log.d(TAG, "onCreatePreferences rootKey: " + rootKey);
 
         settings = PreferenceManager.getDefaultSharedPreferences(getContext());
         hasVibration = settings.getBoolean("hasVibration", false);
@@ -148,6 +148,7 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
         });
 
         if (!hasVibration) {
+            Log.d(TAG,"onCreatePreferences: device doesn't support vibration. Disabling controls");
             pc_vibration.removeAll();
         } else {
             ListPreference vibrationEnableList = (ListPreference) findAndAssertPreference("vibrationOn");

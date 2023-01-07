@@ -1,11 +1,10 @@
 <resources>
-    <string name="app_name">My Chime</string>
+    <string name="app_name" translatable="false">My Chime</string>
 
     <string name="periodCpt">Run every</string>
-    <string name="periodRunCpt">Run every</string>
-    <string name="periodUnitSecondsCpt">seconds</string>
-    <string name="periodUnitMinutesCpt">minutes</string>
-    <string name="periodUnitHoursCpt">hours</string>
+    <!--    <string name="periodUnitSecondsCpt">seconds</string>-->
+<!--    <string name="periodUnitMinutesCpt">minutes</string>-->
+<!--    <string name="periodUnitHoursCpt">hours</string>-->
     <string name="speakCpt">Speak time</string>
     <string name="chimeCpt">Beep</string>
     <string name="vibrationCpt">Vibrate</string>

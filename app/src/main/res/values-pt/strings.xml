@@ -64,9 +64,5 @@
         <item>vibrationTimeRange</item>
     </string-array>
     <string name="periodCpt">Executar a cada</string>
-    <string name="periodUnitMinutesCpt">minutos</string>
-    <string name="periodUnitSecondsCpt">segundos</string>
-    <string name="periodUnitHoursCpt">horas</string>
-    <string name="periodRunCpt">Executar a cada</string>
 
 </resources>

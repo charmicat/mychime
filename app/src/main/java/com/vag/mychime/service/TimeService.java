@@ -36,8 +36,8 @@ public class TimeService extends Service {
     private final int sdkVersion = Build.VERSION.SDK_INT;
     private final String TAG = "TimeService";
 
-    boolean isOn = false;
-    int bindCount = 0;
+    private boolean isOn = false;
+    private int bindCount = 0;
 
     enum ChimeType {
         SPEAK, BEEP
@@ -49,15 +49,15 @@ public class TimeService extends Service {
 
     //TODO: use a notification type which doesnt appear on lock screen, "softer"
 
-    SharedPreferences settings;
-    CountDownTimer minutesTimer;
-    TextToSpeech tts;
-    boolean chime, speak, vibration, hasSpoken, scheduledSpeak, scheduledChime, scheduledVibration;
-    String clockType;
-    String iniTimeSpeak, endTimeSpeak, iniTimeChime, endTimeChime;
-    Calendar scheduleIni, scheduleEnd;
-    Calendar now;
-    String text, am_pm;
+    private SharedPreferences settings;
+    private CountDownTimer minutesTimer;
+    private TextToSpeech tts;
+    private boolean chime, speak, vibration, hasSpoken, scheduledSpeak, scheduledChime, scheduledVibration;
+    private String clockType;
+    private String iniTimeSpeak, endTimeSpeak, iniTimeChime, endTimeChime;
+    private Calendar scheduleIni, scheduleEnd;
+    private Calendar now;
+    private String currentTimeText, am_pm;
 
     public TimeService() {
     }
@@ -98,7 +98,7 @@ public class TimeService extends Service {
         return Service.START_STICKY;
     }
 
-    public void startNotification() {
+    private void startNotification() {
         Log.d(TAG, "Starting notification");
 
         Intent i = new Intent(this, MainActivity.class);
@@ -121,7 +121,7 @@ public class TimeService extends Service {
         NotificationManagerCompat.from(this).notify(42066, notif.build());
     }
 
-    public void checkTime() {
+    private void checkTime() {
 
         now = Calendar.getInstance();
 
@@ -129,9 +129,9 @@ public class TimeService extends Service {
         int currentHour = now.get(Calendar.HOUR);
         am_pm = now.get(Calendar.AM_PM) == 0 ? "A " : "P ";
 
-        Log.i(TAG, currentHour + ":" + currentMinute + " " + am_pm + ": Checking time");
+//        Log.i(TAG, currentHour + ":" + currentMinute + " " + am_pm + ": Checking time");
 
-        if (currentMinute == 0) {
+        if (currentMinute == 0 && !hasSpoken) {
             // if (currentMinute % 2 == 0) { // debugging
             if (!hasSpoken) { // time to chime
                 MediaPlayer mediaPlayer = null;
@@ -144,21 +144,21 @@ public class TimeService extends Service {
 
                 if (chime) {
                     HelperFunctions.playAudio(getBaseContext(), R.raw.casiochime);
+                }
 
-                    try {
+                if (speak) {
+                    try {//wait 1s after chiming, avoid sounding @ same time
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }
 
-                if (speak) {
-                    text = getResources().getString(R.string.speakTimeText_ini);
+                    currentTimeText = getResources().getString(R.string.speakTimeText_ini);
 
                     if (clockType.equals("24-hours"))
                         currentHour = now.get(Calendar.HOUR_OF_DAY);
 
-                    text += (currentHour == 0 ? 12 : currentHour);
+                    currentTimeText += (currentHour == 0 ? 12 : currentHour);
 
                     startTTS();
                 }
@@ -269,15 +269,15 @@ public class TimeService extends Service {
     /**
      * Checks if it's on scheduled time
      */
-    public boolean isScheduledTime(Calendar ini, Calendar end) {
+    private boolean isScheduledTime(Calendar ini, Calendar end) {
         return (ini.getTime()).compareTo(now.getTime()) <= 0 && (end.getTime()).compareTo(now.getTime()) >= 0;
     }
 
-    public void startTTS() {
+    private void startTTS() {
         tts = new TextToSpeech(this, ttsListener, "com.svox.pico");
     }
 
-    public void stopTTS() {
+    private void stopTTS() {
         if (tts != null) {
             tts.shutdown();
             tts = null;
@@ -317,15 +317,14 @@ public class TimeService extends Service {
             tts.setLanguage(current);
 
             // I rather repeat code than use giant one-liners
-            if (tts.speak(text, TextToSpeech.QUEUE_ADD, null, "") != TextToSpeech.SUCCESS) {
+            if (tts.speak(currentTimeText, TextToSpeech.QUEUE_ADD, null, "") != TextToSpeech.SUCCESS) {
                 Log.e(TAG, "TTS queueing failed. Trying again");
-                // startTTS();
-                tts.speak(text, TextToSpeech.QUEUE_ADD, null, "");
+                tts.speak(currentTimeText, TextToSpeech.QUEUE_ADD, null, "");
             }
 
             if (clockType.equals("12-hours")) {
-                tts.speak(am_pm, TextToSpeech.QUEUE_ADD, null, "");
-                tts.speak("M", TextToSpeech.QUEUE_ADD, null, "");
+                tts.speak(am_pm, TextToSpeech.QUEUE_ADD, null, "mychime");
+                tts.speak("M", TextToSpeech.QUEUE_ADD, null, "mychime");
             }
         }
     };
@@ -336,7 +335,7 @@ public class TimeService extends Service {
         }
     }
 
-    public boolean isHeadsetPlugged(Context context) {
+    private boolean isHeadsetPlugged(Context context) {
         AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 
         if (am == null)
@@ -355,7 +354,7 @@ public class TimeService extends Service {
         return false;
     }
 
-    public void vibration() {
+    private void vibration() {
         long[] pattern = {0, 500, 100, 500, 100, 500, 100};
         Log.d(TAG, "vibrating");
         Vibrator vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);

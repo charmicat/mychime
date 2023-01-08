@@ -15,8 +15,8 @@ public class TimePickerPreference extends DialogPreference {
 
     private int lastHour = 0;
     private int lastMinute = 0;
-    private final TimePicker picker = null;
-    String time;
+    private TimePicker picker = null;
+    private String time;
     Context ctx;
 
     public static int getHour(String time) {
@@ -83,7 +83,7 @@ public class TimePickerPreference extends DialogPreference {
         }
 
         // Standard creator object using an instance of this class
-        public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
+		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
 
             public SavedState createFromParcel(Parcel in) {
                 return new SavedState(in);

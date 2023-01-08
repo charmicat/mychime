@@ -20,6 +20,14 @@
     <string name="changesSaved">Mudanças salvas</string>
     <string name="speakTimeText_ini">Hora atual</string>
     <string name="rate">Me avalie</string>
+    <string name="currentTimeText">Hora atual</string>
+
+    <!-- changelog stuff-->
+    <string name="changelog_full_title">Sobre</string>
+    <string name="changelog_title">Sobre</string>
+    <string name="changelog_ok_button">OK</string>
+    <string name="changelog_show_full">mais</string>
+    <string name="about">Sobre</string>
 
     <string-array name="clock_type">
         <item>12-horas</item>
@@ -64,5 +72,6 @@
         <item>vibrationTimeRange</item>
     </string-array>
     <string name="periodCpt">Executar a cada</string>
+    <string name="vibrationNotSupportedCpt">Dispositivo não possui suporte a vibração</string>
 
 </resources>

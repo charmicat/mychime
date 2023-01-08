@@ -1,13 +1,9 @@
 <resources>
-    <string name="app_name" translatable="false">My Chime</string>
-
     <string name="periodCpt">Run every</string>
-    <!--    <string name="periodUnitSecondsCpt">seconds</string>-->
-<!--    <string name="periodUnitMinutesCpt">minutes</string>-->
-<!--    <string name="periodUnitHoursCpt">hours</string>-->
     <string name="speakCpt">Speak time</string>
     <string name="chimeCpt">Beep</string>
     <string name="vibrationCpt">Vibrate</string>
+    <string name="vibrationNotSupportedCpt">Vibration not supported by device</string>
     <string name="enableCpt">Enable</string>
     <string name="modeCpt">Operation Mode</string>
     <string name="clockformathcpt">Clock type</string>
@@ -23,6 +19,13 @@
     <string name="changesSaved">Changes saved</string>
     <string name="speakTimeText_ini">The time is</string>
     <string name="rate">Rate me</string>
+    <string name="currentTimeText">Current time</string>
+    <!-- changelog stuff-->
+    <string name="changelog_full_title">About</string>
+    <string name="changelog_title">About</string>
+    <string name="changelog_ok_button">OK</string>
+    <string name="changelog_show_full">more</string>
+    <string name="about">About</string>
 
     <string-array name="clock_type">
         <item>12-hours</item>
@@ -37,13 +40,7 @@
         <item>Enabled on Headset</item>
         <item>Enabled on Time Range</item>
     </string-array>
-    <!-- needs to be in english -->
-    <string name="speakOnDefault" translatable="false">speakOn</string>
-    <string-array name="speakOnOpt_val">
-        <item>speakOn</item>
-        <item>speakHeadsetOn</item>
-        <item>speakTimeRange</item>
-    </string-array>
+
     <string-array name="chimeOnOpt">
         <item>Always Enabled</item>
         <item>Enabled on Headset</item>
@@ -54,30 +51,11 @@
         <item>Minutes</item>
         <item>Hours</item>
     </string-array>
-    <!-- needs to be in english -->
-    <string name="chimeOnDefault" translatable="false">chimeOn</string>
-    <string-array name="chimeOnOpt_val">
-        <item>chimeOn</item>
-        <item>chimeHeadsetOn</item>
-        <item>chimeTimeRange</item>
-    </string-array>
+
     <string-array name="vibrationOnOpt">
         <item>Always Enabled</item>
         <item>Enabled on Headset</item>
         <item>Enabled on Time Range</item>
-    </string-array>
-    <!-- needs to be in english -->
-    <string name="vibOnDefault" translatable="false">vibrationOn</string>
-    <string-array name="vibrationOnOpt_val">
-        <item>vibrationOn</item>
-        <item>vibrationHeadsetOn</item>
-        <item>vibrationTimeRange</item>
-    </string-array>
-    <string name="periodDefault" translatable="false">periodSeconds</string>
-    <string-array name="periodOpt_val">
-        <item>periodSeconds</item>
-        <item>periodMinutes</item>
-        <item>periodHours</item>
     </string-array>
 
 </resources>

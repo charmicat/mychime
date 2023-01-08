@@ -12,9 +12,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df272ed7-8d90-4f80-b1b3-7d2303c208ed" name="Changes" comment="upgrade to current android app">
+    <list default="true" id="df272ed7-8d90-4f80-b1b3-7d2303c208ed" name="Changes" comment="upgrade to current android app specs">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/utils/ChangeLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/raw-pt/changelog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/raw/changelog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/donottranslate.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/activity/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/MyPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/MyPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/TimePickerPreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/preferences/TimePickerPreference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/receiver/BootUpReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/receiver/BootUpReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/service/TimeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/vag/mychime/service/TimeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/settings_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/settings_activity.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/toolbar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-pt/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-pt/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
@@ -25,7 +35,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/home/talto/.android/avd/5.4_FWVGA_API_27.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/home/talto/.android/avd/Nexus_5_8.1_API_27.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -56,16 +66,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/local.properties" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/README.md" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/src/main/res/values-pt/strings.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/proguard-rules.pro" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/build.gradle" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/.gradle/caches/transforms-3/f135425267c911d6dc1cd95dbb25d72d/transformed/preference-1.2.0/res/values/values.xml" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/build.gradle" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/.gradle/caches/transforms-3/f135425267c911d6dc1cd95dbb25d72d/transformed/preference-1.2.0/res/values/values.xml" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/README.md" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/local.properties" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -91,7 +101,7 @@
     <property name="android-custom-view/mnt/depot1/home/talto/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.5.1/ffb6d2b7e47daaa4a24b434db111ab9e411c33a0/appcompat-1.5.1-sources.jar!/androidx/appcompat/widget/Toolbar.java_SELECTED" value="Toolbar" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="last_directory_selection" value="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/src/main/java/com/vag/mychime" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res" />
     <property name="project.structure.last.edited" value="Variables" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -112,13 +122,14 @@
       <recent name="com.vag.mychime.activity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
       <recent name="$PROJECT_DIR$/app/src/main/res/xml" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/vag/mychime" />
       <recent name="$PROJECT_DIR$/scripts" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/src/main/res" />
-      <recent name="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/app/src/main/res/layout" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/values" />
       <recent name="$PROJECT_DIR$/stuff" />
       <recent name="/mnt/depot1/home/talto/AndroidStudioProjects/MyChime/stuff" />
     </key>

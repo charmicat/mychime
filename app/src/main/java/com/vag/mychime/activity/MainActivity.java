@@ -37,22 +37,23 @@ import androidx.appcompat.widget.Toolbar;
 import com.vag.mychime.R;
 import com.vag.mychime.preferences.MyPreferences;
 import com.vag.mychime.service.TimeService;
-
+import com.vag.mychime.utils.ChangeLog;
 import io.github.charmicat.vaghelper.HelperFunctions;
 
 public class MainActivity extends AppCompatActivity implements MyPreferences.OnConfigurationChangedListener {
 
     private final String TAG = "MainActivity";
+    private final boolean DEBUG = true;
     private final int isTTSAvailableIntentCode = 666;
     private final String prefFragmentTag = "preference_fragment";
 
-    Intent serviceIntent;
-    SharedPreferences settings;
-    TimeService service;
-    CheckBox chimeCheck;
-    boolean isChimeOn, isSpeakTimeOn, isVibrationOn, isTTSAvailable, uncomittedChanges;
-    ToggleButton speakTime, chime;
-    Toolbar myToolbar;
+    private Intent serviceIntent;
+    private SharedPreferences settings;
+    private TimeService service;
+    private CheckBox chimeCheck;
+    private boolean isChimeOn, isSpeakTimeOn, isVibrationOn, isTTSAvailable, uncomittedChanges;
+    private ToggleButton speakTime, chime;
+    private Toolbar myToolbar;
 
     @SuppressWarnings("unused")
     private final ServiceConnection mConnection = new ServiceConnection() {
@@ -109,13 +110,14 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
         setContentView(layout.settings_activity);
         settings = PreferenceManager.getDefaultSharedPreferences(getApplication());
         Vibrator vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
-        if (!settings.contains("hasVibration")) {
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean("hasVibration", vibrator.hasVibrator());
-            editor.commit();
-        }
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("hasVibration", vibrator.hasVibrator());
+        editor.putBoolean("enableVibration", false);
+        editor.commit();
+        Log.d(TAG, vibrator.hasVibrator() + " onCreate " + settings.getAll());
+
         if (savedInstanceState == null) {
-            Log.d(TAG, "onCreate replacing");
+            Log.d(TAG, "onCreate replacing MyPreferences fragment");
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(id.settings, new MyPreferences(), prefFragmentTag)
@@ -164,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
         }
     }
 
-    public boolean getState() {
+    private boolean getState() {
         if (!isNewInstall()) {
             isSpeakTimeOn = settings.getBoolean("enableSpeak", false);
             isChimeOn = settings.getBoolean("enableChime", false);
@@ -184,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                 isTTSAvailable = true;
             } else {
-                isTTSAvailable = false;
+                isTTSAvailable = false; //TODO: do something if TTS not available
                 // missing data, install it
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(string.titleMsg);
@@ -211,7 +213,7 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
                 "onStop isSpeakTimeOn=" + isSpeakTimeOn + " isChimeOn=" + isChimeOn + " isVibrateOn=" + isVibrationOn);
 
         boolean isServiceRunning = HelperFunctions.isServiceRunning(getApplication(),
-                "com.vag.mychime.service.TimeService", false);
+                "com.vag.mychime.service.TimeService", DEBUG);
 
         if (!isServiceRunning) {
             Log.d(TAG, "Service is not running");
@@ -251,6 +253,10 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
         if (item.getItemId() == rate) {
             Log.d(TAG, "Clicked on rate");
             rateApp();
+            return true;
+        } else if (item.getItemId() == about) {
+            ChangeLog cl = new ChangeLog(this);
+            cl.getFullLogDialog().show();
             return true;
         }
         // If we got here, the user's action was not recognized.

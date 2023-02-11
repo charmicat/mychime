@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements MyPreferences.OnC
         serviceIntent = new Intent(this, TimeService.class);
         controlService();
 
-        myToolbar = (Toolbar) findViewById(my_toolbar);
+        myToolbar = findViewById(my_toolbar);
         setSupportActionBar(myToolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

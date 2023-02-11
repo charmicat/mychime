@@ -21,13 +21,13 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/chimeCpt"
-        app:key="chime">
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="enableChime"
-            android:title="@string/chimeCpt"
-            app:persistent="true" />
+        app:key="chime"
+        app:title="@string/chimeCpt">
+        <CheckBoxPreference
+            app:defaultValue="true"
+            app:key="enableChime"
+            app:title="@string/enableCpt" />
+
         <ListPreference
             app:defaultValue="@string/chimeOnDefault"
             app:dependency="enableChime"
@@ -35,9 +35,7 @@
             app:entries="@array/chimeOnOpt"
             app:entryValues="@array/chimeOnOpt_val"
             app:key="chimeOn"
-            app:persistent="true"
-            app:title="@string/chimeModeCpt"
-            app:useSimpleSummaryProvider="true" />
+            app:title="@string/chimeModeCpt" />
 
         <com.vag.mychime.preferences.TimePickerPreference
             app:dependency="enableChime"
@@ -49,13 +47,12 @@
             app:title="@string/endCpt" />
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/vibrationCpt"
-        app:key="vibration">
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="enableVibration"
-            android:title="@string/vibrationCpt"
-            app:persistent="true" />
+        app:key="vibration"
+        app:title="@string/vibrationCpt">
+        <CheckBoxPreference
+            app:defaultValue="true"
+            app:key="enableVibration"
+            app:title="@string/enableCpt" />
 
         <ListPreference
             app:defaultValue="@string/vibOnDefault"
@@ -64,9 +61,7 @@
             app:entries="@array/vibrationOnOpt"
             app:entryValues="@array/vibrationOnOpt_val"
             app:key="vibrationOn"
-            app:persistent="true"
-            app:title="@string/vibrationModeCpt"
-            app:useSimpleSummaryProvider="true" />
+            app:title="@string/vibrationModeCpt" />
 
         <com.vag.mychime.preferences.TimePickerPreference
             app:dependency="enableVibration"
@@ -78,14 +73,13 @@
             app:title="@string/endCpt" />
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/speakCpt"
-        app:key="speak">
-        <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="enableSpeak"
-            android:summary="@string/speakSumm"
-            android:title="@string/speakCpt"
-            app:persistent="true" />
+        app:key="speak"
+        app:title="@string/speakCpt">
+        <CheckBoxPreference
+            app:defaultValue="true"
+            app:key="enableSpeak"
+            app:summary="@string/speakSumm"
+            app:title="@string/enableCpt" />
 
         <ListPreference
             app:defaultValue="@string/speakOnDefault"
@@ -94,9 +88,7 @@
             app:entries="@array/speakOnOpt"
             app:entryValues="@array/speakOnOpt_val"
             app:key="speakOn"
-            app:persistent="true"
-            app:title="@string/speakModeCpt"
-            app:useSimpleSummaryProvider="true" />
+            app:title="@string/speakModeCpt" />
         <ListPreference
             app:dependency="enableSpeak"
             app:dialogTitle="@string/clockformathcpt"

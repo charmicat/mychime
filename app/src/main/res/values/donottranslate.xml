@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name" translatable="false">MyChime</string>
-    <string name="background_color">white</string>
 
     <string name="speakOnDefault" translatable="false">speakOn</string>
     <string-array name="speakOnOpt_val">

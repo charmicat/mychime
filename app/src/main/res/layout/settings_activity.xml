@@ -9,12 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat" />
+        android:theme="@style/Theme.MyChime.AppBarOverlay"
+        app:popupTheme="@style/Theme.MyChime.PopupOverlay" />
 
     <FrameLayout
         android:id="@+id/settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/Theme.MyChime"
         android:orientation="vertical" />
 </LinearLayout>

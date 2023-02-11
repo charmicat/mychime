@@ -1,11 +1,13 @@
 <resources>
-    <string name="periodCpt">Run every</string>
+    <string name="periodCpt">Repeat</string>
     <string name="speakCpt">Speak time</string>
     <string name="chimeCpt">Beep</string>
     <string name="vibrationCpt">Vibrate</string>
     <string name="vibrationNotSupportedCpt">Vibration not supported by device</string>
     <string name="enableCpt">Enable</string>
-    <string name="modeCpt">Operation Mode</string>
+    <string name="chimeModeCpt">Beeping mode</string>
+    <string name="vibrationModeCpt">Vibration mode</string>
+    <string name="speakModeCpt">Speaking mode</string>
     <string name="clockformathcpt">Clock type</string>
     <string name="startCpt">Start</string>
     <string name="endCpt">End</string>
@@ -23,7 +25,8 @@
     <!-- changelog stuff-->
     <string name="changelog_full_title">About</string>
     <string name="changelog_title">About</string>
-    <string name="changelog_ok_button">OK</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">OK</string>
     <string name="changelog_show_full">more</string>
     <string name="about">About</string>
 

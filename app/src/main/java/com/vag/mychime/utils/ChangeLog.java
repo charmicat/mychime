@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -132,9 +131,9 @@ public class ChangeLog {
     protected AlertDialog getDialog(boolean full) {
         WebView wv = new WebView(this.context);
 
-        wv.setBackgroundColor(Color.parseColor(context.getResources().getString(
-                R.string.background_color)));
-        wv.loadDataWithBaseURL(null, this.getLog(full), "text/html", "UTF-8", null);
+//        wv.setBackgroundColor(Color.parseColor(context.getResources().getString(
+//                R.string.background_color)));
+        wv.loadDataWithBaseURL(null, this.getChangeLog(full), "text/html", "UTF-8", null);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this.context,
                 android.R.style.Theme_Dialog));
@@ -144,7 +143,7 @@ public class ChangeLog {
                 .setView(wv)
                 .setCancelable(false)
                 // OK button
-                .setPositiveButton(context.getResources().getString(R.string.changelog_ok_button),
+                .setPositiveButton(context.getResources().getString(R.string.ok_button),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 updateVersionInPreferences();
@@ -182,15 +181,15 @@ public class ChangeLog {
      * @return HTML displaying the changes since the previous installed version of your app (what's
      * new)
      */
-    public String getLog() {
-        return this.getLog(false);
+    public String getChangeLog() {
+        return this.getChangeLog(false);
     }
 
     /**
      * @return HTML which displays full change log
      */
     public String getFullLog() {
-        return this.getLog(true);
+        return this.getChangeLog(true);
     }
 
     /**
@@ -204,7 +203,7 @@ public class ChangeLog {
     private StringBuffer sb = null;
     private static final String EOCL = "END_OF_CHANGE_LOG";
 
-    protected String getLog(boolean full) {
+    protected String getChangeLog(boolean full) {
         // read changelog.txt file
         sb = new StringBuffer();
         try {

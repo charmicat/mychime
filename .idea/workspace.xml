@@ -12,7 +12,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df272ed7-8d90-4f80-b1b3-7d2303c208ed" name="Changes" comment="merging with previously lost code">
+    <list default="true" id="df272ed7-8d90-4f80-b1b3-7d2303c208ed" name="Changes" comment="updates, minor improvements">
+      <change afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stuff/layout/root_preferences_checkbox.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stuff/layout/root_preferences_new.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -354,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673215352661</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="updates, minor improvements">
+      <created>1676139528295</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1676139528295</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -373,6 +383,7 @@
     <MESSAGE value="upgrade to current android app" />
     <MESSAGE value="upgrade to current android app specs" />
     <MESSAGE value="merging with previously lost code" />
-    <option name="LAST_COMMIT_MESSAGE" value="merging with previously lost code" />
+    <MESSAGE value="updates, minor improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates, minor improvements" />
   </component>
 </project>

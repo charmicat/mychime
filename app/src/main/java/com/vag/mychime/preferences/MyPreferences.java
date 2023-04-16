@@ -8,27 +8,27 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.vag.mychime.R;
 
 public class MyPreferences extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    OnConfigurationChangedListener onCfgChangedCB;
-    SharedPreferences settings;
+    private OnConfigurationChangedListener onCfgChangedCB;
+    private SharedPreferences settings;
 
-    final String TAG = "MyPreferences";
+    private final String TAG = "MyPreferences";
 
     // name for sharedPreferences location
     private static final String SHARED_PREFERENCES = "mychimeprefs";
     private static final String DIALOG_FRAGMENT_TAG =
             "androidx.preference.PreferenceFragmentCompat.DIALOG";
 
-    boolean hasVibration;
+    private boolean hasVibration;
 
     public interface OnConfigurationChangedListener {
         void onConfigurationChanged();
@@ -52,14 +52,15 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
 
         settings = PreferenceManager.getDefaultSharedPreferences(getContext());
         hasVibration = settings.getBoolean("hasVibration", false);
+        Log.d(TAG, "onCreatePreferences " + settings.getAll());
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
 
         final PreferenceCategory pc_speak = (PreferenceCategory) findAndAssertPreference("speak");
         final PreferenceCategory pc_chime = (PreferenceCategory) findAndAssertPreference("chime");
         final PreferenceCategory pc_vibration = (PreferenceCategory) findAndAssertPreference("vibration");
-        final CheckBoxPreference enableSpeak = (CheckBoxPreference) findAndAssertPreference("enableSpeak");
-        final CheckBoxPreference enableChime = (CheckBoxPreference) findAndAssertPreference("enableChime");
-        final CheckBoxPreference enableVibration = (CheckBoxPreference) findAndAssertPreference("enableVibration");
+        final SwitchPreferenceCompat enableSpeak = (SwitchPreferenceCompat) findAndAssertPreference("enableSpeak");
+        final SwitchPreferenceCompat enableChime = (SwitchPreferenceCompat) findAndAssertPreference("enableChime");
+        final SwitchPreferenceCompat enableVibration = (SwitchPreferenceCompat) findAndAssertPreference("enableVibration");
         final TimePickerPreference tp_start_speak = (TimePickerPreference) findAndAssertPreference("speakStartTime");
         final TimePickerPreference tp_end_speak = (TimePickerPreference) findAndAssertPreference("speakEndTime");
         final TimePickerPreference tp_start_chime = (TimePickerPreference) findAndAssertPreference("chimeStartTime");
@@ -81,7 +82,6 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
             // set first value by default
             speakEnableList.setValueIndex(0);
         }
-        speakEnableList.setSummary(speakEnableList.getEntry().toString());
         if (!enableSpeak.isChecked() || !speakEnableList.getValue().equals("speakTimeRange")) {
             pc_speak.removePreference(tp_end_speak);
             pc_speak.removePreference(tp_start_speak);
@@ -89,7 +89,6 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
         speakEnableList.setOnPreferenceChangeListener((preference, newValue) -> {
             ListPreference lp = (ListPreference) preference;
             CharSequence[] entries = lp.getEntries();
-            preference.setSummary(entries[lp.findIndexOfValue((String) newValue)]);
 
             if (!newValue.equals("speakTimeRange")) {
                 pc_speak.removePreference(tp_end_speak);
@@ -115,7 +114,6 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
             // set first value by default
             chimeEnableList.setValueIndex(0);
         }
-        chimeEnableList.setSummary(chimeEnableList.getEntry().toString());
         if (!enableChime.isChecked() || !chimeEnableList.getValue().equals("chimeTimeRange")) {
             pc_chime.removePreference(tp_end_chime);
             pc_chime.removePreference(tp_start_chime);
@@ -123,7 +121,6 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
         chimeEnableList.setOnPreferenceChangeListener((preference, newValue) -> {
             ListPreference lp = (ListPreference) preference;
             CharSequence[] entries = lp.getEntries();
-            preference.setSummary(entries[lp.findIndexOfValue((String) newValue)]);
 
             if (!newValue.equals("chimeTimeRange")) {
                 pc_chime.removePreference(tp_end_chime);
@@ -141,7 +138,6 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
             // set first value by default
             clockTypeList.setValueIndex(0);
         }
-        clockTypeList.setSummary(clockTypeList.getValue());
         clockTypeList.setOnPreferenceChangeListener((preference, newValue) -> {
             preference.setSummary(newValue.toString());
             return true;
@@ -149,6 +145,8 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
 
         if (!hasVibration) {
             Log.d(TAG,"onCreatePreferences: device doesn't support vibration. Disabling controls");
+            pc_vibration.setTitle(R.string.vibrationCpt);
+            pc_vibration.setSummary(R.string.vibrationNotSupportedCpt);
             pc_vibration.removeAll();
         } else {
             ListPreference vibrationEnableList = (ListPreference) findAndAssertPreference("vibrationOn");
@@ -157,7 +155,6 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
                 // set first value by default
                 vibrationEnableList.setValueIndex(0);
             }
-            vibrationEnableList.setSummary(vibrationEnableList.getEntry().toString());
             if (!enableVibration.isChecked() || !vibrationEnableList.getValue().equals("vibrationTimeRange")) {
                 pc_vibration.removePreference(tp_end_vibration);
                 pc_vibration.removePreference(tp_start_vibration);
@@ -165,7 +162,6 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
             vibrationEnableList.setOnPreferenceChangeListener((preference, newValue) -> {
                 ListPreference lp = (ListPreference) preference;
                 CharSequence[] entries = lp.getEntries();
-                preference.setSummary(entries[lp.findIndexOfValue((String) newValue)]);
 
                 if (!newValue.equals("vibrationTimeRange")) {
                     pc_vibration.removePreference(tp_end_vibration);
@@ -197,7 +193,7 @@ public class MyPreferences extends PreferenceFragmentCompat implements SharedPre
     @Override
     public void onSharedPreferenceChanged(SharedPreferences pref, String key) {
         Log.d(TAG, "onSharedPreferenceChanged: key " + key);
-
+        Log.d(TAG, "onSharedPreferenceChanged: " + settings.getAll());
         onCfgChangedCB.onConfigurationChanged();
     }
 

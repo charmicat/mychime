@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">My Chime</string>
 
     <string name="speakCpt">Falar hora</string>
     <string name="chimeCpt">Bipe</string>
     <string name="vibrationCpt">Vibrar</string>
     <string name="enableCpt">Ativar</string>
-    <string name="modeCpt">Modo de Operação</string>
     <string name="clockformathcpt">Tipo de relógio</string>
     <string name="startCpt">Início</string>
     <string name="endCpt">Fim</string>
@@ -20,6 +18,15 @@
     <string name="changesSaved">Mudanças salvas</string>
     <string name="speakTimeText_ini">Hora atual</string>
     <string name="rate">Me avalie</string>
+    <string name="currentTimeText">Hora atual</string>
+
+    <!-- changelog stuff-->
+    <string name="changelog_full_title">Sobre</string>
+    <string name="changelog_title">Sobre</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Cancelar</string>
+    <string name="changelog_show_full">mais</string>
+    <string name="about">Sobre</string>
 
     <string-array name="clock_type">
         <item>12-horas</item>
@@ -33,36 +40,22 @@
     <string-array name="speakOnOpt">
         <item>Sempe ativado</item>
         <item>Ativado se headset conectado</item>
-        <item>Ativado em Intervalo de Tempo</item>
-    </string-array>
-    <!-- needs to be in english -->
-    <string-array name="speakOnOpt_val">
-        <item>speakOn</item>
-        <item>speakHeadsetOn</item>
-        <item>speakTimeRange</item>
+        <item>Ativado em intervalo de tempo</item>
     </string-array>
     <string-array name="chimeOnOpt">
         <item>Sempe ativado</item>
         <item>Ativado se headset conectado</item>
-        <item>Ativado em Intervalo de Tempo</item>
-    </string-array>
-    <!-- needs to be in english -->
-    <string-array name="chimeOnOpt_val">
-        <item>chimeOn</item>
-        <item>chimeHeadsetOn</item>
-        <item>chimeTimeRange</item>
+        <item>Ativado em intervalo de tempo</item>
     </string-array>
     <string-array name="vibrationOnOpt">
         <item>Sempe ativado</item>
         <item>Ativado se headset conectado</item>
-        <item>Ativado em Intervalo de Tempo</item>
+        <item>Ativado em intervalo de tempo</item>
     </string-array>
-    <!-- needs to be in english -->
-    <string-array name="vibrationOnOpt_val">
-        <item>vibrationOn</item>
-        <item>vibrationHeadsetOn</item>
-        <item>vibrationTimeRange</item>
-    </string-array>
-    <string name="periodCpt">Executar a cada</string>
+    <string name="periodCpt">Repetir a cada</string>
+    <string name="vibrationNotSupportedCpt">Dispositivo não possui suporte a vibração</string>
+    <string name="vibrationModeCpt">Modo de vibração</string>
+    <string name="chimeModeCpt">Modo de bipe</string>
+    <string name="speakModeCpt">Modo de fala</string>
 
 </resources>

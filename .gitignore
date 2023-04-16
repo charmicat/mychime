@@ -1,2 +1,9 @@
 /local.properties
 /keystore.properties
+/bin/
+/local.properties
+/.gradle/
+/build/
+/gen/
+.idea/libraries/
+production/MyChime/

@@ -5,6 +5,12 @@
     <PreferenceCategory
         app:key="period"
         app:title="@string/periodCpt">
+        <!--<com.vag.mychime.preferences.IntervalPickerPreference
+            android:key="intervalDef"
+            app:dialogTitle="@string/periodCpt" />-->
+        <SwitchPreference
+            android:key="openIntervalPicker"
+            app:fragment="com.vag.mychime.preferences.IntervalPickerDialogFragment" />
         <EditTextPreference
             android:defaultValue="60"
             android:key="repeatVal"

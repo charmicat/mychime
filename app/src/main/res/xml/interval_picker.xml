@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:key="intrevalPickerPref"
+    app:title="Pick an interval">
+
+    <PreferenceCategory
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="IntervalDefinition"
+        app:widgetLayout="?android:attr/preferenceLayoutChild">
+
+        <EditTextPreference
+            android:defaultValue="Default value"
+            android:key="intervalSize"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Interval Size"
+            app:key="number" />
+        <ListPreference
+            android:defaultValue="false"
+            android:key="intervalUnit"
+            app:defaultValue="@string/periodDefault"
+            app:entryValues="@array/periodOpt_val"
+            android:title="Interval Unit" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -49,7 +49,7 @@ public class TimePickerDialogFragment extends PreferenceDialogFragmentCompat imp
     @Override
     public void onDialogClosed(boolean positiveResult) {
         if (positiveResult) {
-            Log.d(TAG, "onCreate");
+            Log.d(TAG, "onDialogClosed");
         }
     }
 /*

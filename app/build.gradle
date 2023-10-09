@@ -74,5 +74,5 @@ dependencies {
 // Robolectric environment
     testImplementation 'org.robolectric:robolectric:4.10.3'
 // Optional -- Mockito framework
-    testImplementation 'org.mockito:mockito-core:5.5.0'
+    testImplementation 'org.mockito:mockito-core:5.6.0'
 }
